@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		073F5E921D492AF400C0FC9E /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073F5E911D492AF400C0FC9E /* Level2.sks */; };
+		075417661D35A2C4008B283C /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075417651D35A2C4008B283C /* Level1.sks */; };
+		0773ABB21D38166800868206 /* MSButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0773ABB11D38166800868206 /* MSButtonNode.swift */; };
+		0773ABB41D3838C400868206 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0773ABB31D3838C400868206 /* MainMenu.sks */; };
+		0773ABB61D384F3D00868206 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0773ABB51D384F3D00868206 /* MainMenu.swift */; };
+		077F3EE21D3952B200597FE7 /* rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE01D3952B200597FE7 /* rain.sks */; };
+		077F3EE31D3952B200597FE7 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE11D3952B200597FE7 /* spark.png */; };
+		077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE61D3960DA00597FE7 /* Line-50.png */; };
+		0782BE401D359813002E895E /* Page.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0782BE3F1D359813002E895E /* Page.sks */; };
+		0789282A1D3409B900B9B21B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078928291D3409B900B9B21B /* AppDelegate.swift */; };
+		0789282C1D3409B900B9B21B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0789282B1D3409B900B9B21B /* GameScene.sks */; };
+		0789282E1D3409B900B9B21B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789282D1D3409B900B9B21B /* GameScene.swift */; };
+		078928301D3409B900B9B21B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789282F1D3409B900B9B21B /* GameViewController.swift */; };
+		078928331D3409B900B9B21B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 078928311D3409B900B9B21B /* Main.storyboard */; };
+		078928351D3409B900B9B21B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 078928341D3409B900B9B21B /* Assets.xcassets */; };
+		078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 078928361D3409B900B9B21B /* LaunchScreen.storyboard */; };
+		078928431D3409BA00B9B21B /* Dark_DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078928421D3409BA00B9B21B /* Dark_DiaryTests.swift */; };
+		0789284E1D3409BA00B9B21B /* Dark_DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789284D1D3409BA00B9B21B /* Dark_DiaryUITests.swift */; };
+		078AD87F1D36BF1E005E7052 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD8731D36BF1E005E7052 /* CGFloat+Extensions.swift */; };
+		078AD8801D36BF1E005E7052 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD8741D36BF1E005E7052 /* CGPoint+Extensions.swift */; };
+		078AD8811D36BF1E005E7052 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD8751D36BF1E005E7052 /* CGVector+Extensions.swift */; };
+		078AD8821D36BF1E005E7052 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD8761D36BF1E005E7052 /* Int+Extensions.swift */; };
+		078AD8831D36BF1E005E7052 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD8771D36BF1E005E7052 /* SKAction+Extensions.swift */; };
+		078AD8841D36BF1E005E7052 /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD8781D36BF1E005E7052 /* SKAction+SpecialEffects.swift */; };
+		078AD8851D36BF1E005E7052 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD8791D36BF1E005E7052 /* SKColor+Extensions.swift */; };
+		078AD8861D36BF1E005E7052 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87A1D36BF1E005E7052 /* SKNode+Extensions.swift */; };
+		078AD8871D36BF1E005E7052 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87B1D36BF1E005E7052 /* SKTAudio.swift */; };
+		078AD8881D36BF1E005E7052 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87C1D36BF1E005E7052 /* SKTEffects.swift */; };
+		078AD8891D36BF1E005E7052 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87D1D36BF1E005E7052 /* SKTTimingFunctions.swift */; };
+		078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87E1D36BF1E005E7052 /* Vector3.swift */; };
+		079FA70C1D343FD60066C088 /* Light.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079FA70B1D343FD60066C088 /* Light.sks */; };
+		079FA7121D34464D0066C088 /* MSReferenceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FA7111D34464D0066C088 /* MSReferenceNode.swift */; };
+		079FA7161D3465780066C088 /* light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FA7151D3465780066C088 /* light.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0789283F1D3409BA00B9B21B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0789281E1D3409B900B9B21B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 078928251D3409B900B9B21B;
+			remoteInfo = "Dark Diary";
+		};
+		0789284A1D3409BA00B9B21B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0789281E1D3409B900B9B21B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 078928251D3409B900B9B21B;
+			remoteInfo = "Dark Diary";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		073F5E911D492AF400C0FC9E /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
+		075417651D35A2C4008B283C /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
+		0773ABB11D38166800868206 /* MSButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSButtonNode.swift; sourceTree = "<group>"; };
+		0773ABB31D3838C400868206 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		0773ABB51D384F3D00868206 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		077F3EE01D3952B200597FE7 /* rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = rain.sks; sourceTree = "<group>"; };
+		077F3EE11D3952B200597FE7 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		077F3EE61D3960DA00597FE7 /* Line-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line-50.png"; sourceTree = "<group>"; };
+		0782BE3F1D359813002E895E /* Page.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Page.sks; path = ../Page.sks; sourceTree = "<group>"; };
+		078928261D3409B900B9B21B /* Dark Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dark Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		078928291D3409B900B9B21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0789282B1D3409B900B9B21B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		0789282D1D3409B900B9B21B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0789282F1D3409B900B9B21B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		078928321D3409B900B9B21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		078928341D3409B900B9B21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		078928371D3409B900B9B21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		078928391D3409B900B9B21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0789283E1D3409BA00B9B21B /* Dark DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dark DiaryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		078928421D3409BA00B9B21B /* Dark_DiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dark_DiaryTests.swift; sourceTree = "<group>"; };
+		078928441D3409BA00B9B21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		078928491D3409BA00B9B21B /* Dark DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dark DiaryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0789284D1D3409BA00B9B21B /* Dark_DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dark_DiaryUITests.swift; sourceTree = "<group>"; };
+		0789284F1D3409BA00B9B21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		078AD8731D36BF1E005E7052 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		078AD8741D36BF1E005E7052 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		078AD8751D36BF1E005E7052 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		078AD8761D36BF1E005E7052 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		078AD8771D36BF1E005E7052 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
+		078AD8781D36BF1E005E7052 /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
+		078AD8791D36BF1E005E7052 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
+		078AD87A1D36BF1E005E7052 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		078AD87B1D36BF1E005E7052 /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		078AD87C1D36BF1E005E7052 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
+		078AD87D1D36BF1E005E7052 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
+		078AD87E1D36BF1E005E7052 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		079FA70B1D343FD60066C088 /* Light.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Light.sks; path = ../Light.sks; sourceTree = "<group>"; };
+		079FA7111D34464D0066C088 /* MSReferenceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSReferenceNode.swift; sourceTree = "<group>"; };
+		079FA7151D3465780066C088 /* light.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = light.swift; path = ../light.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		078928231D3409B900B9B21B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0789283B1D3409BA00B9B21B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078928461D3409BA00B9B21B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		075417671D35A2F4008B283C /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				075417651D35A2C4008B283C /* Level1.sks */,
+				073F5E911D492AF400C0FC9E /* Level2.sks */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		075417681D35A324008B283C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				079FA70B1D343FD60066C088 /* Light.sks */,
+				0782BE3F1D359813002E895E /* Page.sks */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		0789281D1D3409B900B9B21B = {
+			isa = PBXGroup;
+			children = (
+				077F3EE01D3952B200597FE7 /* rain.sks */,
+				077F3EE11D3952B200597FE7 /* spark.png */,
+				077F3EE61D3960DA00597FE7 /* Line-50.png */,
+				078928281D3409B900B9B21B /* Dark Diary */,
+				078928411D3409BA00B9B21B /* Dark DiaryTests */,
+				0789284C1D3409BA00B9B21B /* Dark DiaryUITests */,
+				078928271D3409B900B9B21B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		078928271D3409B900B9B21B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				078928261D3409B900B9B21B /* Dark Diary.app */,
+				0789283E1D3409BA00B9B21B /* Dark DiaryTests.xctest */,
+				078928491D3409BA00B9B21B /* Dark DiaryUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		078928281D3409B900B9B21B /* Dark Diary */ = {
+			isa = PBXGroup;
+			children = (
+				078AD8721D36BF1E005E7052 /* SKTUtils */,
+				078928291D3409B900B9B21B /* AppDelegate.swift */,
+				0789282B1D3409B900B9B21B /* GameScene.sks */,
+				0789282D1D3409B900B9B21B /* GameScene.swift */,
+				0773ABB51D384F3D00868206 /* MainMenu.swift */,
+				0773ABB31D3838C400868206 /* MainMenu.sks */,
+				075417671D35A2F4008B283C /* Levels */,
+				079FA7111D34464D0066C088 /* MSReferenceNode.swift */,
+				0773ABB11D38166800868206 /* MSButtonNode.swift */,
+				0789282F1D3409B900B9B21B /* GameViewController.swift */,
+				079FA7151D3465780066C088 /* light.swift */,
+				078928311D3409B900B9B21B /* Main.storyboard */,
+				078928341D3409B900B9B21B /* Assets.xcassets */,
+				078928361D3409B900B9B21B /* LaunchScreen.storyboard */,
+				078928391D3409B900B9B21B /* Info.plist */,
+				075417681D35A324008B283C /* Assets */,
+			);
+			path = "Dark Diary";
+			sourceTree = "<group>";
+		};
+		078928411D3409BA00B9B21B /* Dark DiaryTests */ = {
+			isa = PBXGroup;
+			children = (
+				078928421D3409BA00B9B21B /* Dark_DiaryTests.swift */,
+				078928441D3409BA00B9B21B /* Info.plist */,
+			);
+			path = "Dark DiaryTests";
+			sourceTree = "<group>";
+		};
+		0789284C1D3409BA00B9B21B /* Dark DiaryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0789284D1D3409BA00B9B21B /* Dark_DiaryUITests.swift */,
+				0789284F1D3409BA00B9B21B /* Info.plist */,
+			);
+			path = "Dark DiaryUITests";
+			sourceTree = "<group>";
+		};
+		078AD8721D36BF1E005E7052 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				078AD8731D36BF1E005E7052 /* CGFloat+Extensions.swift */,
+				078AD8741D36BF1E005E7052 /* CGPoint+Extensions.swift */,
+				078AD8751D36BF1E005E7052 /* CGVector+Extensions.swift */,
+				078AD8761D36BF1E005E7052 /* Int+Extensions.swift */,
+				078AD8771D36BF1E005E7052 /* SKAction+Extensions.swift */,
+				078AD8781D36BF1E005E7052 /* SKAction+SpecialEffects.swift */,
+				078AD8791D36BF1E005E7052 /* SKColor+Extensions.swift */,
+				078AD87A1D36BF1E005E7052 /* SKNode+Extensions.swift */,
+				078AD87B1D36BF1E005E7052 /* SKTAudio.swift */,
+				078AD87C1D36BF1E005E7052 /* SKTEffects.swift */,
+				078AD87D1D36BF1E005E7052 /* SKTTimingFunctions.swift */,
+				078AD87E1D36BF1E005E7052 /* Vector3.swift */,
+			);
+			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		078928251D3409B900B9B21B /* Dark Diary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078928521D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark Diary" */;
+			buildPhases = (
+				078928221D3409B900B9B21B /* Sources */,
+				078928231D3409B900B9B21B /* Frameworks */,
+				078928241D3409B900B9B21B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dark Diary";
+			productName = "Dark Diary";
+			productReference = 078928261D3409B900B9B21B /* Dark Diary.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0789283D1D3409BA00B9B21B /* Dark DiaryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078928551D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryTests" */;
+			buildPhases = (
+				0789283A1D3409BA00B9B21B /* Sources */,
+				0789283B1D3409BA00B9B21B /* Frameworks */,
+				0789283C1D3409BA00B9B21B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				078928401D3409BA00B9B21B /* PBXTargetDependency */,
+			);
+			name = "Dark DiaryTests";
+			productName = "Dark DiaryTests";
+			productReference = 0789283E1D3409BA00B9B21B /* Dark DiaryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		078928481D3409BA00B9B21B /* Dark DiaryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078928581D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryUITests" */;
+			buildPhases = (
+				078928451D3409BA00B9B21B /* Sources */,
+				078928461D3409BA00B9B21B /* Frameworks */,
+				078928471D3409BA00B9B21B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0789284B1D3409BA00B9B21B /* PBXTargetDependency */,
+			);
+			name = "Dark DiaryUITests";
+			productName = "Dark DiaryUITests";
+			productReference = 078928491D3409BA00B9B21B /* Dark DiaryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0789281E1D3409B900B9B21B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "TestingDummies@_@";
+				TargetAttributes = {
+					078928251D3409B900B9B21B = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 8N5A33SHA4;
+					};
+					0789283D1D3409BA00B9B21B = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 078928251D3409B900B9B21B;
+					};
+					078928481D3409BA00B9B21B = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 078928251D3409B900B9B21B;
+					};
+				};
+			};
+			buildConfigurationList = 078928211D3409B900B9B21B /* Build configuration list for PBXProject "Dark Diary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0789281D1D3409B900B9B21B;
+			productRefGroup = 078928271D3409B900B9B21B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				078928251D3409B900B9B21B /* Dark Diary */,
+				0789283D1D3409BA00B9B21B /* Dark DiaryTests */,
+				078928481D3409BA00B9B21B /* Dark DiaryUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		078928241D3409B900B9B21B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0782BE401D359813002E895E /* Page.sks in Resources */,
+				0789282C1D3409B900B9B21B /* GameScene.sks in Resources */,
+				077F3EE21D3952B200597FE7 /* rain.sks in Resources */,
+				079FA70C1D343FD60066C088 /* Light.sks in Resources */,
+				078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */,
+				077F3EE31D3952B200597FE7 /* spark.png in Resources */,
+				078928351D3409B900B9B21B /* Assets.xcassets in Resources */,
+				073F5E921D492AF400C0FC9E /* Level2.sks in Resources */,
+				0773ABB41D3838C400868206 /* MainMenu.sks in Resources */,
+				078928331D3409B900B9B21B /* Main.storyboard in Resources */,
+				075417661D35A2C4008B283C /* Level1.sks in Resources */,
+				077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0789283C1D3409BA00B9B21B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078928471D3409BA00B9B21B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		078928221D3409B900B9B21B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078AD8801D36BF1E005E7052 /* CGPoint+Extensions.swift in Sources */,
+				078AD8881D36BF1E005E7052 /* SKTEffects.swift in Sources */,
+				078AD8831D36BF1E005E7052 /* SKAction+Extensions.swift in Sources */,
+				0773ABB21D38166800868206 /* MSButtonNode.swift in Sources */,
+				079FA7161D3465780066C088 /* light.swift in Sources */,
+				078AD8861D36BF1E005E7052 /* SKNode+Extensions.swift in Sources */,
+				0789282E1D3409B900B9B21B /* GameScene.swift in Sources */,
+				0773ABB61D384F3D00868206 /* MainMenu.swift in Sources */,
+				078AD8891D36BF1E005E7052 /* SKTTimingFunctions.swift in Sources */,
+				078AD8841D36BF1E005E7052 /* SKAction+SpecialEffects.swift in Sources */,
+				078AD8821D36BF1E005E7052 /* Int+Extensions.swift in Sources */,
+				078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */,
+				079FA7121D34464D0066C088 /* MSReferenceNode.swift in Sources */,
+				078AD8851D36BF1E005E7052 /* SKColor+Extensions.swift in Sources */,
+				078AD8811D36BF1E005E7052 /* CGVector+Extensions.swift in Sources */,
+				078928301D3409B900B9B21B /* GameViewController.swift in Sources */,
+				078AD8871D36BF1E005E7052 /* SKTAudio.swift in Sources */,
+				078AD87F1D36BF1E005E7052 /* CGFloat+Extensions.swift in Sources */,
+				0789282A1D3409B900B9B21B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0789283A1D3409BA00B9B21B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078928431D3409BA00B9B21B /* Dark_DiaryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078928451D3409BA00B9B21B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0789284E1D3409BA00B9B21B /* Dark_DiaryUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		078928401D3409BA00B9B21B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 078928251D3409B900B9B21B /* Dark Diary */;
+			targetProxy = 0789283F1D3409BA00B9B21B /* PBXContainerItemProxy */;
+		};
+		0789284B1D3409BA00B9B21B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 078928251D3409B900B9B21B /* Dark Diary */;
+			targetProxy = 0789284A1D3409BA00B9B21B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		078928311D3409B900B9B21B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				078928321D3409B900B9B21B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		078928361D3409B900B9B21B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				078928371D3409B900B9B21B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		078928501D3409BA00B9B21B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		078928511D3409BA00B9B21B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		078928531D3409BA00B9B21B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Dark Diary/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		078928541D3409BA00B9B21B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "Dark Diary/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		078928561D3409BA00B9B21B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Dark DiaryTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dark Diary.app/Dark Diary";
+			};
+			name = Debug;
+		};
+		078928571D3409BA00B9B21B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Dark DiaryTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dark Diary.app/Dark Diary";
+			};
+			name = Release;
+		};
+		078928591D3409BA00B9B21B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = "Dark DiaryUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Dark Diary";
+			};
+			name = Debug;
+		};
+		0789285A1D3409BA00B9B21B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Dark DiaryUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Dark Diary";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		078928211D3409B900B9B21B /* Build configuration list for PBXProject "Dark Diary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078928501D3409BA00B9B21B /* Debug */,
+				078928511D3409BA00B9B21B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		078928521D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark Diary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078928531D3409BA00B9B21B /* Debug */,
+				078928541D3409BA00B9B21B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		078928551D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078928561D3409BA00B9B21B /* Debug */,
+				078928571D3409BA00B9B21B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		078928581D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078928591D3409BA00B9B21B /* Debug */,
+				0789285A1D3409BA00B9B21B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0789281E1D3409B900B9B21B /* Project object */;
+}
