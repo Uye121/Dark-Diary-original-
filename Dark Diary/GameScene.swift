@@ -81,12 +81,21 @@ class GameScene: SKScene {
             }
         }
     }
+    var level1Background: SKSpriteNode!
+//    var level1: SKReferenceNode!
+//    var levelBackground: SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
+        
         state = .Playing
         
+        //level1 = Level1.level1
         levelNode = childNodeWithName("//levelNode")
         /* Add level 1 into the game */
+//        let resourcePath = NSBundle.mainBundle().pathForResource("Level1", ofType: "sks")
+//        let level1 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        /* Add level 1 into the game */
+//        levelBackground = level.levelBackground
         goal = childNodeWithName("//goal") as! SKLabelNode
         pauseButton = childNodeWithName("//pauseButton") as! MSButtonNode
         playButton = childNodeWithName("//playButton") as! MSButtonNode
@@ -103,11 +112,17 @@ class GameScene: SKScene {
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         
         levelsStates()
+        level1Background = childNodeWithName("//level1Background") as! SKSpriteNode
         
         /* scene and background constants */
         screenWidth = size.width
         screenHeight = size.height
-
+                
+        /* create 4 pages */
+        while index < levels {
+            createPage()
+            index += 1
+        }
         
         /* Add the light into the scene */
         light1 = light.light
@@ -145,6 +160,12 @@ class GameScene: SKScene {
         playButton.selectedHandler = {
             self.state = .Playing
             self.clearSceneOfButtons()
+            self.playButton.zPosition = -10
+            self.pauseLabel.zPosition = -10
+            self.pauseButton.zPosition = 10
+            self.restartButton.zPosition = -10
+            self.homeButton.zPosition = -10
+            self.pauseBackground.zPosition = -15
             if self.state == .Playing {
                 self.scene!.view!.paused = false
             }
@@ -192,6 +213,21 @@ class GameScene: SKScene {
             self.load = true
             self.levelsStates()
         }
+        
+        homeButton.selectedHandler = {
+            
+            /* Grab reference to Spritekit view */
+            let skView = self.view as SKView!
+            
+            /* Load Main menu */
+            let scene = MainMenu(fileNamed:"MainMenu") as MainMenu!
+            
+            /* Ensure correct aspect mode */
+            scene.scaleMode = .AspectFit
+            
+            skView.presentScene(scene)
+        }
+        
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -247,6 +283,11 @@ class GameScene: SKScene {
         lightCamera.position = light1.position
         lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
         lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
+//        cameraLight.position = light1.position
+//        cameraLight.position.x.clamp(cameraViewPortWidth, levelW - cameraViewPortWidth)
+//        cameraLight.position.y.clamp(cameraViewPortHeight, levelH - cameraViewPortHeight)
+//        cameraLight.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
+//        cameraLight.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
 
         
     }
