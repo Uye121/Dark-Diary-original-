@@ -89,13 +89,7 @@ class GameScene: SKScene {
         
         state = .Playing
         
-        //level1 = Level1.level1
         levelNode = childNodeWithName("//levelNode")
-        /* Add level 1 into the game */
-//        let resourcePath = NSBundle.mainBundle().pathForResource("Level1", ofType: "sks")
-//        let level1 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
-        /* Add level 1 into the game */
-//        levelBackground = level.levelBackground
         goal = childNodeWithName("//goal") as! SKLabelNode
         pauseButton = childNodeWithName("//pauseButton") as! MSButtonNode
         playButton = childNodeWithName("//playButton") as! MSButtonNode
@@ -267,19 +261,21 @@ class GameScene: SKScene {
         for checkBoxes in randomBoxes {
             /* Detect light and box "collision */
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
-                randomBoxes.removeAtIndex(j)
                 let rand = CGFloat.random(min: 0, max: 1.0)
                 
                 /* Random box gives random outcomes */
-                if rand < 0.5 {
+                if rand < 0.45 {
                     timeLeft -= 5
-                } else if rand < 0.8 {
+                } else if rand < 0.5 {
                     lighting.falloff = 0.8
-                } else if rand < 0.9 {
-                    timeLeft/2
+                } else if rand < 0.55 {
+                    timeLeft = timeLeft/2
                 } else {
                     timeLeft += 10
                 }
+                checkBoxes.removeFromParent()
+                randomBoxes.removeAtIndex(j)
+
             }
             j += 1
         }
@@ -347,7 +343,7 @@ class GameScene: SKScene {
     
     
     
-    /////////////////////////////LEVELS/////////////////////////////
+        /////////////////////////////LEVELS/////////////////////////////
     func level1() {
         let resourcePath = NSBundle.mainBundle().pathForResource("Level1", ofType: "sks")
         let level1 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
@@ -366,6 +362,13 @@ class GameScene: SKScene {
         while numberOfPages < levels {
             createPage()
             numberOfPages += 1
+            for checkPagePosition in 0..<numberOfPages {
+                if pages[checkPagePosition].position.x < screenWidth && pages[checkPagePosition].position.y < screenHeight {
+                    pages[checkPagePosition].removeFromParent()
+                    pages.removeAtIndex(checkPagePosition)
+                    numberOfPages -= 1
+                }
+            }
         }
     }
     
