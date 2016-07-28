@@ -392,6 +392,13 @@ class GameScene: SKScene {
         while numberOfPages < levels {
             createPage()
             numberOfPages += 1
+            for checkPagePosition in 0..<numberOfPages {
+                if pages[checkPagePosition].position.x < screenWidth && pages[checkPagePosition].position.y < screenHeight {
+                    pages[checkPagePosition].removeFromParent()
+                    pages.removeAtIndex(checkPagePosition)
+                    numberOfPages -= 1
+                }
+            }
         }
         while numberOfBoxes < 3 {
             createRandomBox()
