@@ -9,11 +9,16 @@
 import SpriteKit
 import UIKit
 
+/* Create gamemanager to keep track of the current level outside so restart does
+ not reset the currentlevel variable */
+class gameManager {
+    var currentlevel = 1
+    static let sharedInstance = gameManager()
+}
+
 enum GameState {
     case Pause, Playing, GameOver, Victory
 }
-
-
 
 let resourcePathLight = NSBundle.mainBundle().pathForResource("Light", ofType: "sks")
 let light = MSReferenceNode(URL: NSURL (fileURLWithPath: resourcePathLight!))
@@ -31,7 +36,8 @@ class GameScene: SKScene {
     /* initializing random x and y coordinates for the pages' position */
     var randomX: Int = 0
     var randomY: Int = 0
-    var index = 0
+    var numberOfPages: Int = 0
+    var numberOfBoxes: Int = 0
     var collectedNotes = 0
     var levels = 0
     var timeLeft = 45
@@ -44,6 +50,8 @@ class GameScene: SKScene {
     var nextLevelButton: MSButtonNode!
     var page1: SKSpriteNode!
     var pages:[SKSpriteNode] = []
+    var randomBox: SKSpriteNode!
+    var randomBoxes: [SKSpriteNode] = []
     var levelNode: SKNode!
     var lightCamera: SKCameraNode!
     var goal: SKLabelNode!
@@ -60,20 +68,15 @@ class GameScene: SKScene {
     enum Levels { case Default }
     
     var levelIndex = 0
-
-    var currentLevel: Levels = .Default {
-        didSet {
-            levelIndex = 0
-        }
-    }
     
+    /* Manages changing to different level */
     func levelsStates() {
         while load {
-            switch levelIndex % 2 {
-            case 0:
+            switch gameManager.sharedInstance.currentlevel % 3 {
+            case 1:
                 level1()
                 load = false
-            case 1:
+            case 2:
                 level2()
                 load = false
             default:
@@ -81,9 +84,6 @@ class GameScene: SKScene {
             }
         }
     }
-    var level1Background: SKSpriteNode!
-//    var level1: SKReferenceNode!
-//    var levelBackground: SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
         
@@ -111,23 +111,17 @@ class GameScene: SKScene {
         pauseLabel = childNodeWithName("//pauseLabel") as! SKLabelNode
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         
-        levelsStates()
-        level1Background = childNodeWithName("//level1Background") as! SKSpriteNode
         
         /* scene and background constants */
         screenWidth = size.width
         screenHeight = size.height
-                
-        /* create 4 pages */
-        while index < levels {
-            createPage()
-            index += 1
-        }
-        
+
         /* Add the light into the scene */
         light1 = light.light
         light1.moveToParent(self)
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+        
+        levelsStates()
         
         /* Ensure correct aspect mode */
         scene!.scaleMode = .AspectFit
@@ -209,7 +203,7 @@ class GameScene: SKScene {
             self.levelNode.removeAllChildren()
             self.state = .Playing
             self.clearSceneOfButtons()
-            self.levelIndex += 1
+            gameManager.sharedInstance.currentlevel += 1
             self.load = true
             self.levelsStates()
         }
@@ -256,11 +250,11 @@ class GameScene: SKScene {
         /* Have the light follow the orb */
         lighting.position = light1.position
         
-        /* Called before each frame is rendered */
         var i = 0
+        var j = 0
         
         for checkPage in pages {
-            /* Detect frame "collision" */
+            /* Detect light and page "collision" */
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkPage.calculateAccumulatedFrame()) {
                 checkPage.removeFromParent()
                 pages.removeAtIndex(i)
@@ -270,25 +264,41 @@ class GameScene: SKScene {
             i += 1
         }
         
-        /* Update the goal #/4 everytime a page is collected */
+        for checkBoxes in randomBoxes {
+            /* Detect light and box "collision */
+            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
+                randomBoxes.removeAtIndex(j)
+                let rand = CGFloat.random(min: 0, max: 1.0)
+                
+                /* Random box gives random outcomes */
+                if rand < 0.5 {
+                    timeLeft -= 5
+                } else if rand < 0.8 {
+                    lighting.falloff = 0.8
+                } else if rand < 0.9 {
+                    timeLeft/2
+                } else {
+                    timeLeft += 10
+                }
+            }
+            j += 1
+        }
+        
+        /* Update the goal collected pages/total pages needed everytime a page is collected */
         goal.text = String("\(collectedNotes)/\(levels)")
         
         if collectedNotes == levels {
             state = .Victory
         }
         
+        /* Half of the game scene's width and height */
         let cameraViewPortWidth = screenWidth * 0.5
         let cameraViewPortHeight = screenHeight * 0.5
         
+        /* Clamp camera position */
         lightCamera.position = light1.position
         lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
         lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
-//        cameraLight.position = light1.position
-//        cameraLight.position.x.clamp(cameraViewPortWidth, levelW - cameraViewPortWidth)
-//        cameraLight.position.y.clamp(cameraViewPortHeight, levelH - cameraViewPortHeight)
-//        cameraLight.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
-//        cameraLight.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
-
         
     }
     
@@ -311,6 +321,20 @@ class GameScene: SKScene {
         pages.append(page1)
     }
     
+    func createRandomBox() {
+        randomX = Int(arc4random_uniform(UInt32(levelWidth - 10)) + 5)
+        randomY = Int(arc4random_uniform(UInt32(levelHeight - 10)) + 5)
+        
+        let resourcePathPage = NSBundle.mainBundle().pathForResource("RandomBox", ofType: "sks")
+        let boxReference = BoxReferenceNode (URL: NSURL (fileURLWithPath: resourcePathPage!))
+        
+        randomBox = boxReference.randomBox
+        randomBox.moveToParent(self)
+        randomBox.position = CGPoint(x: randomX, y: randomY)
+        
+        randomBoxes.append(randomBox)
+    }
+    
     func clearSceneOfButtons() {
         playButton.zPosition = -10
         pauseLabel.zPosition = -10
@@ -321,6 +345,9 @@ class GameScene: SKScene {
         nextLevelButton.zPosition = -10
     }
     
+    
+    
+    /////////////////////////////LEVELS/////////////////////////////
     func level1() {
         let resourcePath = NSBundle.mainBundle().pathForResource("Level1", ofType: "sks")
         let level1 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
@@ -328,7 +355,7 @@ class GameScene: SKScene {
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level1Background") as! SKSpriteNode
         levels = 4
-        index = 0
+        numberOfPages = 0
         
         state = .Playing
         
@@ -336,9 +363,9 @@ class GameScene: SKScene {
         levelHeight = levelBackground.size.height
         
         /* create 4 pages for level 1 */
-        while index < levels {
+        while numberOfPages < levels {
             createPage()
-            index += 1
+            numberOfPages += 1
         }
     }
     
@@ -349,7 +376,8 @@ class GameScene: SKScene {
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level2Background") as! SKSpriteNode
         levels = 6
-        index = 0
+        numberOfPages = 0
+        numberOfBoxes = 0
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
@@ -357,10 +385,16 @@ class GameScene: SKScene {
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
         
-        while index < levels {
+        /* Create pages and boxes */
+        while numberOfPages < levels {
             createPage()
-            index += 1
+            numberOfPages += 1
+        }
+        while numberOfBoxes < 3 {
+            createRandomBox()
+            numberOfBoxes += 1
         }
     }
 
 }
+

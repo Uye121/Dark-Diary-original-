@@ -22,12 +22,20 @@ class MSReferenceNode: SKReferenceNode {
 
 class PageReferenceNode: SKReferenceNode {
     
-    /* Light node connection */
+    /* Page node connection */
     var page: SKSpriteNode!
     
     override func didLoadReferenceNode(node: SKNode?) {
         
         /* Set reference to node */
         page = childNodeWithName("//page") as! SKSpriteNode
+    }
+}
+
+class BoxReferenceNode: SKReferenceNode {
+    var randomBox: SKSpriteNode!
+    
+    override func didLoadReferenceNode(node: SKNode?) {
+        randomBox = childNodeWithName("//randomBox") as! SKSpriteNode
     }
 }
