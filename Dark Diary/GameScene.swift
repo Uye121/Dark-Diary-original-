@@ -12,7 +12,7 @@ import UIKit
 /* Create gamemanager to keep track of the current level outside so restart does
  not reset the currentlevel variable */
 class gameManager {
-    var currentlevel = 3
+    var currentlevel = 1
     static let sharedInstance = gameManager()
 }
 
@@ -55,6 +55,7 @@ class GameScene: SKScene {
     var randomBoxes: [SKSpriteNode] = []
     var bomb: SKSpriteNode!
     var bombTimer: SKLabelNode!
+    var bombArray: [SKSpriteNode] = []
     var levelNode: SKNode!
     var lightCamera: SKCameraNode!
     var goal: SKLabelNode!
@@ -251,6 +252,7 @@ class GameScene: SKScene {
         
         var i = 0
         var j = 0
+        var k = 0
         
         for checkPage in pages {
             /* Detect light and page "collision" */
@@ -291,7 +293,7 @@ class GameScene: SKScene {
                     timeLeft = timeLeft/2
                     time.runAction(colorizeRedSequence)
                 } else {
-                    timeLeft += 10
+                    timeLeft += 3
                     time.runAction(colorizeGreenSequence)
                     
                 }
@@ -300,9 +302,14 @@ class GameScene: SKScene {
             }
             j += 1
         }
-        if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
-            bomb.removeFromParent()
-            bombTimer.removeAllActions()
+        
+        for checkBomb in bombArray {
+            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
+                checkBomb.removeFromParent()
+                bombArray.removeAtIndex(k)
+                bombTimer.removeAllActions()
+            }
+            k += 1
         }
         
         /* Update the goal collected pages/total pages needed everytime a page is collected */
@@ -368,6 +375,8 @@ class GameScene: SKScene {
         bomb.moveToParent(self)
         bomb.position = CGPoint(x: randomX, y: randomY)
         bomb.alpha = 0.5
+        
+        bombArray.append(bomb)
     }
     
     func clearSceneOfButtons() {
@@ -406,7 +415,7 @@ class GameScene: SKScene {
         bombTimer.runAction(bombTimeAction)
     }
     
-
+    
     
     /////////////////////////////LEVELS/////////////////////////////
     func level1() {
