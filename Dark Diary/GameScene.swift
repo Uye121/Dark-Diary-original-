@@ -12,7 +12,7 @@ import UIKit
 /* Create gamemanager to keep track of the current level outside so restart does
  not reset the currentlevel variable */
 class gameManager {
-    var currentlevel = 1
+    var currentlevel = 2
     static let sharedInstance = gameManager()
 }
 
@@ -263,18 +263,32 @@ class GameScene: SKScene {
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
                 let rand = CGFloat.random(min: 0, max: 1.0)
                 
+                /* Change the color of time's font to red, white, or green */
+                let colorizeRed = SKAction.runBlock({
+                    self.time.fontColor = SKColor.redColor()
+                })
+                let colorizeWhite = SKAction.runBlock({
+                    self.time.fontColor = SKColor.whiteColor()
+                })
+                let colorizeGreen = SKAction.runBlock({
+                    self.time.fontColor = SKColor.greenColor()
+                })
+                let waitToChangeColor = SKAction.waitForDuration(2.0)
+                let colorizeRedSequence = SKAction.sequence([colorizeRed, waitToChangeColor, colorizeWhite])
+                let colorizeGreenSequence = SKAction.sequence([colorizeGreen, waitToChangeColor, colorizeWhite])
+                
                 /* Random box gives random outcomes */
                 if rand < 0.45 {
                     timeLeft -= 5
-                    time.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 0.5, duration: 0.5))
-//                    time.fontColor = SKColor.redColor()
+                    time.runAction(colorizeRedSequence)
                 } else if rand < 0.5 {
                     lighting.falloff = 0.8
                 } else if rand < 0.55 {
                     timeLeft = timeLeft/2
+                    time.runAction(colorizeRedSequence)
                 } else {
                     timeLeft += 10
-                    time.runAction(SKAction.colorizeWithColor(UIColor.greenColor(), colorBlendFactor: 1, duration: 0.5))
+                    time.runAction(colorizeGreenSequence)
 
                 }
                 checkBoxes.removeFromParent()
