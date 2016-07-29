@@ -39,3 +39,11 @@ class BoxReferenceNode: SKReferenceNode {
         randomBox = childNodeWithName("//randomBox") as! SKSpriteNode
     }
 }
+
+class BombReferenceNode: SKReferenceNode {
+    var bomb: SKSpriteNode!
+    
+    override func didLoadReferenceNode(node: SKNode?) {
+        bomb = childNodeWithName("//bomb") as! SKSpriteNode
+    }
+}

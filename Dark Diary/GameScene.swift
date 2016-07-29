@@ -12,7 +12,7 @@ import UIKit
 /* Create gamemanager to keep track of the current level outside so restart does
  not reset the currentlevel variable */
 class gameManager {
-    var currentlevel = 2
+    var currentlevel = 3
     static let sharedInstance = gameManager()
 }
 
@@ -41,6 +41,7 @@ class GameScene: SKScene {
     var collectedNotes = 0
     var levels = 0
     var timeLeft = 45
+    var bombTime = 20
     var pauseButton: MSButtonNode!
     var playButton: MSButtonNode!
     var restartButton: MSButtonNode!
@@ -52,6 +53,8 @@ class GameScene: SKScene {
     var pages:[SKSpriteNode] = []
     var randomBox: SKSpriteNode!
     var randomBoxes: [SKSpriteNode] = []
+    var bomb: SKSpriteNode!
+    var bombTimer: SKLabelNode!
     var levelNode: SKNode!
     var lightCamera: SKCameraNode!
     var goal: SKLabelNode!
@@ -64,20 +67,22 @@ class GameScene: SKScene {
     var pauseBackground: SKSpriteNode!
     var levelScenes: [SKSpriteNode] = []
     var load = true
+    var bombTimeAction: SKAction!
     
     enum Levels { case Default }
-    
-    var levelIndex = 0
     
     /* Manages changing to different level */
     func levelsStates() {
         while load {
-            switch gameManager.sharedInstance.currentlevel % 3 {
+            switch gameManager.sharedInstance.currentlevel % 4 {
             case 1:
                 level1()
                 load = false
             case 2:
                 level2()
+                load = false
+            case 3:
+                level3()
                 load = false
             default:
                 break
@@ -109,7 +114,7 @@ class GameScene: SKScene {
         /* scene and background constants */
         screenWidth = size.width
         screenHeight = size.height
-
+        
         /* Add the light into the scene */
         light1 = light.light
         light1.moveToParent(self)
@@ -262,7 +267,6 @@ class GameScene: SKScene {
             /* Detect light and box "collision */
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
                 let rand = CGFloat.random(min: 0, max: 1.0)
-                
                 /* Change the color of time's font to red, white, or green */
                 let colorizeRed = SKAction.runBlock({
                     self.time.fontColor = SKColor.redColor()
@@ -289,12 +293,16 @@ class GameScene: SKScene {
                 } else {
                     timeLeft += 10
                     time.runAction(colorizeGreenSequence)
-
+                    
                 }
                 checkBoxes.removeFromParent()
                 randomBoxes.removeAtIndex(j)
             }
             j += 1
+        }
+        if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
+            bomb.removeFromParent()
+            bombTimer.removeAllActions()
         }
         
         /* Update the goal collected pages/total pages needed everytime a page is collected */
@@ -316,9 +324,8 @@ class GameScene: SKScene {
     }
     
     func createPage() {
-        /* Randomly generate the pages' position across the whole map */
-//        randomY = Int(arc4random()) % (Int(levelHeight - 10) + 5)
         
+        /* Randomly generate the pages' position across the whole map */
         randomX = Int(arc4random_uniform(UInt32(levelWidth - 10)) + 5)
         randomY = Int(arc4random_uniform(UInt32(levelHeight - 10)) + 5)
         /* Add reference of the page to the scene */
@@ -338,14 +345,29 @@ class GameScene: SKScene {
         randomX = Int(arc4random_uniform(UInt32(levelWidth - 10)) + 5)
         randomY = Int(arc4random_uniform(UInt32(levelHeight - 10)) + 5)
         
-        let resourcePathPage = NSBundle.mainBundle().pathForResource("RandomBox", ofType: "sks")
-        let boxReference = BoxReferenceNode (URL: NSURL (fileURLWithPath: resourcePathPage!))
+        /* Connects the box sks file to the GameScene */
+        let resourcePathBox = NSBundle.mainBundle().pathForResource("RandomBox", ofType: "sks")
+        let boxReference = BoxReferenceNode (URL: NSURL (fileURLWithPath: resourcePathBox!))
         
         randomBox = boxReference.randomBox
         randomBox.moveToParent(self)
         randomBox.position = CGPoint(x: randomX, y: randomY)
         
         randomBoxes.append(randomBox)
+    }
+    
+    func createBomb() {
+        randomX = Int(arc4random_uniform(UInt32(levelWidth - 10)) + 5)
+        randomY = Int(arc4random_uniform(UInt32(levelHeight - 10)) + 5)
+        
+        /* Connects the bomb sks file to the GameScene */
+        let resourcePathBomb = NSBundle.mainBundle().pathForResource("Bomb", ofType: "sks")
+        let bombReference = BombReferenceNode (URL: NSURL (fileURLWithPath: resourcePathBomb!))
+        
+        bomb = bombReference.bomb
+        bomb.moveToParent(self)
+        bomb.position = CGPoint(x: randomX, y: randomY)
+        bomb.alpha = 0.5
     }
     
     func clearSceneOfButtons() {
@@ -369,8 +391,24 @@ class GameScene: SKScene {
         }
     }
     
+    func destruction() {
+        let wait = SKAction.waitForDuration(1)
+        let block = SKAction.runBlock({
+            if self.bombTime > 0 { self.bombTime -= 1 }
+            if self.bombTime < 4 {
+                self.bombTimer.fontColor = UIColor.redColor()
+            }
+            if self.bombTime == 0 { self.state = .GameOver }
+            self.bombTimer.text = "\(self.bombTime)"
+        })
+        let sequence = SKAction.sequence([wait, block])
+        bombTimeAction = SKAction.repeatActionForever(sequence)
+        bombTimer.runAction(bombTimeAction)
+    }
     
-        /////////////////////////////LEVELS/////////////////////////////
+
+    
+    /////////////////////////////LEVELS/////////////////////////////
     func level1() {
         let resourcePath = NSBundle.mainBundle().pathForResource("Level1", ofType: "sks")
         let level1 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
@@ -405,7 +443,7 @@ class GameScene: SKScene {
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
-
+        
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
         
@@ -420,6 +458,42 @@ class GameScene: SKScene {
             numberOfBoxes += 1
         }
     }
-
+    
+    func level3() {
+        let resourcePath = NSBundle.mainBundle().pathForResource("Level3", ofType: "sks")
+        let level3 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        levelNode.addChild(level3)
+        lighting = self.childNodeWithName("//lighting") as! SKLightNode
+        levelBackground = childNodeWithName("//level3Background") as! SKSpriteNode
+        bombTimer = childNodeWithName("//bombTimer") as! SKLabelNode
+        
+        levelWidth = levelBackground.size.width
+        levelHeight = levelBackground.size.height
+        
+        createBomb()
+        bombTimer.moveToParent(bomb)
+        bombTimer.position.x = 1.971
+        bombTimer.position.y = -1.593
+        
+        levels = 8
+        numberOfPages = 0
+        numberOfBoxes = 0
+        
+        light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+        lightCamera.position = light1.position
+        
+        /* Create pages and boxes */
+        while numberOfPages < levels {
+            createPage()
+            numberOfPages += 1
+            spawnOutside()
+        }
+        while numberOfBoxes < 3 {
+            createRandomBox()
+            numberOfBoxes += 1
+        }
+        /* Calls function where the bomb counts down and leads to game over */
+        destruction()
+    }
 }
 
