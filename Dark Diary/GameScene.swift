@@ -253,7 +253,7 @@ class GameScene: SKScene {
                 checkPage.removeFromParent()
                 pages.removeAtIndex(i)
                 collectedNotes += 1
-                timeLeft += 5
+                timeLeft += 2
             }
             i += 1
         }
@@ -266,16 +266,19 @@ class GameScene: SKScene {
                 /* Random box gives random outcomes */
                 if rand < 0.45 {
                     timeLeft -= 5
+                    time.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 0.5, duration: 0.5))
+//                    time.fontColor = SKColor.redColor()
                 } else if rand < 0.5 {
                     lighting.falloff = 0.8
                 } else if rand < 0.55 {
                     timeLeft = timeLeft/2
                 } else {
                     timeLeft += 10
+                    time.runAction(SKAction.colorizeWithColor(UIColor.greenColor(), colorBlendFactor: 1, duration: 0.5))
+
                 }
                 checkBoxes.removeFromParent()
                 randomBoxes.removeAtIndex(j)
-
             }
             j += 1
         }
@@ -341,6 +344,16 @@ class GameScene: SKScene {
         nextLevelButton.zPosition = -10
     }
     
+    func spawnOutside() {
+        /* Ensures that the pages do not spawn inside the screen in the beginning */
+        for checkPagePosition in 0..<numberOfPages {
+            if pages[checkPagePosition].position.x < screenWidth && pages[checkPagePosition].position.y < screenHeight {
+                pages[checkPagePosition].removeFromParent()
+                pages.removeAtIndex(checkPagePosition)
+                numberOfPages -= 1
+            }
+        }
+    }
     
     
         /////////////////////////////LEVELS/////////////////////////////
@@ -362,13 +375,7 @@ class GameScene: SKScene {
         while numberOfPages < levels {
             createPage()
             numberOfPages += 1
-            for checkPagePosition in 0..<numberOfPages {
-                if pages[checkPagePosition].position.x < screenWidth && pages[checkPagePosition].position.y < screenHeight {
-                    pages[checkPagePosition].removeFromParent()
-                    pages.removeAtIndex(checkPagePosition)
-                    numberOfPages -= 1
-                }
-            }
+            spawnOutside()
         }
     }
     
@@ -392,13 +399,7 @@ class GameScene: SKScene {
         while numberOfPages < levels {
             createPage()
             numberOfPages += 1
-            for checkPagePosition in 0..<numberOfPages {
-                if pages[checkPagePosition].position.x < screenWidth && pages[checkPagePosition].position.y < screenHeight {
-                    pages[checkPagePosition].removeFromParent()
-                    pages.removeAtIndex(checkPagePosition)
-                    numberOfPages -= 1
-                }
-            }
+            spawnOutside()
         }
         while numberOfBoxes < 3 {
             createRandomBox()
