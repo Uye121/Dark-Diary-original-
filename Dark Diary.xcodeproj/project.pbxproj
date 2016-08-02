@@ -41,6 +41,8 @@
 		078AD8881D36BF1E005E7052 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87C1D36BF1E005E7052 /* SKTEffects.swift */; };
 		078AD8891D36BF1E005E7052 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87D1D36BF1E005E7052 /* SKTTimingFunctions.swift */; };
 		078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87E1D36BF1E005E7052 /* Vector3.swift */; };
+		078F8C211D5103CD009AE751 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C1F1D5103CD009AE751 /* spark.png */; };
+		078F8C231D511042009AE751 /* CollectEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C221D511042009AE751 /* CollectEffect.sks */; };
 		079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079EF34E1D500FD000BD438B /* LevelSelect.sks */; };
 		079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079EF3501D50126E00BD438B /* LevelSelect.swift */; };
 		079FA70C1D343FD60066C088 /* Light.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079FA70B1D343FD60066C088 /* Light.sks */; };
@@ -106,6 +108,8 @@
 		078AD87C1D36BF1E005E7052 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
 		078AD87D1D36BF1E005E7052 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		078AD87E1D36BF1E005E7052 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		078F8C1F1D5103CD009AE751 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = "Dark Diary/spark.png"; sourceTree = "<group>"; };
+		078F8C221D511042009AE751 /* CollectEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectEffect.sks; sourceTree = "<group>"; };
 		079EF34E1D500FD000BD438B /* LevelSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect.sks; sourceTree = "<group>"; };
 		079EF3501D50126E00BD438B /* LevelSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect.swift; sourceTree = "<group>"; };
 		079FA70B1D343FD60066C088 /* Light.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Light.sks; path = ../Light.sks; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 			children = (
 				077F3EE01D3952B200597FE7 /* rain.sks */,
 				077F3EE11D3952B200597FE7 /* spark.png */,
+				078F8C1F1D5103CD009AE751 /* spark.png */,
 				077F3EE61D3960DA00597FE7 /* Line-50.png */,
 				078928281D3409B900B9B21B /* Dark Diary */,
 				078928411D3409BA00B9B21B /* Dark DiaryTests */,
@@ -191,6 +196,7 @@
 				0789282B1D3409B900B9B21B /* GameScene.sks */,
 				0789282D1D3409B900B9B21B /* GameScene.swift */,
 				079EF34E1D500FD000BD438B /* LevelSelect.sks */,
+				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				079EF3501D50126E00BD438B /* LevelSelect.swift */,
 				0773ABB51D384F3D00868206 /* MainMenu.swift */,
 				0773ABB31D3838C400868206 /* MainMenu.sks */,
@@ -356,6 +362,7 @@
 				077270021D4BC82A00E7BAA9 /* Bomb.sks in Resources */,
 				079FA70C1D343FD60066C088 /* Light.sks in Resources */,
 				077270001D4BC25000E7BAA9 /* Level4.sks in Resources */,
+				078F8C211D5103CD009AE751 /* spark.png in Resources */,
 				077270041D4C0AFD00E7BAA9 /* Level3.sks in Resources */,
 				078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */,
 				077F3EE31D3952B200597FE7 /* spark.png in Resources */,
@@ -367,6 +374,7 @@
 				075587EB1D49801400931220 /* RandomBox.sks in Resources */,
 				075417661D35A2C4008B283C /* Level1.sks in Resources */,
 				077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */,
+				078F8C231D511042009AE751 /* CollectEffect.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

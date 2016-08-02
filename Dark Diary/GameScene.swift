@@ -271,11 +271,16 @@ class GameScene: SKScene {
         var j = 0
         var k = 0
         
+        let flame = SKEmitterNode(fileNamed: "CollectEffect")
+        flame?.numParticlesToEmit = 35
+        
         for checkPage in pages {
             /* Detect light and page "collision" */
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkPage.calculateAccumulatedFrame()) {
+                flame!.position = pages[i].position
                 checkPage.removeFromParent()
                 pages.removeAtIndex(i)
+                addChild(flame!)
                 collectedNotes += 1
                 timeLeft += 2
             }

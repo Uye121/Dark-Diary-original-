@@ -55,9 +55,7 @@ class MainMenu: SKScene {
         addChild(rainEffect)
         rainEffect.position = CGPoint(x: 320, y: 568)
         
-        
-        
-       // let randomNumber = NSTimeInterval(arc4random() % 10)
+        /* Intervals for thunder */
         let wait = SKAction.waitForDuration(5, withRange: 10)
         let wait2 = SKAction.waitForDuration(0.2)
         let wait3 = SKAction.waitForDuration(0.1)
