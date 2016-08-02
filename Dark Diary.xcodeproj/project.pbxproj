@@ -44,6 +44,8 @@
 		078F8C211D5103CD009AE751 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C1F1D5103CD009AE751 /* spark.png */; };
 		078F8C231D511042009AE751 /* CollectEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C221D511042009AE751 /* CollectEffect.sks */; };
 		078F8C2E1D514458009AE751 /* beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2D1D514458009AE751 /* beep.caf */; };
+		078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */; };
+		078F8C321D51651D009AE751 /* GameScene(LevelExtension).swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */; };
 		079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079EF34E1D500FD000BD438B /* LevelSelect.sks */; };
 		079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079EF3501D50126E00BD438B /* LevelSelect.swift */; };
 		079FA70C1D343FD60066C088 /* Light.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079FA70B1D343FD60066C088 /* Light.sks */; };
@@ -112,6 +114,8 @@
 		078F8C1F1D5103CD009AE751 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = "Dark Diary/spark.png"; sourceTree = "<group>"; };
 		078F8C221D511042009AE751 /* CollectEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectEffect.sks; sourceTree = "<group>"; };
 		078F8C2D1D514458009AE751 /* beep.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep.caf; sourceTree = "<group>"; };
+		078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExplodingNoise.caf; sourceTree = "<group>"; };
+		078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameScene(LevelExtension).swift"; sourceTree = "<group>"; };
 		079EF34E1D500FD000BD438B /* LevelSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect.sks; sourceTree = "<group>"; };
 		079EF3501D50126E00BD438B /* LevelSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect.swift; sourceTree = "<group>"; };
 		079FA70B1D343FD60066C088 /* Light.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Light.sks; path = ../Light.sks; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				078928291D3409B900B9B21B /* AppDelegate.swift */,
 				0789282B1D3409B900B9B21B /* GameScene.sks */,
 				0789282D1D3409B900B9B21B /* GameScene.swift */,
+				078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */,
 				079EF34E1D500FD000BD438B /* LevelSelect.sks */,
 				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				079EF3501D50126E00BD438B /* LevelSelect.swift */,
@@ -257,6 +262,7 @@
 		078F8C2C1D514441009AE751 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
+				078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */,
 				078F8C2D1D514458009AE751 /* beep.caf */,
 			);
 			name = SFX;
@@ -379,6 +385,7 @@
 				078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */,
 				077F3EE31D3952B200597FE7 /* spark.png in Resources */,
 				078928351D3409B900B9B21B /* Assets.xcassets in Resources */,
+				078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */,
 				073F5E921D492AF400C0FC9E /* Level2.sks in Resources */,
 				079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */,
 				0773ABB41D3838C400868206 /* MainMenu.sks in Resources */,
@@ -421,6 +428,7 @@
 				0773ABB61D384F3D00868206 /* MainMenu.swift in Sources */,
 				078AD8891D36BF1E005E7052 /* SKTTimingFunctions.swift in Sources */,
 				078AD8841D36BF1E005E7052 /* SKAction+SpecialEffects.swift in Sources */,
+				078F8C321D51651D009AE751 /* GameScene(LevelExtension).swift in Sources */,
 				078AD8821D36BF1E005E7052 /* Int+Extensions.swift in Sources */,
 				078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */,
 				079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */,
