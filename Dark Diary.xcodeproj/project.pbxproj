@@ -43,6 +43,7 @@
 		078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87E1D36BF1E005E7052 /* Vector3.swift */; };
 		078F8C211D5103CD009AE751 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C1F1D5103CD009AE751 /* spark.png */; };
 		078F8C231D511042009AE751 /* CollectEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C221D511042009AE751 /* CollectEffect.sks */; };
+		078F8C2E1D514458009AE751 /* beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2D1D514458009AE751 /* beep.caf */; };
 		079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079EF34E1D500FD000BD438B /* LevelSelect.sks */; };
 		079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079EF3501D50126E00BD438B /* LevelSelect.swift */; };
 		079FA70C1D343FD60066C088 /* Light.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079FA70B1D343FD60066C088 /* Light.sks */; };
@@ -110,6 +111,7 @@
 		078AD87E1D36BF1E005E7052 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		078F8C1F1D5103CD009AE751 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = "Dark Diary/spark.png"; sourceTree = "<group>"; };
 		078F8C221D511042009AE751 /* CollectEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectEffect.sks; sourceTree = "<group>"; };
+		078F8C2D1D514458009AE751 /* beep.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep.caf; sourceTree = "<group>"; };
 		079EF34E1D500FD000BD438B /* LevelSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect.sks; sourceTree = "<group>"; };
 		079EF3501D50126E00BD438B /* LevelSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect.swift; sourceTree = "<group>"; };
 		079FA70B1D343FD60066C088 /* Light.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Light.sks; path = ../Light.sks; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				079EF3501D50126E00BD438B /* LevelSelect.swift */,
 				0773ABB51D384F3D00868206 /* MainMenu.swift */,
 				0773ABB31D3838C400868206 /* MainMenu.sks */,
+				078F8C2C1D514441009AE751 /* SFX */,
 				075417671D35A2F4008B283C /* Levels */,
 				079FA7111D34464D0066C088 /* MSReferenceNode.swift */,
 				0773ABB11D38166800868206 /* MSButtonNode.swift */,
@@ -249,6 +252,14 @@
 				078AD87E1D36BF1E005E7052 /* Vector3.swift */,
 			);
 			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+		078F8C2C1D514441009AE751 /* SFX */ = {
+			isa = PBXGroup;
+			children = (
+				078F8C2D1D514458009AE751 /* beep.caf */,
+			);
+			name = SFX;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +375,7 @@
 				077270001D4BC25000E7BAA9 /* Level4.sks in Resources */,
 				078F8C211D5103CD009AE751 /* spark.png in Resources */,
 				077270041D4C0AFD00E7BAA9 /* Level3.sks in Resources */,
+				078F8C2E1D514458009AE751 /* beep.caf in Resources */,
 				078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */,
 				077F3EE31D3952B200597FE7 /* spark.png in Resources */,
 				078928351D3409B900B9B21B /* Assets.xcassets in Resources */,

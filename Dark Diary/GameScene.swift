@@ -271,12 +271,15 @@ class GameScene: SKScene {
         var j = 0
         var k = 0
         
+        /* Code connect: flame effects */
         let flame = SKEmitterNode(fileNamed: "CollectEffect")
+        /* Limits how many flame particle is emitted */
         flame?.numParticlesToEmit = 35
         
         for checkPage in pages {
             /* Detect light and page "collision" */
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkPage.calculateAccumulatedFrame()) {
+                /* Add flame to the page that intersect with the light */
                 flame!.position = pages[i].position
                 checkPage.removeFromParent()
                 pages.removeAtIndex(i)
@@ -327,12 +330,14 @@ class GameScene: SKScene {
         
         for checkBomb in bombArray {
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
-//                diffuseMessage.zPosition = 5
-//                diffuseMessage.zPosition = -6
                 diffuseMessage.zPosition = 5
-                let fadeIn = SKAction.runBlock {self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1))}
+                let fadeIn = SKAction.runBlock {
+                    self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1))
+                }
                 let wait = SKAction.waitForDuration(1)
-                let fadeOut = SKAction.runBlock {self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1))}
+                let fadeOut = SKAction.runBlock {
+                    self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1))
+                }
                 let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
                 diffuseMessage.runAction(sequence)
                 checkBomb.removeFromParent()
@@ -433,9 +438,14 @@ class GameScene: SKScene {
     }
     
     func destruction() {
+        /* Code connect: bomb counting down */
+        let bombBeep = SKAction.playSoundFileNamed("beep", waitForCompletion: false)
         let wait = SKAction.waitForDuration(1)
         let block = SKAction.runBlock({
-            if self.bombTime > 0 { self.bombTime -= 1 }
+            if self.bombTime > 0 {
+                self.bombTime -= 1
+                self.bomb.runAction(bombBeep)
+            }
             if self.bombTime < 4 {
                 self.bombTimer.fontColor = UIColor.redColor()
             }
