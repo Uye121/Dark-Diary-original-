@@ -256,6 +256,7 @@ class GameScene: SKScene {
         }
         
         if state == .Victory {
+            goal.fontColor = UIColor.greenColor()
             victoryLabel.zPosition = 15
             self.scene!.view!.paused = true
             self.homeButton.zPosition = 10
@@ -449,7 +450,9 @@ class GameScene: SKScene {
             if self.bombTime < 4 {
                 self.bombTimer.fontColor = UIColor.redColor()
             }
-            if self.bombTime == 0 { self.state = .GameOver }
+            if self.bombTime == 0 {
+                self.state = .GameOver
+            }
             self.bombTimer.text = "\(self.bombTime)"
         })
         let sequence = SKAction.sequence([wait, block])
