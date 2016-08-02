@@ -13,6 +13,7 @@ class MainMenu: SKScene {
     /* UI Connections */
     var time: Int = 0
     var play: MSButtonNode!
+    var levelSelector: MSButtonNode!
     var thunderFlash: SKNode!
     
     override func didMoveToView(view: SKView) {
@@ -20,6 +21,7 @@ class MainMenu: SKScene {
         
         /* Set UI connections */
         play = self.childNodeWithName("play") as! MSButtonNode
+        levelSelector = childNodeWithName("levelSelector") as! MSButtonNode
         thunderFlash = childNodeWithName("thunderFlash") as SKNode!
         
         /* Setup restart button selection handler */
@@ -34,12 +36,17 @@ class MainMenu: SKScene {
             /* Ensure correct aspect mode */
             scene.scaleMode = .AspectFill
             
-            /* Show debug */
-            skView.showsPhysics = true
-            skView.showsDrawCount = true
-            skView.showsFPS = true
-            
             /* Start game scene */
+            skView.presentScene(scene)
+        }
+        
+        levelSelector.selectedHandler = {
+            let skView = self.view as SKView!
+            
+            let scene = LevelSelect(fileNamed: "LevelSelect") as LevelSelect!
+            
+            scene.scaleMode = .AspectFill
+            
             skView.presentScene(scene)
         }
         

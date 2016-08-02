@@ -7,7 +7,6 @@
 //
 
 import SpriteKit
-import UIKit
 
 /* Create gamemanager to keep track of the current level outside so restart does
  not reset the currentlevel variable */
@@ -22,7 +21,7 @@ enum GameState {
 
 let resourcePathLight = NSBundle.mainBundle().pathForResource("Light", ofType: "sks")
 let light = MSReferenceNode(URL: NSURL (fileURLWithPath: resourcePathLight!))
-var touchLocation: CGPoint!
+//var touchLocation: CGPoint!
 
 
 class GameScene: SKScene {
@@ -49,6 +48,7 @@ class GameScene: SKScene {
     var mute: MSButtonNode!
     var homeButton: MSButtonNode!
     var nextLevelButton: MSButtonNode!
+    var levelSelector: MSButtonNode!
     var page1: SKSpriteNode!
     var pages:[SKSpriteNode] = []
     var randomBox: SKSpriteNode!
@@ -64,6 +64,7 @@ class GameScene: SKScene {
     var gameOverLabel: SKLabelNode!
     var victoryLabel: SKLabelNode!
     var pauseLabel: SKLabelNode!
+    var diffuseMessage: SKLabelNode!
     var levelBackground: SKSpriteNode!
     var pauseBackground: SKSpriteNode!
     var levelScenes: [SKSpriteNode] = []
@@ -75,7 +76,7 @@ class GameScene: SKScene {
     /* Manages changing to different level */
     func levelsStates() {
         while load {
-            switch gameManager.sharedInstance.currentlevel % 4 {
+            switch gameManager.sharedInstance.currentlevel % 5 {
             case 1:
                 level1()
                 load = false
@@ -84,6 +85,9 @@ class GameScene: SKScene {
                 load = false
             case 3:
                 level3()
+                load = false
+            case 4:
+                level4()
                 load = false
             default:
                 break
@@ -102,6 +106,7 @@ class GameScene: SKScene {
         restartButton = childNodeWithName("//restartButton") as! MSButtonNode
         homeButton = childNodeWithName("//homeButton") as! MSButtonNode
         nextLevelButton = childNodeWithName("//nextLevelButton") as! MSButtonNode
+        levelSelector = childNodeWithName("//levelSelector") as! MSButtonNode
         //sound = childNodeWithName("//sound") as! MSButtonNode
         //mute = childNodeWithName("//mute") as! MSButtonNode
         lightCamera = self.childNodeWithName("camera") as! SKCameraNode
@@ -109,6 +114,7 @@ class GameScene: SKScene {
         gameOverLabel = childNodeWithName("//gameOverLabel") as! SKLabelNode
         victoryLabel = childNodeWithName("//victoryLabel") as! SKLabelNode
         pauseLabel = childNodeWithName("//pauseLabel") as! SKLabelNode
+        diffuseMessage = childNodeWithName("//diffuseMessage") as! SKLabelNode
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         
         
@@ -148,6 +154,7 @@ class GameScene: SKScene {
             self.pauseLabel.zPosition = 10
             self.homeButton.zPosition = 10
             self.restartButton.zPosition = 10
+            self.levelSelector.zPosition = 10
             self.pauseBackground.zPosition = 5
         }
         
@@ -159,6 +166,7 @@ class GameScene: SKScene {
             self.pauseButton.zPosition = 10
             self.restartButton.zPosition = -10
             self.homeButton.zPosition = -10
+            self.levelSelector.zPosition = -10
             self.pauseBackground.zPosition = -15
             if self.state == .Playing {
                 self.scene!.view!.paused = false
@@ -222,6 +230,15 @@ class GameScene: SKScene {
             skView.presentScene(scene)
         }
         
+        levelSelector.selectedHandler = {
+            let skView = self.view as SKView!
+            
+            let scene = LevelSelect(fileNamed: "LevelSelect") as LevelSelect!
+            
+            scene.scaleMode = .AspectFit
+            
+            skView.presentScene(scene)
+        }
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -305,9 +322,18 @@ class GameScene: SKScene {
         
         for checkBomb in bombArray {
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
+//                diffuseMessage.zPosition = 5
+//                diffuseMessage.zPosition = -6
+                diffuseMessage.zPosition = 5
+                let fadeIn = SKAction.runBlock {self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1))}
+                let wait = SKAction.waitForDuration(1)
+                let fadeOut = SKAction.runBlock {self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1))}
+                let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
+                diffuseMessage.runAction(sequence)
                 checkBomb.removeFromParent()
                 bombArray.removeAtIndex(k)
                 bombTimer.removeAllActions()
+                self.timeLeft -= 5
             }
             k += 1
         }
@@ -387,6 +413,7 @@ class GameScene: SKScene {
         homeButton.zPosition = -10
         pauseBackground.zPosition = -15
         nextLevelButton.zPosition = -10
+        levelSelector.zPosition = -10
     }
     
     func spawnOutside() {
@@ -474,6 +501,35 @@ class GameScene: SKScene {
         levelNode.addChild(level3)
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level3Background") as! SKSpriteNode
+        
+        levelWidth = levelBackground.size.width
+        levelHeight = levelBackground.size.height
+        
+        levels = 8
+        numberOfPages = 0
+        numberOfBoxes = 0
+        
+        light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+        lightCamera.position = light1.position
+        
+        /* Create pages and boxes */
+        while numberOfPages < levels {
+            createPage()
+            numberOfPages += 1
+            spawnOutside()
+        }
+        while numberOfBoxes < 3 {
+            createRandomBox()
+            numberOfBoxes += 1
+        }
+    }
+    
+    func level4() {
+        let resourcePath = NSBundle.mainBundle().pathForResource("Level4", ofType: "sks")
+        let level4 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        levelNode.addChild(level4)
+        lighting = self.childNodeWithName("//lighting") as! SKLightNode
+        levelBackground = childNodeWithName("//level4Background") as! SKSpriteNode
         bombTimer = childNodeWithName("//bombTimer") as! SKLabelNode
         
         levelWidth = levelBackground.size.width
