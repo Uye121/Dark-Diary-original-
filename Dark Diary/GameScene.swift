@@ -460,29 +460,13 @@ class GameScene: SKScene {
                     })
                 }
                 
-                let bombing = SKAction.sequence([explodingNoise, fadeIn,wait2])
+                let bombing = SKAction.sequence([fadeIn, explodingNoise, wait2])
                 
                 self.bomb.runAction(bombing, completion: {
                     self.state = .GameOver
-                    print("check3")
                 })
-                
-                //NEW Atempt
-//                 self.explode.zPosition = 2
-//                let fadein = SKAction.fadeInWithDuration(1.0)
-//                let fadeout = SKAction.fadeOutWithDuration(1.0)
-//                let wait = SKAction.waitForDuration(0.2)
-//                let wait2 = SKAction.waitForDuration(2.0)
-//                
-//                let bombexplodes = SKAction.sequence([fadein,wait,fadeout, wait2])
-//                
-//                
-//                
-//                self.explode.runAction(bombexplodes, completion: {
-//                    self.state = .GameOver
-//                })
-                
-                
+                /* To prevent this part of the code from repeating forever */
+                self.bombTime -= 1
             }
             self.bombTimer.text = "\(self.bombTime)"
         })
