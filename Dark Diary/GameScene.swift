@@ -21,31 +21,25 @@ enum GameState {
 
 let resourcePathLight = NSBundle.mainBundle().pathForResource("Light", ofType: "sks")
 let light = MSReferenceNode(URL: NSURL (fileURLWithPath: resourcePathLight!))
-//var touchLocation: CGPoint!
-
 
 class GameScene: SKScene {
     var state: GameState!
     var light1: Light!
-    /* width and height of the screen */
     var screenWidth: CGFloat = 0.0
     var screenHeight: CGFloat = 0.0
     var levelWidth: CGFloat = 0.0
     var levelHeight: CGFloat = 0.0
-    /* initializing random x and y coordinates for the pages' position */
     var randomX: Int = 0
     var randomY: Int = 0
     var numberOfPages: Int = 0
     var numberOfBoxes: Int = 0
     var collectedNotes = 0
-    var levels = 0
+    var totalPages = 0
     var timeLeft = 45
-    var bombTime = 20
+    var bombTime = 5
     var pauseButton: MSButtonNode!
     var playButton: MSButtonNode!
     var restartButton: MSButtonNode!
-    var sound: MSButtonNode!
-    var mute: MSButtonNode!
     var homeButton: MSButtonNode!
     var nextLevelButton: MSButtonNode!
     var levelSelector: MSButtonNode!
@@ -67,6 +61,7 @@ class GameScene: SKScene {
     var diffuseMessage: SKLabelNode!
     var levelBackground: SKSpriteNode!
     var pauseBackground: SKSpriteNode!
+    var explode: SKSpriteNode!
     var levelScenes: [SKSpriteNode] = []
     var load = true
     var bombTimeAction: SKAction!
@@ -96,7 +91,6 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        
         state = .Playing
         
         levelNode = childNodeWithName("//levelNode")
@@ -107,8 +101,6 @@ class GameScene: SKScene {
         homeButton = childNodeWithName("//homeButton") as! MSButtonNode
         nextLevelButton = childNodeWithName("//nextLevelButton") as! MSButtonNode
         levelSelector = childNodeWithName("//levelSelector") as! MSButtonNode
-        //sound = childNodeWithName("//sound") as! MSButtonNode
-        //mute = childNodeWithName("//mute") as! MSButtonNode
         lightCamera = self.childNodeWithName("camera") as! SKCameraNode
         time = self.childNodeWithName("//time") as! SKLabelNode
         gameOverLabel = childNodeWithName("//gameOverLabel") as! SKLabelNode
@@ -116,6 +108,7 @@ class GameScene: SKScene {
         pauseLabel = childNodeWithName("//pauseLabel") as! SKLabelNode
         diffuseMessage = childNodeWithName("//diffuseMessage") as! SKLabelNode
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
+        explode = childNodeWithName("//explode") as! SKSpriteNode
         
         
         /* scene and background constants */
@@ -131,7 +124,9 @@ class GameScene: SKScene {
         
         /* Ensure correct aspect mode */
         scene!.scaleMode = .AspectFit
-        goal.text = String("\(collectedNotes)/\(levels)")
+        goal.text = String("\(collectedNotes)/\(totalPages)")
+        goal.fontColor = UIColor.redColor()
+        explode.hidden = true
         
         /* Timer */
         let wait = SKAction.waitForDuration(1)
@@ -350,9 +345,9 @@ class GameScene: SKScene {
         }
         
         /* Update the goal collected pages/total pages needed everytime a page is collected */
-        goal.text = String("\(collectedNotes)/\(levels)")
+        goal.text = String("\(collectedNotes)/\(totalPages)")
         
-        if collectedNotes == levels {
+        if collectedNotes == totalPages {
             state = .Victory
         }
         
@@ -364,7 +359,6 @@ class GameScene: SKScene {
         lightCamera.position = light1.position
         lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
         lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
-        
     }
     
     func createPage() {
@@ -452,7 +446,19 @@ class GameScene: SKScene {
                 self.bombTimer.fontColor = UIColor.redColor()
             }
             if self.bombTime == 0 {
-                self.bomb.runAction(explodingNoise, completion: {
+                self.explode.hidden = false
+                self.explode.zPosition = 2
+                let fadeIn = SKAction.runBlock {
+                    self.explode.runAction(SKAction.fadeInWithDuration(1))
+                    print("check")
+                }
+                let fadeOut = SKAction.runBlock {
+                    self.explode.runAction(SKAction.fadeInWithDuration(1))
+                    print("check2")
+                }
+                let sequence = SKAction.sequence([explodingNoise, fadeIn, fadeOut])
+                
+                self.bomb.runAction(sequence, completion: {
                     self.state = .GameOver
                 })
             }

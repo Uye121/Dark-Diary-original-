@@ -13,6 +13,7 @@ class LevelSelect: SKScene {
     var level2Selector: MSButtonNode!
     var level3Selector: MSButtonNode!
     var level4Selector: MSButtonNode!
+    var returnButton: MSButtonNode!
 
     override func didMoveToView(view: SKView) {
         /* Connect the buttons */
@@ -20,6 +21,7 @@ class LevelSelect: SKScene {
         level2Selector = childNodeWithName("level2Selector") as! MSButtonNode
         level3Selector = childNodeWithName("level3Selector") as! MSButtonNode
         level4Selector = childNodeWithName("level4Selector") as! MSButtonNode
+        returnButton = childNodeWithName("returnButton") as! MSButtonNode
         
         /* Load the specified levels */
         level1Selector.selectedHandler = {
@@ -64,6 +66,16 @@ class LevelSelect: SKScene {
             gameManager.sharedInstance.currentlevel = 4
             
             let scene = GameScene(fileNamed: "GameScene")! as GameScene
+            
+            scene.scaleMode = .AspectFit
+            
+            skView.presentScene(scene)
+        }
+        
+        returnButton.selectedHandler = {
+            let skView = self.view as SKView!
+            
+            let scene = MainMenu(fileNamed: "MainMenu")! as MainMenu
             
             scene.scaleMode = .AspectFit
             

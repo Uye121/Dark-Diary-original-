@@ -15,6 +15,8 @@ class MainMenu: SKScene {
     var play: MSButtonNode!
     var levelSelector: MSButtonNode!
     var thunderFlash: SKNode!
+    var sound: MSButtonNode!
+    var mute: MSButtonNode!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -23,6 +25,8 @@ class MainMenu: SKScene {
         play = self.childNodeWithName("play") as! MSButtonNode
         levelSelector = childNodeWithName("levelSelector") as! MSButtonNode
         thunderFlash = childNodeWithName("thunderFlash") as SKNode!
+        sound = childNodeWithName("//sound") as! MSButtonNode
+        mute = childNodeWithName("//mute") as! MSButtonNode
         
         /* Setup restart button selection handler */
         play.selectedHandler = {
@@ -52,24 +56,30 @@ class MainMenu: SKScene {
         
         let rainPath = NSBundle.mainBundle().pathForResource("rain", ofType: "sks")
         let rainEffect = NSKeyedUnarchiver.unarchiveObjectWithFile(rainPath!) as! SKEmitterNode
+        let raining = SKAction.playSoundFileNamed("Raining", waitForCompletion: false)
+        let rainWait = SKAction.waitForDuration(1)
         addChild(rainEffect)
+        let soundSequence = SKAction.sequence([raining, rainWait])
+        self.runAction(SKAction.repeatActionForever(soundSequence))
         rainEffect.position = CGPoint(x: 320, y: 568)
         
         /* Intervals for thunder */
         let wait = SKAction.waitForDuration(5, withRange: 10)
         let wait2 = SKAction.waitForDuration(0.2)
         let wait3 = SKAction.waitForDuration(0.1)
+        
+        let thunderclap = SKAction.playSoundFileNamed("Thunderclap", waitForCompletion: false)
 
         let block = SKAction.runBlock({
             self.thunderFlash.zPosition = -10
 
         })
         let lightning = SKAction.runBlock({
+            self.runAction(thunderclap)
             self.thunderFlash.zPosition = 10
         })
         
         let sequence = SKAction.sequence([block ,wait, lightning, wait3, block, wait2, lightning, wait3, block, wait])
         self.runAction(SKAction.repeatActionForever(sequence))
-        
     }
 }

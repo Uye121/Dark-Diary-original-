@@ -1,5 +1,5 @@
 //
-//  GameScene(extension).swift
+//  GameScene(LevelExtension).swift
 //  Dark Diary
 //
 //  Created by Ulric Ye on 8/2/16.
@@ -17,7 +17,7 @@ extension GameScene {
         levelNode.addChild(level1)
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level1Background") as! SKSpriteNode
-        levels = 4
+        totalPages = 4
         numberOfPages = 0
         
         state = .Playing
@@ -26,7 +26,7 @@ extension GameScene {
         levelHeight = levelBackground.size.height
         
         /* create 4 pages for level 1 */
-        while numberOfPages < levels {
+        while numberOfPages < totalPages {
             createPage()
             numberOfPages += 1
             spawnOutside()
@@ -39,7 +39,7 @@ extension GameScene {
         levelNode.addChild(level2)
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level2Background") as! SKSpriteNode
-        levels = 6
+        totalPages = 6
         numberOfPages = 0
         numberOfBoxes = 0
         
@@ -50,7 +50,7 @@ extension GameScene {
         levelHeight = levelBackground.size.height
         
         /* Create pages and boxes */
-        while numberOfPages < levels {
+        while numberOfPages < totalPages {
             createPage()
             numberOfPages += 1
             spawnOutside()
@@ -71,7 +71,7 @@ extension GameScene {
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
         
-        levels = 8
+        totalPages = 8
         numberOfPages = 0
         numberOfBoxes = 0
         
@@ -79,7 +79,7 @@ extension GameScene {
         lightCamera.position = light1.position
         
         /* Create pages and boxes */
-        while numberOfPages < levels {
+        while numberOfPages < totalPages {
             createPage()
             numberOfPages += 1
             spawnOutside()
@@ -106,7 +106,7 @@ extension GameScene {
         bombTimer.position.x = 1.971
         bombTimer.position.y = -1.593
         
-        levels = 8
+        totalPages = 8
         numberOfPages = 0
         numberOfBoxes = 0
         
@@ -114,7 +114,7 @@ extension GameScene {
         lightCamera.position = light1.position
         
         /* Create pages and boxes */
-        while numberOfPages < levels {
+        while numberOfPages < totalPages {
             createPage()
             numberOfPages += 1
             spawnOutside()

@@ -10,6 +10,10 @@
 		073F5E921D492AF400C0FC9E /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073F5E911D492AF400C0FC9E /* Level2.sks */; };
 		075417661D35A2C4008B283C /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075417651D35A2C4008B283C /* Level1.sks */; };
 		075587EB1D49801400931220 /* RandomBox.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075587EA1D49801400931220 /* RandomBox.sks */; };
+		075746301D523741004881F1 /* TableOfContent.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0757462F1D523741004881F1 /* TableOfContent.sks */; };
+		075746321D5238A6004881F1 /* TableOfContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075746311D5238A6004881F1 /* TableOfContent.swift */; };
+		075746341D525736004881F1 /* Thunderclap.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075746331D525736004881F1 /* Thunderclap.caf */; };
+		0757463A1D526369004881F1 /* Raining.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075746391D526369004881F1 /* Raining.caf */; };
 		077270001D4BC25000E7BAA9 /* Level4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07726FFF1D4BC25000E7BAA9 /* Level4.sks */; };
 		077270021D4BC82A00E7BAA9 /* Bomb.sks in Resources */ = {isa = PBXBuildFile; fileRef = 077270011D4BC82A00E7BAA9 /* Bomb.sks */; };
 		077270041D4C0AFD00E7BAA9 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 077270031D4C0AFD00E7BAA9 /* Level3.sks */; };
@@ -74,6 +78,10 @@
 		073F5E911D492AF400C0FC9E /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
 		075417651D35A2C4008B283C /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		075587EA1D49801400931220 /* RandomBox.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = RandomBox.sks; path = ../RandomBox.sks; sourceTree = "<group>"; };
+		0757462F1D523741004881F1 /* TableOfContent.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TableOfContent.sks; sourceTree = "<group>"; };
+		075746311D5238A6004881F1 /* TableOfContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableOfContent.swift; sourceTree = "<group>"; };
+		075746331D525736004881F1 /* Thunderclap.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunderclap.caf; sourceTree = "<group>"; };
+		075746391D526369004881F1 /* Raining.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Raining.caf; sourceTree = "<group>"; };
 		07726FFF1D4BC25000E7BAA9 /* Level4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4.sks; sourceTree = "<group>"; };
 		077270011D4BC82A00E7BAA9 /* Bomb.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bomb.sks; sourceTree = "<group>"; };
 		077270031D4C0AFD00E7BAA9 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
@@ -202,9 +210,11 @@
 				0789282B1D3409B900B9B21B /* GameScene.sks */,
 				0789282D1D3409B900B9B21B /* GameScene.swift */,
 				078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */,
+				0757462F1D523741004881F1 /* TableOfContent.sks */,
+				075746311D5238A6004881F1 /* TableOfContent.swift */,
 				079EF34E1D500FD000BD438B /* LevelSelect.sks */,
-				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				079EF3501D50126E00BD438B /* LevelSelect.swift */,
+				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				0773ABB51D384F3D00868206 /* MainMenu.swift */,
 				0773ABB31D3838C400868206 /* MainMenu.sks */,
 				078F8C2C1D514441009AE751 /* SFX */,
@@ -263,6 +273,8 @@
 			isa = PBXGroup;
 			children = (
 				078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */,
+				075746331D525736004881F1 /* Thunderclap.caf */,
+				075746391D526369004881F1 /* Raining.caf */,
 				078F8C2D1D514458009AE751 /* beep.caf */,
 			);
 			name = SFX;
@@ -381,15 +393,18 @@
 				077270001D4BC25000E7BAA9 /* Level4.sks in Resources */,
 				078F8C211D5103CD009AE751 /* spark.png in Resources */,
 				077270041D4C0AFD00E7BAA9 /* Level3.sks in Resources */,
+				075746341D525736004881F1 /* Thunderclap.caf in Resources */,
 				078F8C2E1D514458009AE751 /* beep.caf in Resources */,
 				078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */,
 				077F3EE31D3952B200597FE7 /* spark.png in Resources */,
+				075746301D523741004881F1 /* TableOfContent.sks in Resources */,
 				078928351D3409B900B9B21B /* Assets.xcassets in Resources */,
 				078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */,
 				073F5E921D492AF400C0FC9E /* Level2.sks in Resources */,
 				079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */,
 				0773ABB41D3838C400868206 /* MainMenu.sks in Resources */,
 				078928331D3409B900B9B21B /* Main.storyboard in Resources */,
+				0757463A1D526369004881F1 /* Raining.caf in Resources */,
 				075587EB1D49801400931220 /* RandomBox.sks in Resources */,
 				075417661D35A2C4008B283C /* Level1.sks in Resources */,
 				077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */,
@@ -425,6 +440,7 @@
 				079FA7161D3465780066C088 /* light.swift in Sources */,
 				078AD8861D36BF1E005E7052 /* SKNode+Extensions.swift in Sources */,
 				0789282E1D3409B900B9B21B /* GameScene.swift in Sources */,
+				075746321D5238A6004881F1 /* TableOfContent.swift in Sources */,
 				0773ABB61D384F3D00868206 /* MainMenu.swift in Sources */,
 				078AD8891D36BF1E005E7052 /* SKTTimingFunctions.swift in Sources */,
 				078AD8841D36BF1E005E7052 /* SKAction+SpecialEffects.swift in Sources */,
