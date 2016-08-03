@@ -449,6 +449,7 @@ class GameScene: SKScene {
             if self.bombTime == 0 {
                 self.explode.zPosition = 2
                 let fadeIn = SKAction.runBlock {
+                    print("check")
                     self.explode.runAction(SKAction.fadeInWithDuration(1.0), completion: {
                         let fadeOut = SKAction.runBlock {
                             self.explode.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
@@ -463,6 +464,7 @@ class GameScene: SKScene {
                 
                 self.bomb.runAction(bombing, completion: {
                     self.state = .GameOver
+                    print("check3")
                 })
                 
                 //NEW Atempt
