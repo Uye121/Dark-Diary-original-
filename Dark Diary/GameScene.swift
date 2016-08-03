@@ -126,7 +126,7 @@ class GameScene: SKScene {
         scene!.scaleMode = .AspectFit
         goal.text = String("\(collectedNotes)/\(totalPages)")
         goal.fontColor = UIColor.redColor()
-        explode.hidden = true
+        explode.zPosition = -10
         
         /* Timer */
         let wait = SKAction.waitForDuration(1)
@@ -328,11 +328,11 @@ class GameScene: SKScene {
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
                 diffuseMessage.zPosition = 5
                 let fadeIn = SKAction.runBlock {
-                    self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1))
+                    self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1.0))
                 }
                 let wait = SKAction.waitForDuration(1)
                 let fadeOut = SKAction.runBlock {
-                    self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1))
+                    self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1.0))
                 }
                 let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
                 diffuseMessage.runAction(sequence)
@@ -436,7 +436,8 @@ class GameScene: SKScene {
         /* Code connect: bomb counting down */
         let bombBeep = SKAction.playSoundFileNamed("beep", waitForCompletion: false)
         let explodingNoise = SKAction.playSoundFileNamed("ExplodingNoise", waitForCompletion: false)
-        let wait = SKAction.waitForDuration(1)
+        let wait = SKAction.waitForDuration(1.0)
+        let wait2 = SKAction.waitForDuration(1.5)
         let block = SKAction.runBlock({
             if self.bombTime > 0 {
                 self.bombTime -= 1
@@ -446,21 +447,40 @@ class GameScene: SKScene {
                 self.bombTimer.fontColor = UIColor.redColor()
             }
             if self.bombTime == 0 {
-                self.explode.hidden = false
                 self.explode.zPosition = 2
                 let fadeIn = SKAction.runBlock {
-                    self.explode.runAction(SKAction.fadeInWithDuration(1))
-                    print("check")
+                    self.explode.runAction(SKAction.fadeInWithDuration(1.0), completion: {
+                        let fadeOut = SKAction.runBlock {
+                            self.explode.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
+                                print("check2")
+                            })
+                        }
+                        self.runAction(fadeOut)
+                    })
                 }
-                let fadeOut = SKAction.runBlock {
-                    self.explode.runAction(SKAction.fadeInWithDuration(1))
-                    print("check2")
-                }
-                let sequence = SKAction.sequence([explodingNoise, fadeIn, fadeOut])
                 
-                self.bomb.runAction(sequence, completion: {
+                let bombing = SKAction.sequence([explodingNoise, fadeIn,wait2])
+                
+                self.bomb.runAction(bombing, completion: {
                     self.state = .GameOver
                 })
+                
+                //NEW Atempt
+//                 self.explode.zPosition = 2
+//                let fadein = SKAction.fadeInWithDuration(1.0)
+//                let fadeout = SKAction.fadeOutWithDuration(1.0)
+//                let wait = SKAction.waitForDuration(0.2)
+//                let wait2 = SKAction.waitForDuration(2.0)
+//                
+//                let bombexplodes = SKAction.sequence([fadein,wait,fadeout, wait2])
+//                
+//                
+//                
+//                self.explode.runAction(bombexplodes, completion: {
+//                    self.state = .GameOver
+//                })
+                
+                
             }
             self.bombTimer.text = "\(self.bombTime)"
         })
