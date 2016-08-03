@@ -36,7 +36,7 @@ class GameScene: SKScene {
     var collectedNotes = 0
     var totalPages = 0
     var timeLeft = 45
-    var bombTime = 5
+    var bombTime = 20
     var pauseButton: MSButtonNode!
     var playButton: MSButtonNode!
     var restartButton: MSButtonNode!
