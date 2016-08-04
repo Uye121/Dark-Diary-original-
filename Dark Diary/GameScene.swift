@@ -12,7 +12,14 @@ import SpriteKit
  not reset the currentlevel variable */
 class GameManager {
     var currentlevel = 1
+    var unlockedLevel: [Bool] = []
     static let sharedInstance = GameManager()
+    
+    init() {
+        for _ in 0...3 {
+            unlockedLevel.append(false)
+        }
+    }
 }
 
 enum GameState {
@@ -249,6 +256,7 @@ class GameScene: SKScene {
         }
         
         if state == .Victory {
+            print(GameManager.sharedInstance.currentlevel)
             goal.fontColor = UIColor.greenColor()
             victoryLabel.zPosition = 15
             self.scene!.view!.paused = true
@@ -256,6 +264,8 @@ class GameScene: SKScene {
             self.restartButton.zPosition = 10
             self.pauseBackground.zPosition = 5
             self.nextLevelButton.zPosition = 10
+            GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] = true
+
         }
         
         /* Have the light follow the orb */
@@ -279,7 +289,6 @@ class GameScene: SKScene {
                 pages.removeAtIndex(i)
                 addChild(flame!)
                 collectedNotes += 1
-                timeLeft += 2
             }
             i += 1
         }
