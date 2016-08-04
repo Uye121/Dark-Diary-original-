@@ -245,7 +245,7 @@ class GameScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
-        let array = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
+        GameManager.sharedInstance.unlockedLevel = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
 
         
         if state == .Pause {
