@@ -17,6 +17,8 @@ class MainMenu: SKScene {
     var thunderFlash: SKNode!
     var sound: MSButtonNode!
     var mute: MSButtonNode!
+    var raining: SKAudioNode!
+    var thunderclap: SKAudioNode!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -27,6 +29,11 @@ class MainMenu: SKScene {
         thunderFlash = childNodeWithName("thunderFlash") as SKNode!
         sound = childNodeWithName("//sound") as! MSButtonNode
         mute = childNodeWithName("//mute") as! MSButtonNode
+        raining = childNodeWithName("raining") as! SKAudioNode
+        thunderclap = childNodeWithName("thunderclap") as! SKAudioNode
+        
+        sound.hidden = true
+        mute.hidden = false
         
         /* Setup restart button selection handler */
         play.selectedHandler = {
@@ -68,11 +75,7 @@ class MainMenu: SKScene {
         
         let rainPath = NSBundle.mainBundle().pathForResource("rain", ofType: "sks")
         let rainEffect = NSKeyedUnarchiver.unarchiveObjectWithFile(rainPath!) as! SKEmitterNode
-        let raining = SKAction.playSoundFileNamed("Raining", waitForCompletion: false)
-        let rainWait = SKAction.waitForDuration(1)
         addChild(rainEffect)
-        let soundSequence = SKAction.sequence([raining, rainWait])
-        self.runAction(SKAction.repeatActionForever(soundSequence))
         rainEffect.position = CGPoint(x: 320, y: 568)
         
         /* Intervals for thunder */
@@ -80,18 +83,37 @@ class MainMenu: SKScene {
         let wait2 = SKAction.waitForDuration(0.2)
         let wait3 = SKAction.waitForDuration(0.1)
         
-        let thunderclap = SKAction.playSoundFileNamed("Thunderclap", waitForCompletion: false)
-
         let block = SKAction.runBlock({
             self.thunderFlash.zPosition = -10
-
+            
         })
         let lightning = SKAction.runBlock({
-            self.runAction(thunderclap)
+            if self.sound.hidden == true {
+                let thunderclap1 = SKAction.play()
+                let waitTime = SKAction.waitForDuration(2)
+                let silence = SKAction.stop()
+                
+                let thunderSequence = SKAction.sequence([thunderclap1, waitTime, silence])
+                self.thunderclap.runAction(thunderSequence)
+            } else {
+                self.thunderclap.runAction(SKAction.stop())
+            }
             self.thunderFlash.zPosition = 10
         })
         
         let sequence = SKAction.sequence([block ,wait, lightning, wait3, block, wait2, lightning, wait3, block, wait])
         self.runAction(SKAction.repeatActionForever(sequence))
+        
+        mute.selectedHandler = {
+            self.raining.runAction(SKAction.stop())
+            self.sound.hidden = false
+            self.mute.hidden = true
+        }
+        
+        sound.selectedHandler = {
+            self.raining.runAction(SKAction.play())
+            self.mute.hidden = false
+            self.sound.hidden = true
+        }
     }
 }
