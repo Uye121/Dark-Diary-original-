@@ -5,7 +5,7 @@
 //  Created by Ulric Ye on 7/11/16.
 //  Copyright (c) 2016 TestingDummies@_@. All rights reserved.
 //
-
+import Foundation
 import SpriteKit
 
 /* Create GameManager to keep track of the current level outside so restart does
@@ -22,6 +22,7 @@ class GameManager {
         }
     }
 }
+
 
 enum GameState {
     case Pause, Playing, GameOver, Victory
@@ -73,6 +74,7 @@ class GameScene: SKScene {
     var levelScenes: [SKSpriteNode] = []
     var load = true
     var bombTimeAction: SKAction!
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     enum Levels { case Default }
     
@@ -242,6 +244,9 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
+        defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
+        let array = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
+
         
         if state == .Pause {
             self.scene!.view!.paused = true

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073528F41D53EB6200121FB9 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073528F31D53EB6200121FB9 /* GameManager.swift */; };
 		073F5E921D492AF400C0FC9E /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073F5E911D492AF400C0FC9E /* Level1.sks */; };
 		075587EB1D49801400931220 /* RandomBox.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075587EA1D49801400931220 /* RandomBox.sks */; };
 		075746301D523741004881F1 /* TableOfContent.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0757462F1D523741004881F1 /* TableOfContent.sks */; };
@@ -75,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		073528F31D53EB6200121FB9 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		073F5E911D492AF400C0FC9E /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		075587EA1D49801400931220 /* RandomBox.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = RandomBox.sks; path = ../RandomBox.sks; sourceTree = "<group>"; };
 		0757462F1D523741004881F1 /* TableOfContent.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TableOfContent.sks; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				078928291D3409B900B9B21B /* AppDelegate.swift */,
 				0789282B1D3409B900B9B21B /* GameScene.sks */,
 				0789282D1D3409B900B9B21B /* GameScene.swift */,
+				073528F31D53EB6200121FB9 /* GameManager.swift */,
 				078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */,
 				0757463D1D52A37E004881F1 /* SwiftyUserDefaults.swift */,
 				0757462F1D523741004881F1 /* TableOfContent.sks */,
@@ -433,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078AD8801D36BF1E005E7052 /* CGPoint+Extensions.swift in Sources */,
+				073528F41D53EB6200121FB9 /* GameManager.swift in Sources */,
 				078AD8881D36BF1E005E7052 /* SKTEffects.swift in Sources */,
 				078AD8831D36BF1E005E7052 /* SKAction+Extensions.swift in Sources */,
 				0773ABB21D38166800868206 /* MSButtonNode.swift in Sources */,
