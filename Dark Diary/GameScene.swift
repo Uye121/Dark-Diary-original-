@@ -115,7 +115,6 @@ class GameScene: SKScene {
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         explode = childNodeWithName("//explode") as! SKSpriteNode
         
-        
         /* scene and background constants */
         screenWidth = size.width
         screenHeight = size.height
@@ -204,6 +203,7 @@ class GameScene: SKScene {
         
         nextLevelButton.selectedHandler = {
             self.scene!.view!.paused = false
+            GameManager.sharedInstance.currentlevel += 1
             self.goal.fontColor = UIColor.redColor()
             self.victoryLabel.zPosition = -10
             self.timeLeft = 45
@@ -212,7 +212,6 @@ class GameScene: SKScene {
             self.state = .Playing
             self.clearSceneOfButtons()
             
-            GameManager.sharedInstance.currentlevel += 1
             self.load = true
             self.levelsStates()
         }

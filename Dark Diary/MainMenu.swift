@@ -90,7 +90,7 @@ class MainMenu: SKScene {
         let lightning = SKAction.runBlock({
             if self.sound.hidden == true {
                 let thunderclap1 = SKAction.play()
-                let waitTime = SKAction.waitForDuration(2)
+                let waitTime = SKAction.waitForDuration(2.0)
                 let silence = SKAction.stop()
                 
                 let thunderSequence = SKAction.sequence([thunderclap1, waitTime, silence])
