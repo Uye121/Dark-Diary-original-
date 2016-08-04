@@ -8,11 +8,11 @@
 
 import SpriteKit
 
-/* Create gamemanager to keep track of the current level outside so restart does
+/* Create GameManager to keep track of the current level outside so restart does
  not reset the currentlevel variable */
-class gameManager {
+class GameManager {
     var currentlevel = 1
-    static let sharedInstance = gameManager()
+    static let sharedInstance = GameManager()
 }
 
 enum GameState {
@@ -71,7 +71,7 @@ class GameScene: SKScene {
     /* Manages changing to different level */
     func levelsStates() {
         while load {
-            switch gameManager.sharedInstance.currentlevel % 5 {
+            switch GameManager.sharedInstance.currentlevel % 4 {
             case 1:
                 level1()
                 load = false
@@ -80,9 +80,6 @@ class GameScene: SKScene {
                 load = false
             case 3:
                 level3()
-                load = false
-            case 4:
-                level4()
                 load = false
             default:
                 break
@@ -125,7 +122,6 @@ class GameScene: SKScene {
         /* Ensure correct aspect mode */
         scene!.scaleMode = .AspectFit
         goal.text = String("\(collectedNotes)/\(totalPages)")
-        goal.fontColor = UIColor.redColor()
         explode.zPosition = -10
         
         /* Timer */
@@ -200,13 +196,15 @@ class GameScene: SKScene {
         
         nextLevelButton.selectedHandler = {
             self.scene!.view!.paused = false
+            self.goal.fontColor = UIColor.redColor()
             self.victoryLabel.zPosition = -10
             self.timeLeft = 45
             self.collectedNotes = 0
             self.levelNode.removeAllChildren()
             self.state = .Playing
             self.clearSceneOfButtons()
-            gameManager.sharedInstance.currentlevel += 1
+            
+            GameManager.sharedInstance.currentlevel += 1
             self.load = true
             self.levelsStates()
         }
@@ -437,7 +435,7 @@ class GameScene: SKScene {
         let bombBeep = SKAction.playSoundFileNamed("beep", waitForCompletion: false)
         let explodingNoise = SKAction.playSoundFileNamed("ExplodingNoise", waitForCompletion: false)
         let wait = SKAction.waitForDuration(1.0)
-        let wait2 = SKAction.waitForDuration(1.5)
+        let wait2 = SKAction.waitForDuration(2.0)
         let block = SKAction.runBlock({
             if self.bombTime > 0 {
                 self.bombTime -= 1
@@ -449,11 +447,9 @@ class GameScene: SKScene {
             if self.bombTime == 0 {
                 self.explode.zPosition = 2
                 let fadeIn = SKAction.runBlock {
-                    print("check")
                     self.explode.runAction(SKAction.fadeInWithDuration(1.0), completion: {
                         let fadeOut = SKAction.runBlock {
                             self.explode.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
-                                print("check2")
                             })
                         }
                         self.runAction(fadeOut)

@@ -20,14 +20,14 @@ class LevelSelect: SKScene {
         level1Selector = childNodeWithName("level1Selector") as! MSButtonNode
         level2Selector = childNodeWithName("level2Selector") as! MSButtonNode
         level3Selector = childNodeWithName("level3Selector") as! MSButtonNode
-        level4Selector = childNodeWithName("level4Selector") as! MSButtonNode
+//        level4Selector = childNodeWithName("level4Selector") as! MSButtonNode
         returnButton = childNodeWithName("returnButton") as! MSButtonNode
         
         /* Load the specified levels */
         level1Selector.selectedHandler = {
             let skView = self.view as SKView!
             
-            gameManager.sharedInstance.currentlevel = 1
+            GameManager.sharedInstance.currentlevel = 1
 
             let scene = GameScene(fileNamed: "GameScene")! as GameScene
             
@@ -39,7 +39,7 @@ class LevelSelect: SKScene {
         level2Selector.selectedHandler = {
             let skView = self.view as SKView!
             
-            gameManager.sharedInstance.currentlevel = 2
+            GameManager.sharedInstance.currentlevel = 2
             
             let scene = GameScene(fileNamed: "GameScene")! as GameScene
             
@@ -51,7 +51,7 @@ class LevelSelect: SKScene {
         level3Selector.selectedHandler = {
             let skView = self.view as SKView!
             
-            gameManager.sharedInstance.currentlevel = 3
+            GameManager.sharedInstance.currentlevel = 3
             
             let scene = GameScene(fileNamed: "GameScene")! as GameScene
             
@@ -60,17 +60,17 @@ class LevelSelect: SKScene {
             skView.presentScene(scene)
         }
         
-        level4Selector.selectedHandler = {
-            let skView = self.view as SKView!
-            
-            gameManager.sharedInstance.currentlevel = 4
-            
-            let scene = GameScene(fileNamed: "GameScene")! as GameScene
-            
-            scene.scaleMode = .AspectFit
-            
-            skView.presentScene(scene)
-        }
+//        level4Selector.selectedHandler = {
+//            let skView = self.view as SKView!
+//            
+//            GameManager.sharedInstance.currentlevel = 4
+//            
+//            let scene = GameScene(fileNamed: "GameScene")! as GameScene
+//            
+//            scene.scaleMode = .AspectFit
+//            
+//            skView.presentScene(scene)
+//        }
         
         returnButton.selectedHandler = {
             let skView = self.view as SKView!
