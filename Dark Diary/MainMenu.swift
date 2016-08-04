@@ -31,6 +31,18 @@ class MainMenu: SKScene {
         /* Setup restart button selection handler */
         play.selectedHandler = {
             
+            var i = 0
+            
+            for checkLevel in GameManager.sharedInstance.unlockedLevel {
+                if checkLevel == true {
+                    i += 1
+                } else if checkLevel == false {
+                    GameManager.sharedInstance.currentlevel = i
+                } else {
+                    print("error")
+                }
+            }
+            
             /* Grab reference to our SpriteKit view */
             let skView = self.view as SKView!
             

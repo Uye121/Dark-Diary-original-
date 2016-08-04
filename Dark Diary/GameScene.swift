@@ -16,7 +16,8 @@ class GameManager {
     static let sharedInstance = GameManager()
     
     init() {
-        for _ in 0...3 {
+        unlockedLevel.append(true)
+        for _ in 1...4 {
             unlockedLevel.append(false)
         }
     }
@@ -256,7 +257,6 @@ class GameScene: SKScene {
         }
         
         if state == .Victory {
-            print(GameManager.sharedInstance.currentlevel)
             goal.fontColor = UIColor.greenColor()
             victoryLabel.zPosition = 15
             self.scene!.view!.paused = true

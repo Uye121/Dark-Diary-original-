@@ -14,6 +14,11 @@ class LevelSelect: SKScene {
     var level3Selector: MSButtonNode!
     var level4Selector: MSButtonNode!
     var returnButton: MSButtonNode!
+    var levelSelectorCamera: SKCameraNode?
+    var levelWall: SKSpriteNode!
+    var touchNode: SKSpriteNode!
+    var levelWallHeight: CGFloat!
+    var levelWallWidth: CGFloat!
     
     override func didMoveToView(view: SKView) {
         /* Connect the buttons */
@@ -21,14 +26,17 @@ class LevelSelect: SKScene {
         level2Selector = childNodeWithName("level2Selector") as! MSButtonNode
         level3Selector = childNodeWithName("level3Selector") as! MSButtonNode
         //        level4Selector = childNodeWithName("level4Selector") as! MSButtonNode
-        returnButton = childNodeWithName("returnButton") as! MSButtonNode
+        returnButton = childNodeWithName("//returnButton") as! MSButtonNode
+        levelSelectorCamera = childNodeWithName("//camera") as? SKCameraNode
+        levelWall = childNodeWithName("levelWall") as! SKSpriteNode
+        touchNode = childNodeWithName("touchNode") as! SKSpriteNode
         
         /* Load the specified levels */
         level1Selector.selectedHandler = {
+            GameManager.sharedInstance.currentlevel = 1
+
             if GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] == true {
                 let skView = self.view as SKView!
-                
-                GameManager.sharedInstance.currentlevel = 1
                 
                 let scene = GameScene(fileNamed: "GameScene")! as GameScene
                 
@@ -41,10 +49,10 @@ class LevelSelect: SKScene {
         }
         
         level2Selector.selectedHandler = {
+            GameManager.sharedInstance.currentlevel = 2
+
             if GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] == true {
                 let skView = self.view as SKView!
-                
-                GameManager.sharedInstance.currentlevel = 2
                 
                 let scene = GameScene(fileNamed: "GameScene")! as GameScene
                 
@@ -57,10 +65,10 @@ class LevelSelect: SKScene {
         }
         
         level3Selector.selectedHandler = {
+            GameManager.sharedInstance.currentlevel = 3
+
             if GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] == true {
                 let skView = self.view as SKView!
-                
-                GameManager.sharedInstance.currentlevel = 3
                 
                 let scene = GameScene(fileNamed: "GameScene")! as GameScene
                 
@@ -92,6 +100,16 @@ class LevelSelect: SKScene {
             scene.scaleMode = .AspectFit
             
             skView.presentScene(scene)
+        }
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            touchNode.position.y = touch.locationInNode(self).y * 0.5
+            
+            levelWallHeight = levelWall.size.height
+            levelWallWidth = levelWall.size.width
+            levelSelectorCamera!.position.y.clamp(284, -levelWallHeight/4)
         }
     }
 }
