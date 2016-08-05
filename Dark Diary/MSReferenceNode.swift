@@ -47,3 +47,11 @@ class BombReferenceNode: SKReferenceNode {
         bomb = childNodeWithName("//bomb") as! SKSpriteNode
     }
 }
+
+class KillerReferenceNode: SKReferenceNode {
+    var killer: SKSpriteNode!
+    
+    override func didLoadReferenceNode(node: SKNode?) {
+        killer = childNodeWithName("killer") as! SKSpriteNode
+    }
+}

@@ -19,7 +19,6 @@ class MainMenu: SKScene {
     var mute: MSButtonNode!
     var raining: SKAudioNode!
     var thunderclap: SKAudioNode!
-    var music: Bool!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -32,9 +31,13 @@ class MainMenu: SKScene {
         mute = childNodeWithName("//mute") as! MSButtonNode
         raining = childNodeWithName("raining") as! SKAudioNode
         thunderclap = childNodeWithName("thunderclap") as! SKAudioNode
-        
-        sound.hidden = true
-        mute.hidden = false
+        if GameManager.sharedInstance.music == true{
+            sound.hidden = true
+            mute.hidden = false
+        } else {
+            sound.hidden = false
+            mute.hidden = true
+        }
         
         /* Setup restart button selection handler */
         play.selectedHandler = {
@@ -79,6 +82,18 @@ class MainMenu: SKScene {
         addChild(rainEffect)
         rainEffect.position = CGPoint(x: 320, y: 568)
         
+        mute.selectedHandler = {
+            self.sound.hidden = false
+            self.mute.hidden = true
+            GameManager.sharedInstance.music = false
+        }
+        
+        sound.selectedHandler = {
+            self.mute.hidden = false
+            self.sound.hidden = true
+            GameManager.sharedInstance.music = true
+        }
+        
         /* Intervals for thunder */
         let wait = SKAction.waitForDuration(5, withRange: 10)
         let wait2 = SKAction.waitForDuration(0.2)
@@ -89,7 +104,7 @@ class MainMenu: SKScene {
             
         })
         let lightning = SKAction.runBlock({
-            if self.sound.hidden == true {
+            if GameManager.sharedInstance.music == true {
                 let thunderclap1 = SKAction.play()
                 let waitTime = SKAction.waitForDuration(2.0)
                 let silence = SKAction.stop()
@@ -104,19 +119,14 @@ class MainMenu: SKScene {
         
         let sequence = SKAction.sequence([block ,wait, lightning, wait3, block, wait2, lightning, wait3, block, wait])
         self.runAction(SKAction.repeatActionForever(sequence))
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
         
-        mute.selectedHandler = {
-            self.raining.runAction(SKAction.stop())
-            self.sound.hidden = false
-            self.mute.hidden = true
-            GameManager.sharedInstance.music = false
-        }
-        
-        sound.selectedHandler = {
+        if GameManager.sharedInstance.music == true {
             self.raining.runAction(SKAction.play())
-            self.mute.hidden = false
-            self.sound.hidden = true
-            GameManager.sharedInstance.music = true
+        } else if GameManager.sharedInstance.music == false {
+            self.raining.runAction(SKAction.stop())
         }
     }
 }
