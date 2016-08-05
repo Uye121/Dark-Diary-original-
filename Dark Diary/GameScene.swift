@@ -8,22 +8,6 @@
 import Foundation
 import SpriteKit
 
-/* Create GameManager to keep track of the current level outside so restart does
- not reset the currentlevel variable */
-class GameManager {
-    var currentlevel = 1
-    var unlockedLevel: [Bool] = []
-    static let sharedInstance = GameManager()
-    
-    init() {
-        unlockedLevel.append(true)
-        for _ in 1...4 {
-            unlockedLevel.append(false)
-        }
-    }
-}
-
-
 enum GameState {
     case Pause, Playing, GameOver, Victory
 }
@@ -125,7 +109,7 @@ class GameScene: SKScene {
         light1 = light.light
         light1.moveToParent(self)
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
-        
+                
         levelsStates()
         
         /* Ensure correct aspect mode */
@@ -205,7 +189,6 @@ class GameScene: SKScene {
         
         nextLevelButton.selectedHandler = {
             self.scene!.view!.paused = false
-            GameManager.sharedInstance.currentlevel += 1
             self.goal.fontColor = UIColor.redColor()
             self.victoryLabel.zPosition = -10
             self.timeLeft = 45
@@ -246,7 +229,6 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
         GameManager.sharedInstance.unlockedLevel = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
-
         
         if state == .Pause {
             self.scene!.view!.paused = true
@@ -261,6 +243,8 @@ class GameScene: SKScene {
         }
         
         if state == .Victory {
+            GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] = true
+            GameManager.sharedInstance.currentlevel += 1
             goal.fontColor = UIColor.greenColor()
             victoryLabel.zPosition = 15
             self.scene!.view!.paused = true
@@ -268,8 +252,6 @@ class GameScene: SKScene {
             self.restartButton.zPosition = 10
             self.pauseBackground.zPosition = 5
             self.nextLevelButton.zPosition = 10
-            GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] = true
-
         }
         
         /* Have the light follow the orb */
@@ -452,7 +434,10 @@ class GameScene: SKScene {
         let block = SKAction.runBlock({
             if self.bombTime > 0 {
                 self.bombTime -= 1
+                if GameManager.sharedInstance.music == true {
                 self.bomb.runAction(bombBeep)
+//                    print("check")
+                }
             }
             if self.bombTime < 4 {
                 self.bombTimer.fontColor = UIColor.redColor()

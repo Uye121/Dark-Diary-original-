@@ -19,6 +19,7 @@ class MainMenu: SKScene {
     var mute: MSButtonNode!
     var raining: SKAudioNode!
     var thunderclap: SKAudioNode!
+    var music: Bool!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -108,12 +109,14 @@ class MainMenu: SKScene {
             self.raining.runAction(SKAction.stop())
             self.sound.hidden = false
             self.mute.hidden = true
+            GameManager.sharedInstance.music = false
         }
         
         sound.selectedHandler = {
             self.raining.runAction(SKAction.play())
             self.mute.hidden = false
             self.sound.hidden = true
+            GameManager.sharedInstance.music = true
         }
     }
 }

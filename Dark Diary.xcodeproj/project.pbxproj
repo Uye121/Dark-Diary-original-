@@ -22,7 +22,6 @@
 		0773ABB41D3838C400868206 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0773ABB31D3838C400868206 /* MainMenu.sks */; };
 		0773ABB61D384F3D00868206 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0773ABB51D384F3D00868206 /* MainMenu.swift */; };
 		077F3EE21D3952B200597FE7 /* rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE01D3952B200597FE7 /* rain.sks */; };
-		077F3EE31D3952B200597FE7 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE11D3952B200597FE7 /* spark.png */; };
 		077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE61D3960DA00597FE7 /* Line-50.png */; };
 		0782BE401D359813002E895E /* Page.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0782BE3F1D359813002E895E /* Page.sks */; };
 		0789282A1D3409B900B9B21B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078928291D3409B900B9B21B /* AppDelegate.swift */; };
@@ -91,7 +90,6 @@
 		0773ABB31D3838C400868206 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		0773ABB51D384F3D00868206 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		077F3EE01D3952B200597FE7 /* rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = rain.sks; sourceTree = "<group>"; };
-		077F3EE11D3952B200597FE7 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		077F3EE61D3960DA00597FE7 /* Line-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line-50.png"; sourceTree = "<group>"; };
 		0782BE3F1D359813002E895E /* Page.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Page.sks; path = ../Page.sks; sourceTree = "<group>"; };
 		078928261D3409B900B9B21B /* Dark Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dark Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				077F3EE01D3952B200597FE7 /* rain.sks */,
-				077F3EE11D3952B200597FE7 /* spark.png */,
 				078F8C1F1D5103CD009AE751 /* spark.png */,
 				077F3EE61D3960DA00597FE7 /* Line-50.png */,
 				078928281D3409B900B9B21B /* Dark Diary */,
@@ -217,9 +214,9 @@
 				075746311D5238A6004881F1 /* TableOfContent.swift */,
 				079EF34E1D500FD000BD438B /* LevelSelect.sks */,
 				079EF3501D50126E00BD438B /* LevelSelect.swift */,
-				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				0773ABB51D384F3D00868206 /* MainMenu.swift */,
 				0773ABB31D3838C400868206 /* MainMenu.sks */,
+				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				078F8C2C1D514441009AE751 /* SFX */,
 				075417671D35A2F4008B283C /* Levels */,
 				079FA7111D34464D0066C088 /* MSReferenceNode.swift */,
@@ -399,7 +396,6 @@
 				075746341D525736004881F1 /* Thunderclap.caf in Resources */,
 				078F8C2E1D514458009AE751 /* beep.caf in Resources */,
 				078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */,
-				077F3EE31D3952B200597FE7 /* spark.png in Resources */,
 				075746301D523741004881F1 /* TableOfContent.sks in Resources */,
 				078928351D3409B900B9B21B /* Assets.xcassets in Resources */,
 				078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */,

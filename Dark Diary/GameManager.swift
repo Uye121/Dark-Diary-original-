@@ -8,23 +8,18 @@
 
 import Foundation
 
-//class GameManager {
-//    static let sharedInstance = GameManager()
-//    let defaults = NSUserDefaults.standardUserDefaults()
-//    var currentlevel: Int = 1
-//    var unlockedLevel1: [Bool] = NSUserDefaults.standardUserDefaults().boolForKey("unlockedLevel") ?? false {
-//        didSet {
-//            NSUserDefaults.standardUserDefaults().setObject(unlockedLevel, forKey:"unlockedLevel")
-//            // Saves to disk immediately, otherwise it will save when it has time
-//            NSUserDefaults.standardUserDefaults().synchronize()
-//        }
-//    }
-//    
-//    func saveData(){
-//        defaults.setObject(unlockedLevel1, forKey: "unlockedLevel")
-//    }
-//    
-//    init (){
-//        unlockedLevel1 = defaults.arrayForKey("unloackedLevel") as! [Bool]
-//    }
-//}
+/* Create GameManager to keep track of the current level outside so restart does
+ not reset the currentlevel variable */
+class GameManager {
+    var currentlevel = 1
+    var unlockedLevel: [Bool] = []
+    var music: Bool = true
+    static let sharedInstance = GameManager()
+    
+    init() {
+        unlockedLevel.append(true)
+        for _ in 1...4 {
+            unlockedLevel.append(false)
+        }
+    }
+}
