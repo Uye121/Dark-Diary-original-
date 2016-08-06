@@ -38,6 +38,7 @@ extension GameScene {
             createRandomBox()
             numberOfBoxes += 1
         }
+        spawnKiller()
     }
     
     func level2() {
@@ -67,6 +68,8 @@ extension GameScene {
             createRandomBox()
             numberOfBoxes += 1
         }
+        
+        spawnKiller()
     }
     
     func level3() {
@@ -104,5 +107,6 @@ extension GameScene {
         }
         /* Calls function where the bomb counts down and leads to game over */
         destruction()
+        spawnKiller()
     }
 }

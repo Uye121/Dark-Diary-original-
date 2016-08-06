@@ -46,6 +46,12 @@
 		078AD8891D36BF1E005E7052 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87D1D36BF1E005E7052 /* SKTTimingFunctions.swift */; };
 		078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87E1D36BF1E005E7052 /* Vector3.swift */; };
 		078C28601D550598003F4869 /* Killer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078C285F1D550598003F4869 /* Killer.sks */; };
+		078C28651D554F43003F4869 /* MurderAura.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078C28631D554F43003F4869 /* MurderAura.sks */; };
+		078C28681D555506003F4869 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C28671D555506003F4869 /* Chartboost.framework */; };
+		078C286A1D5556FC003F4869 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C28691D5556FC003F4869 /* StoreKit.framework */; };
+		078C286C1D555707003F4869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C286B1D555707003F4869 /* Foundation.framework */; };
+		078C286E1D555710003F4869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C286D1D555710003F4869 /* CoreGraphics.framework */; };
+		078C28701D55571C003F4869 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C286F1D55571C003F4869 /* UIKit.framework */; };
 		078F8C211D5103CD009AE751 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C1F1D5103CD009AE751 /* spark.png */; };
 		078F8C231D511042009AE751 /* CollectEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C221D511042009AE751 /* CollectEffect.sks */; };
 		078F8C2E1D514458009AE751 /* beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2D1D514458009AE751 /* beep.caf */; };
@@ -121,6 +127,13 @@
 		078AD87D1D36BF1E005E7052 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
 		078AD87E1D36BF1E005E7052 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		078C285F1D550598003F4869 /* Killer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Killer.sks; sourceTree = "<group>"; };
+		078C28631D554F43003F4869 /* MurderAura.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MurderAura.sks; sourceTree = "<group>"; };
+		078C28671D555506003F4869 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = "Dark Diary/Chartboost.framework"; sourceTree = "<group>"; };
+		078C28691D5556FC003F4869 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		078C286B1D555707003F4869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		078C286D1D555710003F4869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		078C286F1D55571C003F4869 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		078C28721D555797003F4869 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		078F8C1F1D5103CD009AE751 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = "Dark Diary/spark.png"; sourceTree = "<group>"; };
 		078F8C221D511042009AE751 /* CollectEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CollectEffect.sks; sourceTree = "<group>"; };
 		078F8C2D1D514458009AE751 /* beep.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep.caf; sourceTree = "<group>"; };
@@ -138,6 +151,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				078C28701D55571C003F4869 /* UIKit.framework in Frameworks */,
+				078C286E1D555710003F4869 /* CoreGraphics.framework in Frameworks */,
+				078C286C1D555707003F4869 /* Foundation.framework in Frameworks */,
+				078C286A1D5556FC003F4869 /* StoreKit.framework in Frameworks */,
+				078C28681D555506003F4869 /* Chartboost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +201,13 @@
 		0789281D1D3409B900B9B21B = {
 			isa = PBXGroup;
 			children = (
+				078C28721D555797003F4869 /* BridgingHeader.h */,
+				078C286F1D55571C003F4869 /* UIKit.framework */,
+				078C286D1D555710003F4869 /* CoreGraphics.framework */,
+				078C286B1D555707003F4869 /* Foundation.framework */,
+				078C28691D5556FC003F4869 /* StoreKit.framework */,
+				078C28671D555506003F4869 /* Chartboost.framework */,
+				078C28631D554F43003F4869 /* MurderAura.sks */,
 				077F3EE01D3952B200597FE7 /* rain.sks */,
 				078F8C1F1D5103CD009AE751 /* spark.png */,
 				077F3EE61D3960DA00597FE7 /* Line-50.png */,
@@ -209,8 +234,8 @@
 				078AD8721D36BF1E005E7052 /* SKTUtils */,
 				078928291D3409B900B9B21B /* AppDelegate.swift */,
 				0789282B1D3409B900B9B21B /* GameScene.sks */,
-				0789282D1D3409B900B9B21B /* GameScene.swift */,
 				073528F31D53EB6200121FB9 /* GameManager.swift */,
+				0789282D1D3409B900B9B21B /* GameScene.swift */,
 				078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */,
 				0757463D1D52A37E004881F1 /* SwiftyUserDefaults.swift */,
 				0757462F1D523741004881F1 /* TableOfContent.sks */,
@@ -409,6 +434,7 @@
 				078928331D3409B900B9B21B /* Main.storyboard in Resources */,
 				0757463A1D526369004881F1 /* Raining.caf in Resources */,
 				075587EB1D49801400931220 /* RandomBox.sks in Resources */,
+				078C28651D554F43003F4869 /* MurderAura.sks in Resources */,
 				077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */,
 				078F8C231D511042009AE751 /* CollectEffect.sks in Resources */,
 			);
@@ -604,11 +630,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dark",
+					Diary,
+				);
 				INFOPLIST_FILE = "Dark Diary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 			};
 			name = Debug;
 		};
@@ -618,11 +650,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Dark",
+					Diary,
+				);
 				INFOPLIST_FILE = "Dark Diary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 			};
 			name = Release;
 		};

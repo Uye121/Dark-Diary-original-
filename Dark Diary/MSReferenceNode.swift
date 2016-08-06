@@ -52,6 +52,6 @@ class KillerReferenceNode: SKReferenceNode {
     var killer: SKSpriteNode!
     
     override func didLoadReferenceNode(node: SKNode?) {
-        killer = childNodeWithName("killer") as! SKSpriteNode
+        killer = childNodeWithName("//killer") as! SKSpriteNode
     }
 }

@@ -30,6 +30,11 @@ class GameScene: SKScene {
     var totalPages = 0
     var timeLeft = 45
     var bombTime = 20
+    var randomPosition: CGPoint!
+    var currentPosition: CGPoint!
+    var distanceTraveledX: CGFloat!
+    var distanceTraveledY: CGFloat!
+    var distanceTraveled: Double!
     var pauseButton: MSButtonNode!
     var playButton: MSButtonNode!
     var restartButton: MSButtonNode!
@@ -43,6 +48,7 @@ class GameScene: SKScene {
     var bomb: SKSpriteNode!
     var bombTimer: SKLabelNode!
     var bombArray: [SKSpriteNode] = []
+    var killer: SKSpriteNode!
     var levelNode: SKNode!
     var lightCamera: SKCameraNode!
     var goal: SKLabelNode!
@@ -59,6 +65,7 @@ class GameScene: SKScene {
     var load = true
     var bombTimeAction: SKAction!
     let defaults = NSUserDefaults.standardUserDefaults()
+    var doneMoving = true
     
     enum Levels { case Default }
     
@@ -158,6 +165,9 @@ class GameScene: SKScene {
         }
         
         restartButton.selectedHandler = {
+            if self.state == .Victory {
+                GameManager.sharedInstance.currentlevel -= 1
+            }
             
             /* Grab reference to our SpriteKit view */
             let skView = self.view as SKView!
@@ -224,6 +234,7 @@ class GameScene: SKScene {
             
             skView.presentScene(scene)
         }
+        
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -252,6 +263,9 @@ class GameScene: SKScene {
             self.restartButton.zPosition = 10
             self.pauseBackground.zPosition = 5
             self.nextLevelButton.zPosition = 10
+            
+            // Show interstitial at location HomeScreen. See Chartboost.h for available location options.
+            Chartboost.showInterstitial(CBLocationHomeScreen)
         }
         
         /* Have the light follow the orb */
@@ -261,14 +275,13 @@ class GameScene: SKScene {
         var j = 0
         var k = 0
         
-        /* Code connect: flame effects */
-        let flame = SKEmitterNode(fileNamed: "CollectEffect")
-        /* Limits how many flame particle is emitted */
-        flame?.numParticlesToEmit = 35
-        
         for checkPage in pages {
             /* Detect light and page "collision" */
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkPage.calculateAccumulatedFrame()) {
+                /* Code connect: flame effects */
+                let flame = SKEmitterNode(fileNamed: "CollectEffect")
+                /* Limits how many flame particle is emitted */
+                flame?.numParticlesToEmit = 35
                 /* Add flame to the page that intersect with the light */
                 flame!.position = pages[i].position
                 checkPage.removeFromParent()
@@ -337,6 +350,10 @@ class GameScene: SKScene {
             k += 1
         }
         
+        if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), killer.calculateAccumulatedFrame()) {
+            state = .GameOver
+        }
+        
         /* Update the goal collected pages/total pages needed everytime a page is collected */
         goal.text = String("\(collectedNotes)/\(totalPages)")
         
@@ -352,6 +369,9 @@ class GameScene: SKScene {
         lightCamera.position = light1.position
         lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
         lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
+        
+        moveKillerRandomly(killer)
+
     }
     
     func createPage() {
@@ -403,6 +423,34 @@ class GameScene: SKScene {
         bombArray.append(bomb)
     }
     
+    func spawnKiller() {
+        let resourcePathKiller = NSBundle.mainBundle().pathForResource("Killer", ofType: "sks")
+        let killerReference = KillerReferenceNode (URL: NSURL (fileURLWithPath: resourcePathKiller!))
+
+        killer = killerReference.killer
+        killer.moveToParent(self)
+        killer.position = CGPoint(x: levelWidth - 40, y: levelHeight - 40)
+    }
+    
+    func moveKillerRandomly(killer: SKSpriteNode) {
+//        let killerAura = SKEmitterNode(fileNamed: "MurderAura")
+        
+        let killerMovement = SKAction.runBlock({
+            self.randomPosition = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.levelWidth))), y: CGFloat(arc4random_uniform(UInt32(self.levelHeight))))
+            self.currentPosition = killer.position
+            self.distanceTraveledX = abs(self.currentPosition.x - self.randomPosition.x)
+            self.distanceTraveledY = abs(self.currentPosition.y - self.randomPosition.y)
+            self.distanceTraveled = (sqrt(Double(pow(self.distanceTraveledX, 2)) + Double(pow(self.distanceTraveledY, 2))))
+            let move = SKAction.moveTo(self.randomPosition, duration: self.distanceTraveled/160)
+            killer.runAction(move)
+        })
+        
+        if randomPosition == nil || killer.position == randomPosition {
+            killer.runAction(killerMovement)
+        }
+        
+    }
+    
     func clearSceneOfButtons() {
         playButton.zPosition = -10
         pauseLabel.zPosition = -10
@@ -447,8 +495,7 @@ class GameScene: SKScene {
                 let fadeIn = SKAction.runBlock {
                     self.explode.runAction(SKAction.fadeInWithDuration(1.0), completion: {
                         let fadeOut = SKAction.runBlock {
-                            self.explode.runAction(SKAction.fadeOutWithDuration(1.0), completion: {
-                            })
+                            self.explode.runAction(SKAction.fadeOutWithDuration(1.0))
                         }
                         self.runAction(fadeOut)
                     })
