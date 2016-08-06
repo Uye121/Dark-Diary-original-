@@ -47,7 +47,6 @@
 		078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078AD87E1D36BF1E005E7052 /* Vector3.swift */; };
 		078C28601D550598003F4869 /* Killer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078C285F1D550598003F4869 /* Killer.sks */; };
 		078C28651D554F43003F4869 /* MurderAura.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078C28631D554F43003F4869 /* MurderAura.sks */; };
-		078C28681D555506003F4869 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C28671D555506003F4869 /* Chartboost.framework */; };
 		078C286A1D5556FC003F4869 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C28691D5556FC003F4869 /* StoreKit.framework */; };
 		078C286C1D555707003F4869 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C286B1D555707003F4869 /* Foundation.framework */; };
 		078C286E1D555710003F4869 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078C286D1D555710003F4869 /* CoreGraphics.framework */; };
@@ -57,6 +56,7 @@
 		078F8C2E1D514458009AE751 /* beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2D1D514458009AE751 /* beep.caf */; };
 		078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */; };
 		078F8C321D51651D009AE751 /* GameScene(LevelExtension).swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */; };
+		07951FA81D567F9E0034B8AC /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07951FA71D567F9E0034B8AC /* Chartboost.framework */; };
 		079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079EF34E1D500FD000BD438B /* LevelSelect.sks */; };
 		079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079EF3501D50126E00BD438B /* LevelSelect.swift */; };
 		079FA70C1D343FD60066C088 /* Light.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079FA70B1D343FD60066C088 /* Light.sks */; };
@@ -128,7 +128,6 @@
 		078AD87E1D36BF1E005E7052 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		078C285F1D550598003F4869 /* Killer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Killer.sks; sourceTree = "<group>"; };
 		078C28631D554F43003F4869 /* MurderAura.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MurderAura.sks; sourceTree = "<group>"; };
-		078C28671D555506003F4869 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = "Dark Diary/Chartboost.framework"; sourceTree = "<group>"; };
 		078C28691D5556FC003F4869 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		078C286B1D555707003F4869 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		078C286D1D555710003F4869 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -139,6 +138,7 @@
 		078F8C2D1D514458009AE751 /* beep.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep.caf; sourceTree = "<group>"; };
 		078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExplodingNoise.caf; sourceTree = "<group>"; };
 		078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameScene(LevelExtension).swift"; sourceTree = "<group>"; };
+		07951FA71D567F9E0034B8AC /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = "Dark Diary/Chartboost.framework"; sourceTree = "<group>"; };
 		079EF34E1D500FD000BD438B /* LevelSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect.sks; sourceTree = "<group>"; };
 		079EF3501D50126E00BD438B /* LevelSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect.swift; sourceTree = "<group>"; };
 		079FA70B1D343FD60066C088 /* Light.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Light.sks; path = ../Light.sks; sourceTree = "<group>"; };
@@ -151,11 +151,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07951FA81D567F9E0034B8AC /* Chartboost.framework in Frameworks */,
 				078C28701D55571C003F4869 /* UIKit.framework in Frameworks */,
 				078C286E1D555710003F4869 /* CoreGraphics.framework in Frameworks */,
 				078C286C1D555707003F4869 /* Foundation.framework in Frameworks */,
 				078C286A1D5556FC003F4869 /* StoreKit.framework in Frameworks */,
-				078C28681D555506003F4869 /* Chartboost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,11 +202,11 @@
 			isa = PBXGroup;
 			children = (
 				078C28721D555797003F4869 /* BridgingHeader.h */,
+				07951FA71D567F9E0034B8AC /* Chartboost.framework */,
 				078C286F1D55571C003F4869 /* UIKit.framework */,
 				078C286D1D555710003F4869 /* CoreGraphics.framework */,
 				078C286B1D555707003F4869 /* Foundation.framework */,
 				078C28691D5556FC003F4869 /* StoreKit.framework */,
-				078C28671D555506003F4869 /* Chartboost.framework */,
 				078C28631D554F43003F4869 /* MurderAura.sks */,
 				077F3EE01D3952B200597FE7 /* rain.sks */,
 				078F8C1F1D5103CD009AE751 /* spark.png */,
@@ -634,6 +634,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Dark",
 					Diary,
+					"$(PROJECT_DIR)/Dark",
+					Diary,
 				);
 				INFOPLIST_FILE = "Dark Diary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -652,6 +654,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Dark",
+					Diary,
 					"$(PROJECT_DIR)/Dark",
 					Diary,
 				);
