@@ -35,6 +35,8 @@ class GameScene: SKScene {
     var distanceTraveledX: CGFloat!
     var distanceTraveledY: CGFloat!
     var distanceTraveled: Double!
+    var distanceX: CGFloat!
+    var distanceY: CGFloat!
     var pauseButton: MSButtonNode!
     var playButton: MSButtonNode!
     var restartButton: MSButtonNode!
@@ -66,6 +68,7 @@ class GameScene: SKScene {
     var bombTimeAction: SKAction!
     let defaults = NSUserDefaults.standardUserDefaults()
     var doneMoving = true
+    let circle = SKShapeNode(circleOfRadius:100)
     
     enum Levels { case Default }
     
@@ -116,7 +119,6 @@ class GameScene: SKScene {
         light1 = light.light
         light1.moveToParent(self)
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
-                
         levelsStates()
         
         /* Ensure correct aspect mode */
@@ -137,6 +139,8 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([wait, block])
         self.runAction(SKAction.repeatActionForever(sequence))
         
+        circle.zPosition = -20
+        self.addChild(circle)
         
         pauseButton.selectedHandler = {
             self.state = .Pause
@@ -207,22 +211,12 @@ class GameScene: SKScene {
             self.state = .Playing
             self.clearSceneOfButtons()
             
+            let skView = self.view as SKView!
+            let scene = GameScene(fileNamed: "GameScene") as GameScene!
+            scene.scaleMode = .AspectFit
+            skView.presentScene(scene)
             self.load = true
             self.levelsStates()
-        }
-        
-        homeButton.selectedHandler = {
-            
-            /* Grab reference to Spritekit view */
-            let skView = self.view as SKView!
-            
-            /* Load Main menu */
-            let scene = MainMenu(fileNamed:"MainMenu") as MainMenu!
-            
-            /* Ensure correct aspect mode */
-            scene.scaleMode = .AspectFit
-            
-            skView.presentScene(scene)
         }
         
         levelSelector.selectedHandler = {
@@ -238,6 +232,7 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
+        /* Use NSUserdefault to memorize info */
         defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
         GameManager.sharedInstance.unlockedLevel = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
         
@@ -370,8 +365,8 @@ class GameScene: SKScene {
         lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
         lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
         
+        detect(killer, circle)
         moveKillerRandomly(killer)
-
     }
     
     func createPage() {
@@ -426,15 +421,13 @@ class GameScene: SKScene {
     func spawnKiller() {
         let resourcePathKiller = NSBundle.mainBundle().pathForResource("Killer", ofType: "sks")
         let killerReference = KillerReferenceNode (URL: NSURL (fileURLWithPath: resourcePathKiller!))
-
+        
         killer = killerReference.killer
         killer.moveToParent(self)
         killer.position = CGPoint(x: levelWidth - 40, y: levelHeight - 40)
     }
     
     func moveKillerRandomly(killer: SKSpriteNode) {
-//        let killerAura = SKEmitterNode(fileNamed: "MurderAura")
-        
         let killerMovement = SKAction.runBlock({
             self.randomPosition = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.levelWidth))), y: CGFloat(arc4random_uniform(UInt32(self.levelHeight))))
             self.currentPosition = killer.position
@@ -445,8 +438,13 @@ class GameScene: SKScene {
             killer.runAction(move)
         })
         
-        if randomPosition == nil || killer.position == randomPosition {
+        if randomPosition == nil || killer.position == randomPosition && detect(killer, circle) == false {
             killer.runAction(killerMovement)
+        } else if detect(killer, circle)  == true {
+            distanceX = abs(self.currentPosition.x - self.light1.position.x)
+            distanceY = abs(self.currentPosition.y - self.light1.position.y)
+            let displacement = (sqrt(Double(pow(self.distanceX, 2)) + Double(pow(self.distanceY, 2))))
+            killer.runAction(SKAction.moveTo(light1.position, duration: displacement/80))
         }
         
     }
@@ -483,8 +481,7 @@ class GameScene: SKScene {
             if self.bombTime > 0 {
                 self.bombTime -= 1
                 if GameManager.sharedInstance.music == true {
-                self.bomb.runAction(bombBeep)
-//                    print("check")
+                    self.bomb.runAction(bombBeep)
                 }
             }
             if self.bombTime < 4 {
@@ -514,6 +511,17 @@ class GameScene: SKScene {
         let sequence = SKAction.sequence([wait, block])
         bombTimeAction = SKAction.repeatActionForever(sequence)
         bombTimer.runAction(bombTimeAction)
+    }
+    
+    func detect(killer: SKSpriteNode, _ detector: SKShapeNode) -> Bool {
+        detector.position = killer.position
+        
+        if CGRectIntersectsRect(light1.calculateAccumulatedFrame(),
+                                detector.calculateAccumulatedFrame()) {
+            return true
+        } else {
+            return false
+        }
     }
 }
 

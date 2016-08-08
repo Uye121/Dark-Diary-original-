@@ -18,8 +18,8 @@ class Light: SKSpriteNode {
             /* If the scene is not paused, enable light control */
             if !scene!.view!.paused {
                 touchLocation = touch.locationInNode(self)
-                light.light.position.x += touchLocation.x * 0.03
-                light.light.position.y += touchLocation.y * 0.03
+                light.light.position.x += touchLocation.x * 0.04
+                light.light.position.y += touchLocation.y * 0.04
             }
         }
     }
