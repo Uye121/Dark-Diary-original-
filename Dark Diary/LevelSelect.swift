@@ -17,6 +17,7 @@ class LevelSelect: SKScene {
     var levelSelectorCamera: SKCameraNode?
     var levelWall: SKSpriteNode!
     var touchNode: SKSpriteNode!
+    var locked: SKLabelNode!
     var levelWallHeight: CGFloat!
     var levelWallWidth: CGFloat!
     
@@ -30,6 +31,9 @@ class LevelSelect: SKScene {
         levelSelectorCamera = childNodeWithName("//camera") as? SKCameraNode
         levelWall = childNodeWithName("levelWall") as! SKSpriteNode
         touchNode = childNodeWithName("touchNode") as! SKSpriteNode
+        locked = childNodeWithName("//locked") as! SKLabelNode
+        
+        locked.hidden = true
         
         /* Load the specified levels */
         level1Selector.selectedHandler = {
@@ -44,7 +48,10 @@ class LevelSelect: SKScene {
                 
                 skView.presentScene(scene)
             } else {
-                print("Locked")
+                self.locked.hidden = false
+                self.locked.runAction(SKAction.fadeInWithDuration(0.5), completion:{
+                    self.locked.runAction(SKAction.fadeOutWithDuration(0.5))
+                })
             }
         }
         
@@ -60,7 +67,10 @@ class LevelSelect: SKScene {
                 
                 skView.presentScene(scene)
             } else {
-                print("Locked")
+                self.locked.hidden = false
+                self.locked.runAction(SKAction.fadeInWithDuration(0.5), completion:{
+                    self.locked.runAction(SKAction.fadeOutWithDuration(0.5))
+                })
             }
         }
         
@@ -76,7 +86,10 @@ class LevelSelect: SKScene {
                 
                 skView.presentScene(scene)
             } else {
-                print("Locked")
+                self.locked.hidden = false
+                self.locked.runAction(SKAction.fadeInWithDuration(0.5), completion:{
+                    self.locked.runAction(SKAction.fadeOutWithDuration(0.5))
+                })
             }
         }
         

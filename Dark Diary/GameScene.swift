@@ -365,7 +365,6 @@ class GameScene: SKScene {
         lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
         lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
         
-        detect(killer, circle)
         moveKillerRandomly(killer)
     }
     
@@ -431,20 +430,24 @@ class GameScene: SKScene {
         let killerMovement = SKAction.runBlock({
             self.randomPosition = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.levelWidth))), y: CGFloat(arc4random_uniform(UInt32(self.levelHeight))))
             self.currentPosition = killer.position
-            self.distanceTraveledX = abs(self.currentPosition.x - self.randomPosition.x)
-            self.distanceTraveledY = abs(self.currentPosition.y - self.randomPosition.y)
+            self.distanceTraveledX = abs(killer.position.x - self.randomPosition.x)
+            self.distanceTraveledY = abs(killer.position.y - self.randomPosition.y)
             self.distanceTraveled = (sqrt(Double(pow(self.distanceTraveledX, 2)) + Double(pow(self.distanceTraveledY, 2))))
             let move = SKAction.moveTo(self.randomPosition, duration: self.distanceTraveled/160)
             killer.runAction(move)
         })
         
-        if randomPosition == nil || killer.position == randomPosition && detect(killer, circle) == false {
+        if (randomPosition == nil || killer.position == randomPosition) {
             killer.runAction(killerMovement)
         } else if detect(killer, circle)  == true {
-            distanceX = abs(self.currentPosition.x - self.light1.position.x)
-            distanceY = abs(self.currentPosition.y - self.light1.position.y)
+            distanceX = abs(killer.position.x - self.light1.position.x)
+            distanceY = abs(killer.position.y - self.light1.position.y)
             let displacement = (sqrt(Double(pow(self.distanceX, 2)) + Double(pow(self.distanceY, 2))))
-            killer.runAction(SKAction.moveTo(light1.position, duration: displacement/80))
+            killer.runAction(SKAction.moveTo(light1.position, duration: displacement/200), completion: {
+                if self.detect(self.killer, self.circle) == false {
+                        self.randomPosition = nil
+                }
+            })
         }
         
     }
