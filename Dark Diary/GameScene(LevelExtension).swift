@@ -38,7 +38,7 @@ extension GameScene {
             createRandomBox()
             numberOfBoxes += 1
         }
-        spawnKiller()
+//        spawnKiller()
     }
     
     func level2() {

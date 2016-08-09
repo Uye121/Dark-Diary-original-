@@ -16,9 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
-            // Initialize the Chartboost library
-            Chartboost.startWithAppId("57a52350f6cd4539aba4ad36", appSignature: "51668dd1f3e1cfb8c0c661ba9bc5fdd5bf53244e", delegate: nil)
+        
+        GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
+        // Initialize the Chartboost library
+        Chartboost.startWithAppId("57a52350f6cd4539aba4ad36", appSignature: "51668dd1f3e1cfb8c0c661ba9bc5fdd5bf53244e", delegate: nil)
         return true
     }
     
@@ -31,8 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        GameManager.sharedInstance.saveData()
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
-        GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
