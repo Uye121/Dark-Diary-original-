@@ -100,7 +100,7 @@
 		077F3EE01D3952B200597FE7 /* rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = rain.sks; sourceTree = "<group>"; };
 		077F3EE61D3960DA00597FE7 /* Line-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line-50.png"; sourceTree = "<group>"; };
 		0782BE3F1D359813002E895E /* Page.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Page.sks; path = ../Page.sks; sourceTree = "<group>"; };
-		078928261D3409B900B9B21B /* Dark Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dark Diary.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		078928261D3409B900B9B21B /* Shadow Hunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shadow Hunt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		078928291D3409B900B9B21B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0789282B1D3409B900B9B21B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		0789282D1D3409B900B9B21B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -109,10 +109,10 @@
 		078928341D3409B900B9B21B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		078928371D3409B900B9B21B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		078928391D3409B900B9B21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0789283E1D3409BA00B9B21B /* Dark DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dark DiaryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0789283E1D3409BA00B9B21B /* Shadow Hunt.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shadow Hunt.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		078928421D3409BA00B9B21B /* Dark_DiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dark_DiaryTests.swift; sourceTree = "<group>"; };
 		078928441D3409BA00B9B21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		078928491D3409BA00B9B21B /* Dark DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dark DiaryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		078928491D3409BA00B9B21B /* Shadow Hunt.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shadow Hunt.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0789284D1D3409BA00B9B21B /* Dark_DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dark_DiaryUITests.swift; sourceTree = "<group>"; };
 		0789284F1D3409BA00B9B21B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		078AD8731D36BF1E005E7052 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
@@ -221,9 +221,9 @@
 		078928271D3409B900B9B21B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				078928261D3409B900B9B21B /* Dark Diary.app */,
-				0789283E1D3409BA00B9B21B /* Dark DiaryTests.xctest */,
-				078928491D3409BA00B9B21B /* Dark DiaryUITests.xctest */,
+				078928261D3409B900B9B21B /* Shadow Hunt.app */,
+				0789283E1D3409BA00B9B21B /* Shadow Hunt.xctest */,
+				078928491D3409BA00B9B21B /* Shadow Hunt.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -311,9 +311,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		078928251D3409B900B9B21B /* Dark Diary */ = {
+		078928251D3409B900B9B21B /* Shadow Hunt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078928521D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark Diary" */;
+			buildConfigurationList = 078928521D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow Hunt" */;
 			buildPhases = (
 				078928221D3409B900B9B21B /* Sources */,
 				078928231D3409B900B9B21B /* Frameworks */,
@@ -323,14 +323,14 @@
 			);
 			dependencies = (
 			);
-			name = "Dark Diary";
+			name = "Shadow Hunt";
 			productName = "Dark Diary";
-			productReference = 078928261D3409B900B9B21B /* Dark Diary.app */;
+			productReference = 078928261D3409B900B9B21B /* Shadow Hunt.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0789283D1D3409BA00B9B21B /* Dark DiaryTests */ = {
+		0789283D1D3409BA00B9B21B /* Shadow HuntTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078928551D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryTests" */;
+			buildConfigurationList = 078928551D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow HuntTests" */;
 			buildPhases = (
 				0789283A1D3409BA00B9B21B /* Sources */,
 				0789283B1D3409BA00B9B21B /* Frameworks */,
@@ -341,14 +341,14 @@
 			dependencies = (
 				078928401D3409BA00B9B21B /* PBXTargetDependency */,
 			);
-			name = "Dark DiaryTests";
+			name = "Shadow HuntTests";
 			productName = "Dark DiaryTests";
-			productReference = 0789283E1D3409BA00B9B21B /* Dark DiaryTests.xctest */;
+			productReference = 0789283E1D3409BA00B9B21B /* Shadow Hunt.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		078928481D3409BA00B9B21B /* Dark DiaryUITests */ = {
+		078928481D3409BA00B9B21B /* Shadow HuntUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 078928581D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryUITests" */;
+			buildConfigurationList = 078928581D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow HuntUITests" */;
 			buildPhases = (
 				078928451D3409BA00B9B21B /* Sources */,
 				078928461D3409BA00B9B21B /* Frameworks */,
@@ -359,9 +359,9 @@
 			dependencies = (
 				0789284B1D3409BA00B9B21B /* PBXTargetDependency */,
 			);
-			name = "Dark DiaryUITests";
+			name = "Shadow HuntUITests";
 			productName = "Dark DiaryUITests";
-			productReference = 078928491D3409BA00B9B21B /* Dark DiaryUITests.xctest */;
+			productReference = 078928491D3409BA00B9B21B /* Shadow Hunt.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -388,7 +388,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 078928211D3409B900B9B21B /* Build configuration list for PBXProject "Dark Diary" */;
+			buildConfigurationList = 078928211D3409B900B9B21B /* Build configuration list for PBXProject "Shadow Hunt" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -401,9 +401,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				078928251D3409B900B9B21B /* Dark Diary */,
-				0789283D1D3409BA00B9B21B /* Dark DiaryTests */,
-				078928481D3409BA00B9B21B /* Dark DiaryUITests */,
+				078928251D3409B900B9B21B /* Shadow Hunt */,
+				0789283D1D3409BA00B9B21B /* Shadow HuntTests */,
+				078928481D3409BA00B9B21B /* Shadow HuntUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -509,12 +509,12 @@
 /* Begin PBXTargetDependency section */
 		078928401D3409BA00B9B21B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 078928251D3409B900B9B21B /* Dark Diary */;
+			target = 078928251D3409B900B9B21B /* Shadow Hunt */;
 			targetProxy = 0789283F1D3409BA00B9B21B /* PBXContainerItemProxy */;
 		};
 		0789284B1D3409BA00B9B21B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 078928251D3409B900B9B21B /* Dark Diary */;
+			target = 078928251D3409B900B9B21B /* Shadow Hunt */;
 			targetProxy = 0789284A1D3409BA00B9B21B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -643,7 +643,7 @@
 				INFOPLIST_FILE = "Dark Diary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shadow Hunt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 			};
@@ -668,7 +668,7 @@
 				INFOPLIST_FILE = "Dark Diary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shadow Hunt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
 			};
@@ -682,8 +682,8 @@
 				INFOPLIST_FILE = "Dark DiaryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dark Diary.app/Dark Diary";
+				PRODUCT_NAME = "Shadow Hunt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shadow Hunt.app/Shadow Hunt";
 			};
 			name = Debug;
 		};
@@ -694,8 +694,8 @@
 				INFOPLIST_FILE = "Dark DiaryTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dark Diary.app/Dark Diary";
+				PRODUCT_NAME = "Shadow Hunt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shadow Hunt.app/Shadow Hunt";
 			};
 			name = Release;
 		};
@@ -706,7 +706,7 @@
 				INFOPLIST_FILE = "Dark DiaryUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shadow Hunt";
 				TEST_TARGET_NAME = "Dark Diary";
 			};
 			name = Debug;
@@ -717,7 +717,7 @@
 				INFOPLIST_FILE = "Dark DiaryUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-DiaryUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Shadow Hunt";
 				TEST_TARGET_NAME = "Dark Diary";
 			};
 			name = Release;
@@ -725,7 +725,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		078928211D3409B900B9B21B /* Build configuration list for PBXProject "Dark Diary" */ = {
+		078928211D3409B900B9B21B /* Build configuration list for PBXProject "Shadow Hunt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				078928501D3409BA00B9B21B /* Debug */,
@@ -734,7 +734,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078928521D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark Diary" */ = {
+		078928521D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow Hunt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				078928531D3409BA00B9B21B /* Debug */,
@@ -743,7 +743,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078928551D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryTests" */ = {
+		078928551D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow HuntTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				078928561D3409BA00B9B21B /* Debug */,
@@ -752,7 +752,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		078928581D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Dark DiaryUITests" */ = {
+		078928581D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow HuntUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				078928591D3409BA00B9B21B /* Debug */,

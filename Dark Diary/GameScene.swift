@@ -241,16 +241,25 @@ class GameScene: SKScene {
         helpButton.selectedHandler = {
             self.state = .Playing
             self.scene!.view!.paused = false
-            let unhide = SKAction.unhide()
-            self.help.runAction(unhide, completion: {
-                self.state = .Pause
-            })
             
-//            var returnButton = self.childNodeWithName("//returnButton") as! MSButtonNode
-//            returnButton.selectedHandler = {
-//                self.help.hidden = true
-//                self.state = .Pause
-//            }
+            self.help.hidden = false
+            self.state = .Pause
+            
+            var returnButton = self.childNodeWithName("//returnButton") as! MSButtonNode
+            returnButton.selectedHandler = {
+                self.help.hidden = true
+                self.state = .Playing
+                self.scene!.view!.paused = false
+                self.clearSceneOfButtons()
+                self.playButton.zPosition = -10
+                self.pauseLabel.zPosition = -10
+                self.pauseButton.zPosition = 10
+                self.restartButton.zPosition = -10
+                self.homeButton.zPosition = -10
+                self.levelSelector.zPosition = -10
+                self.pauseBackground.zPosition = -15
+                self.helpButton.zPosition = -10
+            }
         }
         
     }
