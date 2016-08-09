@@ -75,7 +75,7 @@ class GameScene: SKScene {
     /* Manages changing to different level */
     func levelsStates() {
         while load {
-            switch GameManager.sharedInstance.currentlevel % 4 {
+            switch GameManager.sharedInstance.currentlevel % 5 {
             case 1:
                 level1()
                 load = false
@@ -84,6 +84,9 @@ class GameScene: SKScene {
                 load = false
             case 3:
                 level3()
+                load = false
+            case 4:
+                level4()
                 load = false
             default:
                 break

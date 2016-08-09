@@ -109,4 +109,44 @@ extension GameScene {
         destruction()
         spawnKiller()
     }
+    
+    func level4() {
+        let resourcePath = NSBundle.mainBundle().pathForResource("Level4", ofType: "sks")
+        let level4 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        levelNode.addChild(level4)
+        lighting = self.childNodeWithName("//lighting") as! SKLightNode
+        levelBackground = childNodeWithName("//level4Background") as! SKSpriteNode
+        bombTimer = childNodeWithName("//bombTimer") as! SKLabelNode
+        
+        levelWidth = levelBackground.size.width
+        levelHeight = levelBackground.size.height
+        
+        createBomb()
+        bombTimer.moveToParent(bomb)
+        bombTimer.position.x = 1.971
+        bombTimer.position.y = -1.593
+        
+        totalPages = 6
+        numberOfPages = 0
+        numberOfBoxes = 0
+        timeLeft = 30
+        bombTime = 13
+        
+        light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+        lightCamera.position = light1.position
+        
+        /* Create pages and boxes */
+        while numberOfPages < totalPages {
+            createPage()
+            numberOfPages += 1
+            spawnOutside()
+        }
+        while numberOfBoxes < 3 {
+            createRandomBox()
+            numberOfBoxes += 1
+        }
+        /* Calls function where the bomb counts down and leads to game over */
+        destruction()
+        spawnKiller()
+    }
 }
