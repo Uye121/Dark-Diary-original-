@@ -28,10 +28,9 @@ class GameScene: SKScene {
     var numberOfBoxes: Int = 0
     var collectedNotes = 0
     var totalPages = 0
-    var timeLeft = 45
+    var timeLeft = 46
     var bombTime = 20
     var randomPosition: CGPoint!
-    var currentPosition: CGPoint!
     var distanceTraveledX: CGFloat!
     var distanceTraveledY: CGFloat!
     var distanceTraveled: Double!
@@ -43,6 +42,7 @@ class GameScene: SKScene {
     var homeButton: MSButtonNode!
     var nextLevelButton: MSButtonNode!
     var levelSelector: MSButtonNode!
+    var helpButton: MSButtonNode!
     var page1: SKSpriteNode!
     var pages:[SKSpriteNode] = []
     var randomBox: SKSpriteNode!
@@ -69,6 +69,7 @@ class GameScene: SKScene {
     let defaults = NSUserDefaults.standardUserDefaults()
     var doneMoving = true
     let circle = SKShapeNode(circleOfRadius:100)
+    var help: SKReferenceNode!
     
     enum Levels { case Default }
     
@@ -89,6 +90,7 @@ class GameScene: SKScene {
                 level4()
                 load = false
             default:
+                load = false
                 break
             }
         }
@@ -105,6 +107,7 @@ class GameScene: SKScene {
         homeButton = childNodeWithName("//homeButton") as! MSButtonNode
         nextLevelButton = childNodeWithName("//nextLevelButton") as! MSButtonNode
         levelSelector = childNodeWithName("//levelSelector") as! MSButtonNode
+        helpButton = childNodeWithName("//helpButton") as! MSButtonNode
         lightCamera = self.childNodeWithName("camera") as! SKCameraNode
         time = self.childNodeWithName("//time") as! SKLabelNode
         gameOverLabel = childNodeWithName("//gameOverLabel") as! SKLabelNode
@@ -113,6 +116,9 @@ class GameScene: SKScene {
         diffuseMessage = childNodeWithName("//diffuseMessage") as! SKLabelNode
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         explode = childNodeWithName("//explode") as! SKSpriteNode
+        help = childNodeWithName("//help") as! SKReferenceNode
+        
+        help.runAction(SKAction.hide())
         
         /* scene and background constants */
         screenWidth = size.width
@@ -154,6 +160,7 @@ class GameScene: SKScene {
             self.restartButton.zPosition = 10
             self.levelSelector.zPosition = 10
             self.pauseBackground.zPosition = 5
+            self.helpButton.zPosition = 10
         }
         
         playButton.selectedHandler = {
@@ -166,9 +173,8 @@ class GameScene: SKScene {
             self.homeButton.zPosition = -10
             self.levelSelector.zPosition = -10
             self.pauseBackground.zPosition = -15
-            if self.state == .Playing {
-                self.scene!.view!.paused = false
-            }
+            self.helpButton.zPosition = -10
+            self.scene!.view!.paused = false
         }
         
         restartButton.selectedHandler = {
@@ -232,6 +238,21 @@ class GameScene: SKScene {
             skView.presentScene(scene)
         }
         
+        helpButton.selectedHandler = {
+            self.state = .Playing
+            self.scene!.view!.paused = false
+            let unhide = SKAction.unhide()
+            self.help.runAction(unhide, completion: {
+                self.state = .Pause
+            })
+            
+//            var returnButton = self.childNodeWithName("//returnButton") as! MSButtonNode
+//            returnButton.selectedHandler = {
+//                self.help.hidden = true
+//                self.state = .Pause
+//            }
+        }
+        
     }
     
     override func update(currentTime: CFTimeInterval) {
@@ -269,7 +290,7 @@ class GameScene: SKScene {
         /* Have the light follow the orb */
         lighting.position = light1.position
         
-        if GameManager.sharedInstance.currentlevel != 1 && killer != nil {
+        if killer != nil {
             moveKillerRandomly(killer)
         }
         
@@ -352,7 +373,7 @@ class GameScene: SKScene {
             k += 1
         }
         
-        if GameManager.sharedInstance.currentlevel != 1 && killer != nil {
+        if killer != nil {
             if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), killer.calculateAccumulatedFrame()) {
                 state = .GameOver
             }
@@ -437,7 +458,6 @@ class GameScene: SKScene {
     func moveKillerRandomly(killer: SKSpriteNode) {
         let killerMovement = SKAction.runBlock({
             self.randomPosition = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.levelWidth))), y: CGFloat(arc4random_uniform(UInt32(self.levelHeight))))
-            self.currentPosition = killer.position
             self.distanceTraveledX = abs(killer.position.x - self.randomPosition.x)
             self.distanceTraveledY = abs(killer.position.y - self.randomPosition.y)
             self.distanceTraveled = (sqrt(Double(pow(self.distanceTraveledX, 2)) + Double(pow(self.distanceTraveledY, 2))))
@@ -469,6 +489,7 @@ class GameScene: SKScene {
         pauseBackground.zPosition = -15
         nextLevelButton.zPosition = -10
         levelSelector.zPosition = -10
+        helpButton.zPosition = -10
     }
     
     func spawnOutside() {

@@ -129,7 +129,7 @@ extension GameScene {
         totalPages = 6
         numberOfPages = 0
         numberOfBoxes = 0
-        timeLeft = 30
+        timeLeft = 31
         bombTime = 13
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)

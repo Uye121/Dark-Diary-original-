@@ -17,8 +17,10 @@ class MainMenu: SKScene {
     var thunderFlash: SKNode!
     var sound: MSButtonNode!
     var mute: MSButtonNode!
+    var helpButton: MSButtonNode!
     var raining: SKAudioNode!
     var thunderclap: SKAudioNode!
+    var help: SKReferenceNode!
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -29,8 +31,13 @@ class MainMenu: SKScene {
         thunderFlash = childNodeWithName("thunderFlash") as SKNode!
         sound = childNodeWithName("//sound") as! MSButtonNode
         mute = childNodeWithName("//mute") as! MSButtonNode
+        helpButton = childNodeWithName("//helpButton") as! MSButtonNode
         raining = childNodeWithName("raining") as! SKAudioNode
         thunderclap = childNodeWithName("thunderclap") as! SKAudioNode
+        help = childNodeWithName("//help") as! SKReferenceNode
+        
+        help.hidden = true
+
         if GameManager.sharedInstance.music == true{
             sound.hidden = true
             mute.hidden = false
@@ -61,7 +68,7 @@ class MainMenu: SKScene {
             let scene = GameScene(fileNamed:"GameScene") as GameScene!
             
             /* Ensure correct aspect mode */
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             
             /* Start game scene */
             skView.presentScene(scene)
@@ -72,7 +79,7 @@ class MainMenu: SKScene {
             
             let scene = LevelSelect(fileNamed: "LevelSelect") as LevelSelect!
             
-            scene.scaleMode = .AspectFill
+            scene.scaleMode = .AspectFit
             
             skView.presentScene(scene)
         }
@@ -92,6 +99,15 @@ class MainMenu: SKScene {
             self.mute.hidden = false
             self.sound.hidden = true
             GameManager.sharedInstance.music = true
+        }
+        
+        helpButton.selectedHandler = {
+            self.help.hidden = false
+            
+            let returnButton = self.childNodeWithName("//returnButton") as! MSButtonNode
+            returnButton.selectedHandler = {
+                self.help.hidden = true
+            }
         }
         
         /* Intervals for thunder */

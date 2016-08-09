@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 /* Create GameManager to keep track of the current level outside so restart does
  not reset the currentlevel variable */
