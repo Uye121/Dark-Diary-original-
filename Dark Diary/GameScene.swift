@@ -269,6 +269,10 @@ class GameScene: SKScene {
         /* Have the light follow the orb */
         lighting.position = light1.position
         
+        if GameManager.sharedInstance.currentlevel != 1 && killer != nil {
+            moveKillerRandomly(killer)
+        }
+        
         var i = 0
         var j = 0
         var k = 0
@@ -348,8 +352,10 @@ class GameScene: SKScene {
             k += 1
         }
         
-        if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), killer.calculateAccumulatedFrame()) {
-            state = .GameOver
+        if GameManager.sharedInstance.currentlevel != 1 && killer != nil {
+            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), killer.calculateAccumulatedFrame()) {
+                state = .GameOver
+            }
         }
         
         /* Update the goal collected pages/total pages needed everytime a page is collected */
@@ -368,7 +374,6 @@ class GameScene: SKScene {
         lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
         lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
         
-        moveKillerRandomly(killer)
     }
     
     func createPage() {
@@ -448,7 +453,7 @@ class GameScene: SKScene {
             let displacement = (sqrt(Double(pow(self.distanceX, 2)) + Double(pow(self.distanceY, 2))))
             killer.runAction(SKAction.moveTo(light1.position, duration: displacement/200), completion: {
                 if self.detect(self.killer, self.circle) == false {
-                        self.randomPosition = nil
+                    self.randomPosition = nil
                 }
             })
         }
