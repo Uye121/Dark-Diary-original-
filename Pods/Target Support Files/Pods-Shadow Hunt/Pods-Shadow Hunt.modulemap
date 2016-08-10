@@ -1,0 +1,6 @@
+framework module Pods_Shadow_Hunt {
+  umbrella header "Pods-Shadow Hunt-umbrella.h"
+
+  export *
+  module * { export * }
+}

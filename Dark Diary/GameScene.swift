@@ -90,6 +90,7 @@ class GameScene: SKScene {
                 level4()
                 load = false
             default:
+                level1()
                 load = false
                 break
             }
@@ -97,7 +98,15 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
+        
+//        GameManager.sharedInstance.unlockedLevel.append(true)
+//        for _ in 1...4 {
+//            GameManager.sharedInstance.unlockedLevel.append(false)
+//        }
         state = .Playing
+        if GameManager.sharedInstance.currentlevel == 0 {
+            GameManager.sharedInstance.currentlevel = 1
+        }
         
         levelNode = childNodeWithName("//levelNode")
         goal = childNodeWithName("//goal") as! SKLabelNode
@@ -142,7 +151,7 @@ class GameScene: SKScene {
             if self.timeLeft < 11 {
                 self.time.fontColor = UIColor.redColor()
             }
-            if self.timeLeft == 0 { self.state = .GameOver }
+            if self.timeLeft <= 0 { self.state = .GameOver }
             self.time.text = "\(self.timeLeft)"
         })
         let sequence = SKAction.sequence([wait, block])
@@ -245,7 +254,7 @@ class GameScene: SKScene {
             self.help.hidden = false
             self.state = .Pause
             
-            var returnButton = self.childNodeWithName("//returnButton") as! MSButtonNode
+            let returnButton = self.childNodeWithName("//returnButton") as! MSButtonNode
             returnButton.selectedHandler = {
                 self.help.hidden = true
                 self.state = .Playing
@@ -265,9 +274,13 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        /* Use NSUserdefault to memorize info */
+        /* Use NSUserdefault to store info */
         defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
         GameManager.sharedInstance.unlockedLevel = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
+        
+        if GameManager.sharedInstance.currentlevel == 0 {
+            GameManager.sharedInstance.currentlevel = 1
+        }
         
         if state == .Pause {
             self.scene!.view!.paused = true

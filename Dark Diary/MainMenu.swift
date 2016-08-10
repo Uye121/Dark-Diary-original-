@@ -25,6 +25,11 @@ class MainMenu: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
+        GameManager.sharedInstance.unlockedLevel.append(true)
+        for _ in 1...4 {
+            GameManager.sharedInstance.unlockedLevel.append(false)
+        }
+        
         /* Set UI connections */
         play = self.childNodeWithName("play") as! MSButtonNode
         levelSelector = childNodeWithName("levelSelector") as! MSButtonNode
@@ -37,7 +42,7 @@ class MainMenu: SKScene {
         help = childNodeWithName("//help") as! SKReferenceNode
         
         help.hidden = true
-
+        
         if GameManager.sharedInstance.music == true{
             sound.hidden = true
             mute.hidden = false

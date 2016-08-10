@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		073528F41D53EB6200121FB9 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073528F31D53EB6200121FB9 /* GameManager.swift */; };
 		073F5E921D492AF400C0FC9E /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073F5E911D492AF400C0FC9E /* Level1.sks */; };
 		075587EB1D49801400931220 /* RandomBox.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075587EA1D49801400931220 /* RandomBox.sks */; };
 		075746341D525736004881F1 /* Thunderclap.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075746331D525736004881F1 /* Thunderclap.caf */; };
@@ -21,7 +20,6 @@
 		0773ABB41D3838C400868206 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0773ABB31D3838C400868206 /* MainMenu.sks */; };
 		0773ABB61D384F3D00868206 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0773ABB51D384F3D00868206 /* MainMenu.swift */; };
 		077601431D5A457F00AE4D7B /* Help.sks in Resources */ = {isa = PBXBuildFile; fileRef = 077601421D5A457F00AE4D7B /* Help.sks */; };
-		077601451D5A459400AE4D7B /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077601441D5A459400AE4D7B /* Help.swift */; };
 		077F3EE21D3952B200597FE7 /* rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE01D3952B200597FE7 /* rain.sks */; };
 		077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 077F3EE61D3960DA00597FE7 /* Line-50.png */; };
 		0782BE401D359813002E895E /* Page.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0782BE3F1D359813002E895E /* Page.sks */; };
@@ -56,12 +54,16 @@
 		078F8C2E1D514458009AE751 /* beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2D1D514458009AE751 /* beep.caf */; };
 		078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */; };
 		078F8C321D51651D009AE751 /* GameScene(LevelExtension).swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */; };
+		079DD09A1D5AD50E005A932C /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073528F31D53EB6200121FB9 /* GameManager.swift */; };
 		079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079EF34E1D500FD000BD438B /* LevelSelect.sks */; };
 		079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079EF3501D50126E00BD438B /* LevelSelect.swift */; };
 		079FA70C1D343FD60066C088 /* Light.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079FA70B1D343FD60066C088 /* Light.sks */; };
 		079FA7121D34464D0066C088 /* MSReferenceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FA7111D34464D0066C088 /* MSReferenceNode.swift */; };
 		079FA7161D3465780066C088 /* light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FA7151D3465780066C088 /* light.swift */; };
 		07CFC07C1D595311000CC4E2 /* Level4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07CFC07B1D595311000CC4E2 /* Level4.sks */; };
+		6184010F81BFCFBF52CE8383 /* Pods_Shadow_Hunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1281E9965373002554B4098 /* Pods_Shadow_Hunt.framework */; };
+		7240972AFD7F9A06EC535872 /* Pods_Shadow_HuntTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7A41529E0C478F3EBAFB47 /* Pods_Shadow_HuntTests.framework */; };
+		F333F22689394568D0D0A76F /* Pods_Shadow_HuntUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CD41B5B6490C2E333E3ED7 /* Pods_Shadow_HuntUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +98,6 @@
 		0773ABB31D3838C400868206 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		0773ABB51D384F3D00868206 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		077601421D5A457F00AE4D7B /* Help.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Help.sks; sourceTree = "<group>"; };
-		077601441D5A459400AE4D7B /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		077F3EE01D3952B200597FE7 /* rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = rain.sks; sourceTree = "<group>"; };
 		077F3EE61D3960DA00597FE7 /* Line-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line-50.png"; sourceTree = "<group>"; };
 		0782BE3F1D359813002E895E /* Page.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Page.sks; path = ../Page.sks; sourceTree = "<group>"; };
@@ -144,6 +145,15 @@
 		079FA7111D34464D0066C088 /* MSReferenceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSReferenceNode.swift; sourceTree = "<group>"; };
 		079FA7151D3465780066C088 /* light.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = light.swift; path = ../light.swift; sourceTree = "<group>"; };
 		07CFC07B1D595311000CC4E2 /* Level4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level4.sks; path = ../Level4.sks; sourceTree = "<group>"; };
+		17CD41B5B6490C2E333E3ED7 /* Pods_Shadow_HuntUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shadow_HuntUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		244165EC32339C2521D0EF8D /* Pods-Shadow Hunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shadow Hunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shadow Hunt/Pods-Shadow Hunt.debug.xcconfig"; sourceTree = "<group>"; };
+		4C7A41529E0C478F3EBAFB47 /* Pods_Shadow_HuntTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shadow_HuntTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5448A226B04C6AC0A5F91D04 /* Pods-Shadow Hunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shadow Hunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shadow Hunt/Pods-Shadow Hunt.release.xcconfig"; sourceTree = "<group>"; };
+		9B22FFFD25BF2A05C60EF635 /* Pods-Shadow HuntUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shadow HuntUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shadow HuntUITests/Pods-Shadow HuntUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9D395CB2E177050F40AF29D0 /* Pods-Shadow HuntTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shadow HuntTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shadow HuntTests/Pods-Shadow HuntTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A3E0E73DA87D8D9D2A443F81 /* Pods-Shadow HuntTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shadow HuntTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shadow HuntTests/Pods-Shadow HuntTests.release.xcconfig"; sourceTree = "<group>"; };
+		C1281E9965373002554B4098 /* Pods_Shadow_Hunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shadow_Hunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5F2B3BE1CFBD633C6DCF425 /* Pods-Shadow HuntUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shadow HuntUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shadow HuntUITests/Pods-Shadow HuntUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +166,7 @@
 				076EA4AD1D58173100A43444 /* Chartboost.framework in Frameworks */,
 				078C286C1D555707003F4869 /* Foundation.framework in Frameworks */,
 				078C286A1D5556FC003F4869 /* StoreKit.framework in Frameworks */,
+				6184010F81BFCFBF52CE8383 /* Pods_Shadow_Hunt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7240972AFD7F9A06EC535872 /* Pods_Shadow_HuntTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F333F22689394568D0D0A76F /* Pods_Shadow_HuntUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +228,8 @@
 				078928411D3409BA00B9B21B /* Dark DiaryTests */,
 				0789284C1D3409BA00B9B21B /* Dark DiaryUITests */,
 				078928271D3409B900B9B21B /* Products */,
+				CE25443406EA408038EE2861 /* Pods */,
+				118DF3133F76AD8D808EC8A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,7 +257,6 @@
 				079EF34E1D500FD000BD438B /* LevelSelect.sks */,
 				0773ABB51D384F3D00868206 /* MainMenu.swift */,
 				0773ABB31D3838C400868206 /* MainMenu.sks */,
-				077601441D5A459400AE4D7B /* Help.swift */,
 				077601421D5A457F00AE4D7B /* Help.sks */,
 				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				078F8C2C1D514441009AE751 /* SFX */,
@@ -308,6 +322,29 @@
 			name = SFX;
 			sourceTree = "<group>";
 		};
+		118DF3133F76AD8D808EC8A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1281E9965373002554B4098 /* Pods_Shadow_Hunt.framework */,
+				4C7A41529E0C478F3EBAFB47 /* Pods_Shadow_HuntTests.framework */,
+				17CD41B5B6490C2E333E3ED7 /* Pods_Shadow_HuntUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE25443406EA408038EE2861 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				244165EC32339C2521D0EF8D /* Pods-Shadow Hunt.debug.xcconfig */,
+				5448A226B04C6AC0A5F91D04 /* Pods-Shadow Hunt.release.xcconfig */,
+				9D395CB2E177050F40AF29D0 /* Pods-Shadow HuntTests.debug.xcconfig */,
+				A3E0E73DA87D8D9D2A443F81 /* Pods-Shadow HuntTests.release.xcconfig */,
+				C5F2B3BE1CFBD633C6DCF425 /* Pods-Shadow HuntUITests.debug.xcconfig */,
+				9B22FFFD25BF2A05C60EF635 /* Pods-Shadow HuntUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,9 +352,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 078928521D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow Hunt" */;
 			buildPhases = (
+				EFBB6D3DBC602F804C6D87C3 /* [CP] Check Pods Manifest.lock */,
 				078928221D3409B900B9B21B /* Sources */,
 				078928231D3409B900B9B21B /* Frameworks */,
 				078928241D3409B900B9B21B /* Resources */,
+				111116FD4BA7E218C10507D7 /* [CP] Embed Pods Frameworks */,
+				29B3E796FCFA3DBB9CF6C822 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -332,9 +372,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 078928551D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow HuntTests" */;
 			buildPhases = (
+				08228602E2EA228EB6A0445E /* [CP] Check Pods Manifest.lock */,
 				0789283A1D3409BA00B9B21B /* Sources */,
 				0789283B1D3409BA00B9B21B /* Frameworks */,
 				0789283C1D3409BA00B9B21B /* Resources */,
+				A9F3EE2732C06C9FCA6149FC /* [CP] Embed Pods Frameworks */,
+				7404CC890E59EC17AFFE62CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -350,9 +393,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 078928581D3409BA00B9B21B /* Build configuration list for PBXNativeTarget "Shadow HuntUITests" */;
 			buildPhases = (
+				BC94B6C2C4EB8EF31F079C7C /* [CP] Check Pods Manifest.lock */,
 				078928451D3409BA00B9B21B /* Sources */,
 				078928461D3409BA00B9B21B /* Frameworks */,
 				078928471D3409BA00B9B21B /* Resources */,
+				B769C6DD4C6917FEA6D34195 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -456,13 +501,136 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08228602E2EA228EB6A0445E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		111116FD4BA7E218C10507D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shadow Hunt/Pods-Shadow Hunt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29B3E796FCFA3DBB9CF6C822 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shadow Hunt/Pods-Shadow Hunt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7404CC890E59EC17AFFE62CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shadow HuntTests/Pods-Shadow HuntTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9F3EE2732C06C9FCA6149FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shadow HuntTests/Pods-Shadow HuntTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B769C6DD4C6917FEA6D34195 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shadow HuntUITests/Pods-Shadow HuntUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC94B6C2C4EB8EF31F079C7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EFBB6D3DBC602F804C6D87C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		078928221D3409B900B9B21B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				078AD8801D36BF1E005E7052 /* CGPoint+Extensions.swift in Sources */,
-				073528F41D53EB6200121FB9 /* GameManager.swift in Sources */,
+				079DD09A1D5AD50E005A932C /* GameManager.swift in Sources */,
 				078AD8881D36BF1E005E7052 /* SKTEffects.swift in Sources */,
 				078AD8831D36BF1E005E7052 /* SKAction+Extensions.swift in Sources */,
 				0773ABB21D38166800868206 /* MSButtonNode.swift in Sources */,
@@ -475,7 +643,6 @@
 				078AD8841D36BF1E005E7052 /* SKAction+SpecialEffects.swift in Sources */,
 				078F8C321D51651D009AE751 /* GameScene(LevelExtension).swift in Sources */,
 				078AD8821D36BF1E005E7052 /* Int+Extensions.swift in Sources */,
-				077601451D5A459400AE4D7B /* Help.swift in Sources */,
 				078AD88A1D36BF1E005E7052 /* Vector3.swift in Sources */,
 				079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */,
 				079FA7121D34464D0066C088 /* MSReferenceNode.swift in Sources */,
@@ -626,6 +793,7 @@
 		};
 		078928531D3409BA00B9B21B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 244165EC32339C2521D0EF8D /* Pods-Shadow Hunt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -642,7 +810,7 @@
 				);
 				INFOPLIST_FILE = "Dark Diary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Shadow-Hunt";
 				PRODUCT_NAME = "Shadow Hunt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
@@ -651,6 +819,7 @@
 		};
 		078928541D3409BA00B9B21B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5448A226B04C6AC0A5F91D04 /* Pods-Shadow Hunt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -667,7 +836,7 @@
 				);
 				INFOPLIST_FILE = "Dark Diary/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Dark-Diary";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.makeschool.Shadow-Hunt";
 				PRODUCT_NAME = "Shadow Hunt";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/BridgingHeader.h";
@@ -676,6 +845,7 @@
 		};
 		078928561D3409BA00B9B21B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D395CB2E177050F40AF29D0 /* Pods-Shadow HuntTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -689,6 +859,7 @@
 		};
 		078928571D3409BA00B9B21B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3E0E73DA87D8D9D2A443F81 /* Pods-Shadow HuntTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "Dark DiaryTests/Info.plist";
@@ -701,6 +872,7 @@
 		};
 		078928591D3409BA00B9B21B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5F2B3BE1CFBD633C6DCF425 /* Pods-Shadow HuntUITests.debug.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				INFOPLIST_FILE = "Dark DiaryUITests/Info.plist";
@@ -713,6 +885,7 @@
 		};
 		0789285A1D3409BA00B9B21B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B22FFFD25BF2A05C60EF635 /* Pods-Shadow HuntUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "Dark DiaryUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

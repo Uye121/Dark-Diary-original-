@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,9 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        Mixpanel.sharedInstanceWithToken("1b1f9e0266520316ffe497852331f9a8")
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("App launched")
+        
         GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
         // Initialize the Chartboost library
-        Chartboost.startWithAppId("57a52350f6cd4539aba4ad36", appSignature: "51668dd1f3e1cfb8c0c661ba9bc5fdd5bf53244e", delegate: nil)
+        Chartboost.startWithAppId("57ab72cc43150f38d8edd41f", appSignature: "25014f49ce08dcb3c30be7581e544f8aa0237c99", delegate: nil)
         return true
     }
     
@@ -29,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        //        GameManager.sharedInstance.saveData()
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
