@@ -90,23 +90,19 @@ class GameScene: SKScene {
                 level4()
                 load = false
             default:
-                level1()
+                comingSoon()
                 load = false
-                break
             }
         }
     }
     
     override func didMoveToView(view: SKView) {
-        
-//        GameManager.sharedInstance.unlockedLevel.append(true)
-//        for _ in 1...4 {
-//            GameManager.sharedInstance.unlockedLevel.append(false)
-//        }
+
         state = .Playing
         if GameManager.sharedInstance.currentlevel == 0 {
             GameManager.sharedInstance.currentlevel = 1
         }
+
         
         levelNode = childNodeWithName("//levelNode")
         goal = childNodeWithName("//goal") as! SKLabelNode
@@ -248,6 +244,8 @@ class GameScene: SKScene {
         }
         
         helpButton.selectedHandler = {
+            // Show interstitial at location HomeScreen. See Chartboost.h for available location options.
+            Chartboost.showInterstitial(CBLocationHomeScreen)
             self.state = .Playing
             self.scene!.view!.paused = false
             
@@ -305,8 +303,7 @@ class GameScene: SKScene {
             self.pauseBackground.zPosition = 5
             self.nextLevelButton.zPosition = 10
             
-            // Show interstitial at location HomeScreen. See Chartboost.h for available location options.
-            Chartboost.showInterstitial(CBLocationHomeScreen)
+
         }
         
         /* Have the light follow the orb */

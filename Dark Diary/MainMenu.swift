@@ -23,6 +23,8 @@ class MainMenu: SKScene {
     var help: SKReferenceNode!
     
     override func didMoveToView(view: SKView) {
+
+        
         /* Setup your scene here */
         
         GameManager.sharedInstance.unlockedLevel.append(true)

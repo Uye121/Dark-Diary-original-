@@ -16,7 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="AncientLamp-1" translatesAutoresizingMaskIntoConstraints="NO" id="WEQ-X4-BNU">
+                                <rect key="frame" x="246" y="225" width="109" height="149"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="SWU-67-8uB"/>
+                                    <constraint firstAttribute="height" constant="149" id="i2H-DM-ovr"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WEQ-X4-BNU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2mA-ze-n5X"/>
+                            <constraint firstItem="WEQ-X4-BNU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QyW-9Y-cif"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +37,7 @@
             <point key="canvasLocation" x="235" y="135"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AncientLamp-1" width="109" height="149"/>
+    </resources>
 </document>

@@ -149,4 +149,10 @@ extension GameScene {
         destruction()
         spawnKiller()
     }
+    
+    func comingSoon() {
+        let resourcePath = NSBundle.mainBundle().pathForResource("ComingSoon", ofType: "sks")
+        let comingSoon = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        levelNode.addChild(comingSoon)
+    }
 }

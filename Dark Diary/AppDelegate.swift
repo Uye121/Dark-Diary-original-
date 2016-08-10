@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
         // Initialize the Chartboost library
-        Chartboost.startWithAppId("57ab72cc43150f38d8edd41f", appSignature: "25014f49ce08dcb3c30be7581e544f8aa0237c99", delegate: nil)
+        Chartboost.startWithAppId("57ab765904b0164e5029c9ec", appSignature: "ad9693c2951d289f66f2269d7642febacf1a70fe", delegate: nil)
         return true
     }
     
