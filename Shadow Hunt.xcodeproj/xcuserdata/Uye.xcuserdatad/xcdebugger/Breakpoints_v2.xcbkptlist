@@ -17,53 +17,5 @@
             endingLineNumber = "66">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Dark Diary/SwiftyUserDefaults.swift"
-            timestampString = "492498962.33377"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "NSUserDefaults"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in Shadow_Hunt):__ObjC.NSUserDefaults.Proxy.__deallocating_deinit"
-                  moduleName = "Shadow Hunt"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Uye/Desktop/Make%20School%20Projects/Dark%20Diary%20copy/Dark%20Diary/SwiftyUserDefaults.swift"
-                  timestampString = "492553369.662674"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in Shadow_Hunt):__ObjC.NSUserDefaults.Proxy.deinit"
-                  moduleName = "Shadow Hunt"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Uye/Desktop/Make%20School%20Projects/Dark%20Diary%20copy/Dark%20Diary/SwiftyUserDefaults.swift"
-                  timestampString = "492553369.665566"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

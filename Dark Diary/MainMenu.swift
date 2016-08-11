@@ -23,14 +23,18 @@ class MainMenu: SKScene {
     var help: SKReferenceNode!
     
     override func didMoveToView(view: SKView) {
-
+        
         
         /* Setup your scene here */
         
-        GameManager.sharedInstance.unlockedLevel.append(true)
-        for _ in 1...4 {
-            GameManager.sharedInstance.unlockedLevel.append(false)
+        if GameManager.sharedInstance.unlockedLevel.count != 0{
+            for _ in 1...4 {
+                if GameManager.sharedInstance.unlockedLevel.count <= 4 {
+                    GameManager.sharedInstance.unlockedLevel.append(false)
+                }
+            }
         }
+        
         
         /* Set UI connections */
         play = self.childNodeWithName("play") as! MSButtonNode

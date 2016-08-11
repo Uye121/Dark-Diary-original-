@@ -153,6 +153,20 @@ extension GameScene {
     func comingSoon() {
         let resourcePath = NSBundle.mainBundle().pathForResource("ComingSoon", ofType: "sks")
         let comingSoon = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        var homeButton = childNodeWithName("//homeButton") as! MSButtonNode
         levelNode.addChild(comingSoon)
+        
+        homeButton.selectedHandler = {
+            
+            /* Grab reference to Spritekit view */
+            let skView = self.view as SKView!
+            
+            /* Load Main menu */
+            let scene = MainMenu(fileNamed:"MainMenu") as MainMenu!
+            
+            /* Ensure correct aspect mode */
+            scene.scaleMode = .AspectFit
+            
+            skView.presentScene(scene)        }
     }
 }

@@ -16,11 +16,4 @@ class GameManager {
     var unlockedLevel: [Bool] = []
     var music: Bool = true
     static let sharedInstance = GameManager()
-
-//    init() {
-//        unlockedLevel.append(true)
-//        for _ in 1...4 {
-//            unlockedLevel.append(false)
-//        }
-//    }
 }

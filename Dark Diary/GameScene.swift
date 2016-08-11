@@ -272,9 +272,9 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-        /* Use NSUserdefault to store info */
-        defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
-        GameManager.sharedInstance.unlockedLevel = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
+//        /* Use NSUserdefault to store info */
+//        defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
+//        GameManager.sharedInstance.unlockedLevel = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
         
         if GameManager.sharedInstance.currentlevel == 0 {
             GameManager.sharedInstance.currentlevel = 1
@@ -569,8 +569,10 @@ class GameScene: SKScene {
         
         if CGRectIntersectsRect(light1.calculateAccumulatedFrame(),
                                 detector.calculateAccumulatedFrame()) {
+            lighting.ambientColor = UIColor.redColor()
             return true
         } else {
+            lighting.ambientColor = UIColor.blackColor()
             return false
         }
     }
