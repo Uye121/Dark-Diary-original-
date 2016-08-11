@@ -244,8 +244,6 @@ class GameScene: SKScene {
         }
         
         helpButton.selectedHandler = {
-            // Show interstitial at location HomeScreen. See Chartboost.h for available location options.
-            Chartboost.showInterstitial(CBLocationHomeScreen)
             self.state = .Playing
             self.scene!.view!.paused = false
             
@@ -272,9 +270,6 @@ class GameScene: SKScene {
     }
     
     override func update(currentTime: CFTimeInterval) {
-//        /* Use NSUserdefault to store info */
-//        defaults.setObject(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
-//        GameManager.sharedInstance.unlockedLevel = defaults.objectForKey("saveUnlockedLevel") as? [Bool] ?? [Bool]()
         
         if GameManager.sharedInstance.currentlevel == 0 {
             GameManager.sharedInstance.currentlevel = 1
@@ -402,6 +397,8 @@ class GameScene: SKScene {
         goal.text = String("\(collectedNotes)/\(totalPages)")
         
         if collectedNotes == totalPages {
+            // Show interstitial at location HomeScreen. See Chartboost.h for available location options.
+            Chartboost.showInterstitial(CBLocationHomeScreen)
             state = .Victory
         }
         
