@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mixpanel.track("App launched")
         
         GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
+        GameManager.sharedInstance.currentlevel = NSUserDefaults.standardUserDefaults().integerForKey("saveCurrentLevel") as? Int ?? GameManager.sharedInstance.currentlevel
         // Initialize the Chartboost library
         Chartboost.startWithAppId("57ab765904b0164e5029c9ec", appSignature: "ad9693c2951d289f66f2269d7642febacf1a70fe", delegate: nil)
         return true
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(application: UIApplication) {
         GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
+        GameManager.sharedInstance.currentlevel = NSUserDefaults.standardUserDefaults().integerForKey("saveCurrentLevel") as? Int ?? GameManager.sharedInstance.currentlevel
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     
