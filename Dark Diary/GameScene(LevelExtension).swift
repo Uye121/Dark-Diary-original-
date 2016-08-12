@@ -28,6 +28,7 @@ extension GameScene {
         
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
+//        exit.position = CGPoint(x:718.5, y:391.546)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -59,6 +60,7 @@ extension GameScene {
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
+//        exit.position = CGPoint(x:622.22, y:435.624)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -98,6 +100,7 @@ extension GameScene {
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
+//        exit.position = CGPoint(x:570.27, y:434.772)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -140,6 +143,7 @@ extension GameScene {
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
+//        exit.position = CGPoint(x:107.258, y:189.524)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -155,5 +159,26 @@ extension GameScene {
         destruction()
         spawnKiller()
         reflect.runAction(SKAction.fadeOutWithDuration(2))
+    }
+    
+    func comingSoon() {
+        let resourcePath = NSBundle.mainBundle().pathForResource("ComingSoon", ofType: "sks")
+        let comingSoon = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        levelNode.addChild(comingSoon)
+        let homeButton = childNodeWithName("//homeButton") as! MSButtonNode
+        
+        homeButton.selectedHandler = {
+            
+            /* Grab reference to Spritekit view */
+            let skView = self.view as SKView!
+            
+            /* Load Main menu */
+            let scene = MainMenu(fileNamed:"MainMenu") as MainMenu!
+            
+            /* Ensure correct aspect mode */
+            scene.scaleMode = .AspectFit
+            
+            skView.presentScene(scene)
+        }
     }
 }

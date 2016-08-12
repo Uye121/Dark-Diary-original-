@@ -200,6 +200,7 @@
 				077270031D4C0AFD00E7BAA9 /* Level2.sks */,
 				07726FFF1D4BC25000E7BAA9 /* Level3.sks */,
 				07CFC07B1D595311000CC4E2 /* Level4.sks */,
+				07B200ED1D5BD2C8003B66EA /* ComingSoon.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -263,7 +264,6 @@
 				0773ABB51D384F3D00868206 /* MainMenu.swift */,
 				0773ABB31D3838C400868206 /* MainMenu.sks */,
 				077601421D5A457F00AE4D7B /* Help.sks */,
-				07B200ED1D5BD2C8003B66EA /* ComingSoon.sks */,
 				078F8C221D511042009AE751 /* CollectEffect.sks */,
 				078F8C2C1D514441009AE751 /* SFX */,
 				075417671D35A2F4008B283C /* Levels */,

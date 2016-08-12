@@ -72,11 +72,8 @@ class GameScene: SKScene {
     var doneMoving = true
     let circle = SKShapeNode(circleOfRadius:200)
     var help: SKReferenceNode!
-    var comingSoon: SKReferenceNode!
     var exitSign: SKLabelNode!
     var reflect: SKLabelNode!
-    var randomExitX: Int!
-    var randomExitY: Int!
     
     enum Levels { case Default }
     
@@ -84,7 +81,7 @@ class GameScene: SKScene {
     
     func levelsStates() {
         while load {
-            switch GameManager.sharedInstance.currentlevel % 5 {
+            switch GameManager.sharedInstance.currentlevel % 6 {
             case 1:
                 level1()
                 load = false
@@ -96,6 +93,9 @@ class GameScene: SKScene {
                 load = false
             case 4:
                 level4()
+                load = false
+            case 5:
+                comingSoon()
                 load = false
             default:
                 break
@@ -128,44 +128,46 @@ class GameScene: SKScene {
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         explode = childNodeWithName("//explode") as! SKSpriteNode
         help = childNodeWithName("//help") as! SKReferenceNode
-        comingSoon = childNodeWithName("//comingSoon") as! SKReferenceNode
         exitSign = childNodeWithName("//exitSign") as! SKLabelNode
         
         help.runAction(SKAction.hide())
         
-        /* scene and background constants */
-        screenWidth = size.width
-        screenHeight = size.height
+        if GameManager.sharedInstance.currentlevel != 5 {
+            /* scene and background constants */
+            screenWidth = size.width
+            screenHeight = size.height
+            
+            /* Add the light into the scene */
+            light1 = light.light
+            light1.moveToParent(self)
+            light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+        }
         
-        /* Add the light into the scene */
-        light1 = light.light
-        light1.moveToParent(self)
-        light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         levelsStates()
         exitSign.hidden = true
-        randomExitX = Int(arc4random_uniform(UInt32(levelWidth - 20))) + 10
-        randomExitY = Int(arc4random_uniform(UInt32(levelHeight - 20))) + 10
         
-        /* Ensure correct aspect mode */
-        scene!.scaleMode = .AspectFit
-        goal.text = String("\(collectedNotes)/\(totalPages)")
-        explode.zPosition = -10
-        
-        /* Timer */
-        let wait = SKAction.waitForDuration(1)
-        let block = SKAction.runBlock({
-            if self.timeLeft > 0 { self.timeLeft -= 1 }
-            if self.timeLeft < 11 {
-                self.time.fontColor = UIColor.redColor()
-            }
-            if self.timeLeft <= 0 { self.state = .GameOver }
-            self.time.text = "\(self.timeLeft)"
-        })
-        let sequence = SKAction.sequence([wait, block])
-        self.runAction(SKAction.repeatActionForever(sequence))
-        
-        circle.zPosition = -20
-        self.addChild(circle)
+        if GameManager.sharedInstance.currentlevel != 5 {
+            /* Ensure correct aspect mode */
+            scene!.scaleMode = .AspectFit
+            goal.text = String("\(collectedNotes)/\(totalPages)")
+            explode.zPosition = -10
+            
+            /* Timer */
+            let wait = SKAction.waitForDuration(1)
+            let block = SKAction.runBlock({
+                if self.timeLeft > 0 { self.timeLeft -= 1 }
+                if self.timeLeft < 11 {
+                    self.time.fontColor = UIColor.redColor()
+                }
+                if self.timeLeft <= 0 { self.state = .GameOver }
+                self.time.text = "\(self.timeLeft)"
+            })
+            let sequence = SKAction.sequence([wait, block])
+            self.runAction(SKAction.repeatActionForever(sequence))
+            
+            circle.zPosition = -20
+            self.addChild(circle)
+        }
         
         pauseButton.selectedHandler = {
             self.state = .Pause
@@ -315,133 +317,147 @@ class GameScene: SKScene {
             
         }
         
-        /* Have the light follow the orb */
-        lighting.position = light1.position
-        exitSign.position.x = lighting.position.x - 0.061
-        exitSign.position.y = lighting.position.y + 34.692
-        
-        if killer != nil {
-            moveKillerRandomly(killer)
+        if GameManager.sharedInstance.currentlevel != 5 {
+            /* Have the light follow the orb */
+            lighting.position = light1.position
         }
         
-        var i = 0
-        var j = 0
-        var k = 0
-        
-        for checkPage in pages {
-            /* Detect light and page "collision" */
-            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkPage.calculateAccumulatedFrame()) {
-                /* Code connect: flame effects */
-                let flame = SKEmitterNode(fileNamed: "CollectEffect")
-                /* Limits how many flame particle is emitted */
-                flame?.numParticlesToEmit = 35
-                /* Add flame to the page that intersect with the light */
-                flame!.position = pages[i].position
-                checkPage.removeFromParent()
-                pages.removeAtIndex(i)
-                addChild(flame!)
-                collectedNotes += 1
-            } else {
-                i += 1
+        if GameManager.sharedInstance.currentlevel != 5 {
+            exitSign.position.x = lighting.position.x - 0.061
+            exitSign.position.y = lighting.position.y + 34.692
+            
+            if killer != nil {
+                moveKillerRandomly(killer)
             }
-        }
-        
-        for checkBoxes in randomBoxes {
-            /* Detect light and box "collision */
-            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
-                let rand = CGFloat.random(min: 0, max: 1.0)
-                /* Change the color of time's font to red, white, or green */
-                let colorizeRed = SKAction.runBlock({
-                    self.time.fontColor = SKColor.redColor()
-                })
-                let colorizeWhite = SKAction.runBlock({
-                    self.time.fontColor = SKColor.whiteColor()
-                })
-                let colorizeGreen = SKAction.runBlock({
-                    self.time.fontColor = SKColor.greenColor()
-                })
-                let waitToChangeColor = SKAction.waitForDuration(2.0)
-                let colorizeRedSequence = SKAction.sequence([colorizeRed, waitToChangeColor, colorizeWhite])
-                let colorizeGreenSequence = SKAction.sequence([colorizeGreen, waitToChangeColor, colorizeWhite])
-                
-                /* Random box gives random outcomes */
-                if rand < 0.45 {
-                    timeLeft -= 5
-                    time.runAction(colorizeRedSequence)
-                } else if rand < 0.5 {
-                    lighting.falloff = 0.8
-                } else if rand < 0.55 {
-                    timeLeft = timeLeft/2
-                    time.runAction(colorizeRedSequence)
+            
+            var i = 0
+            var j = 0
+            var k = 0
+            
+            for checkPage in pages {
+                /* Detect light and page "collision" */
+                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkPage.calculateAccumulatedFrame()) {
+                    /* Code connect: flame effects */
+                    let flame = SKEmitterNode(fileNamed: "CollectEffect")
+                    /* Limits how many flame particle is emitted */
+                    flame?.numParticlesToEmit = 35
+                    /* Add flame to the page that intersect with the light */
+                    flame!.position = pages[i].position
+                    checkPage.removeFromParent()
+                    pages.removeAtIndex(i)
+                    addChild(flame!)
+                    collectedNotes += 1
                 } else {
-                    timeLeft += 3
-                    time.runAction(colorizeGreenSequence)
+                    i += 1
+                }
+            }
+            
+            for checkBoxes in randomBoxes {
+                /* Detect light and box "collision */
+                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
+                    let rand = CGFloat.random(min: 0, max: 1.0)
+                    /* Change the color of time's font to red, white, or green */
+                    let colorizeRed = SKAction.runBlock({
+                        self.time.fontColor = SKColor.redColor()
+                    })
+                    let colorizeWhite = SKAction.runBlock({
+                        self.time.fontColor = SKColor.whiteColor()
+                    })
+                    let colorizeGreen = SKAction.runBlock({
+                        self.time.fontColor = SKColor.greenColor()
+                    })
+                    let waitToChangeColor = SKAction.waitForDuration(2.0)
+                    let colorizeRedSequence = SKAction.sequence([colorizeRed, waitToChangeColor, colorizeWhite])
+                    let colorizeGreenSequence = SKAction.sequence([colorizeGreen, waitToChangeColor, colorizeWhite])
                     
+                    /* Random box gives random outcomes */
+                    if rand < 0.45 {
+                        timeLeft -= 5
+                        time.runAction(colorizeRedSequence)
+                    } else if rand < 0.5 {
+                        lighting.falloff = 0.8
+                    } else if rand < 0.55 {
+                        timeLeft = timeLeft/2
+                        time.runAction(colorizeRedSequence)
+                    } else {
+                        timeLeft += 3
+                        time.runAction(colorizeGreenSequence)
+                        
+                    }
+                    checkBoxes.removeFromParent()
+                    randomBoxes.removeAtIndex(j)
+                } else {
+                    j += 1
                 }
-                checkBoxes.removeFromParent()
-                randomBoxes.removeAtIndex(j)
-            } else {
-                j += 1
             }
-        }
-        
-        for checkBomb in bombArray {
-            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
-                diffuseMessage.zPosition = 5
-                let fadeIn = SKAction.runBlock {
-                    self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1.0))
-                }
-                let wait = SKAction.waitForDuration(1)
-                let fadeOut = SKAction.runBlock {
-                    self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1.0))
-                }
-                let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
-                diffuseMessage.runAction(sequence)
-                checkBomb.removeFromParent()
-                bombArray.removeAtIndex(k)
-                bombTimer.removeAllActions()
-                self.timeLeft -= 5
-            } else {
-                k += 1
-            }
-        }
-        
-        if killer != nil {
-            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), killer.calculateAccumulatedFrame()) {
-                state = .GameOver
-            }
-        }
-        
-        /* Update the goal collected pages/total pages needed everytime a page is collected */
-        goal.text = String("\(collectedNotes)/\(totalPages)")
-        
-        if collectedNotes == totalPages && exitCheck == true {
-            /* Make the signal for players to find exit appear */
-            exitSign.hidden = false
-            blinking(exitSign)
             
-            /* Make exit appear */
-            exit = exitReference.exit
-            exit.position = CGPoint(x: randomExitX, y: randomExitY)
-            exit.moveToParent(self)
-            
-            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), exit.calculateAccumulatedFrame()) {
-                // Show interstitial ats location HomeScreen. See Chartboost.h for available location options.
-                exitCheck = false
-                Chartboost.showInterstitial(CBLocationHomeScreen)
-                state = .Victory
+            for checkBomb in bombArray {
+                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
+                    diffuseMessage.zPosition = 5
+                    let fadeIn = SKAction.runBlock {
+                        self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1.0))
+                    }
+                    let wait = SKAction.waitForDuration(1)
+                    let fadeOut = SKAction.runBlock {
+                        self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1.0))
+                    }
+                    let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
+                    diffuseMessage.runAction(sequence)
+                    checkBomb.removeFromParent()
+                    bombArray.removeAtIndex(k)
+                    bombTimer.removeAllActions()
+                    self.timeLeft -= 5
+                } else {
+                    k += 1
+                }
             }
+            
+            if killer != nil {
+                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), killer.calculateAccumulatedFrame()) {
+                    state = .GameOver
+                }
+            }
+            
+            /* Update the goal collected pages/total pages needed everytime a page is collected */
+            goal.text = String("\(collectedNotes)/\(totalPages)")
+            
+            if collectedNotes == totalPages && exitCheck == true {
+                /* Make the signal for players to find exit appear */
+                exitSign.hidden = false
+                blinking(exitSign)
+                
+                /* Make exit appear */
+                exit = exitReference.exit
+                if GameManager.sharedInstance.currentlevel == 1 {
+                    exit.position = CGPoint(x:718.5, y:391.546)
+                } else if GameManager.sharedInstance.currentlevel == 2 {
+                    exit.position = CGPoint(x:622.22, y:435.624)
+                } else if GameManager.sharedInstance.currentlevel == 3 {
+                    exit.position = CGPoint(x:570.27, y:434.772)
+                } else if GameManager.sharedInstance.currentlevel == 4 {
+                    exit.position = CGPoint(x:107.258, y:189.524)
+                }
+                exit.moveToParent(self)
+//                levelBackground.addChild(exit)
+                
+                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), exit.calculateAccumulatedFrame()) {
+                    // Show interstitial ats location HomeScreen. See Chartboost.h for available location options.
+                    exitCheck = false
+                    Chartboost.showInterstitial(CBLocationHomeScreen)
+                    state = .Victory
+                }
+            }
+            
+            /* Half of the game scene's width and height */
+            let cameraViewPortWidth = screenWidth * 0.5
+            let cameraViewPortHeight = screenHeight * 0.5
+            
+            /* Clamp camera position */
+            lightCamera.position = light1.position
+            lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
+            lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
+            
         }
-        
-        /* Half of the game scene's width and height */
-        let cameraViewPortWidth = screenWidth * 0.5
-        let cameraViewPortHeight = screenHeight * 0.5
-        
-        /* Clamp camera position */
-        lightCamera.position = light1.position
-        lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
-        lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
-        
     }
     
     func createPage() {
@@ -609,8 +625,9 @@ class GameScene: SKScene {
         let fadeIn = SKAction.fadeInWithDuration(0.5)
         let fadeOut = SKAction.fadeOutWithDuration(0.5)
         let blinkSequence = SKAction.sequence([fadeIn, fadeOut])
-        let repeatForever = SKAction.repeatActionForever(blinkSequence)
-        label.runAction(repeatForever)
+        label.runAction(SKAction.repeatActionForever(blinkSequence))
+        //        let repeatForever = SKAction.repeatActionForever(blinkSequence)
+        //        label.runAction(repeatForever)
     }
 }
 
