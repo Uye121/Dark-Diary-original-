@@ -16,6 +16,7 @@ extension GameScene {
         levelNode.addChild(level1)
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level1Background") as! SKSpriteNode
+        reflect = childNodeWithName("//reflect") as! SKLabelNode
         totalPages = 6
         numberOfPages = 0
         numberOfBoxes = 0
@@ -38,7 +39,7 @@ extension GameScene {
             createRandomBox()
             numberOfBoxes += 1
         }
-//        spawnKiller()
+        reflect.runAction(SKAction.fadeOutWithDuration(2))
     }
     
     func level2() {
@@ -47,6 +48,7 @@ extension GameScene {
         levelNode.addChild(level2)
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level2Background") as! SKSpriteNode
+        reflect = childNodeWithName("//reflect") as! SKLabelNode
         
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
@@ -70,6 +72,7 @@ extension GameScene {
         }
         
         spawnKiller()
+        reflect.runAction(SKAction.fadeOutWithDuration(2))
     }
     
     func level3() {
@@ -79,6 +82,7 @@ extension GameScene {
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level3Background") as! SKSpriteNode
         bombTimer = childNodeWithName("//bombTimer") as! SKLabelNode
+        reflect = childNodeWithName("//reflect") as! SKLabelNode
         
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
@@ -108,6 +112,7 @@ extension GameScene {
         /* Calls function where the bomb counts down and leads to game over */
         destruction()
         spawnKiller()
+        reflect.runAction(SKAction.fadeOutWithDuration(2))
     }
     
     func level4() {
@@ -117,6 +122,7 @@ extension GameScene {
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         levelBackground = childNodeWithName("//level4Background") as! SKSpriteNode
         bombTimer = childNodeWithName("//bombTimer") as! SKLabelNode
+        reflect = childNodeWithName("//reflect") as! SKLabelNode
         
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
@@ -148,25 +154,6 @@ extension GameScene {
         /* Calls function where the bomb counts down and leads to game over */
         destruction()
         spawnKiller()
-    }
-    
-    func comingSoon() {
-        let resourcePath = NSBundle.mainBundle().pathForResource("ComingSoon", ofType: "sks")
-        let comingSoon = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
-        let homeButton = childNodeWithName("//homeButton") as! MSButtonNode
-        levelNode.addChild(comingSoon)
-        
-        homeButton.selectedHandler = {
-            
-            /* Grab reference to Spritekit view */
-            let skView = self.view as SKView!
-            
-            /* Load Main menu */
-            let scene = MainMenu(fileNamed:"MainMenu") as MainMenu!
-            
-            /* Ensure correct aspect mode */
-            scene.scaleMode = .AspectFit
-            
-            skView.presentScene(scene)        }
+        reflect.runAction(SKAction.fadeOutWithDuration(2))
     }
 }

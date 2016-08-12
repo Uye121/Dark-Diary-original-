@@ -72,7 +72,9 @@ class GameScene: SKScene {
     var doneMoving = true
     let circle = SKShapeNode(circleOfRadius:200)
     var help: SKReferenceNode!
+    var comingSoon: SKReferenceNode!
     var exitSign: SKLabelNode!
+    var reflect: SKLabelNode!
     var randomExitX: Int!
     var randomExitY: Int!
     
@@ -96,8 +98,7 @@ class GameScene: SKScene {
                 level4()
                 load = false
             default:
-                comingSoon()
-                load = false
+                break
             }
         }
     }
@@ -127,6 +128,7 @@ class GameScene: SKScene {
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         explode = childNodeWithName("//explode") as! SKSpriteNode
         help = childNodeWithName("//help") as! SKReferenceNode
+        comingSoon = childNodeWithName("//comingSoon") as! SKReferenceNode
         exitSign = childNodeWithName("//exitSign") as! SKLabelNode
         
         help.runAction(SKAction.hide())
@@ -141,8 +143,8 @@ class GameScene: SKScene {
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         levelsStates()
         exitSign.hidden = true
-        randomExitX = Int(arc4random_uniform(UInt32(levelWidth)))
-        randomExitY = Int(arc4random_uniform(UInt32(levelHeight)))
+        randomExitX = Int(arc4random_uniform(UInt32(levelWidth - 20))) + 10
+        randomExitY = Int(arc4random_uniform(UInt32(levelHeight - 20))) + 10
         
         /* Ensure correct aspect mode */
         scene!.scaleMode = .AspectFit
@@ -414,9 +416,11 @@ class GameScene: SKScene {
         goal.text = String("\(collectedNotes)/\(totalPages)")
         
         if collectedNotes == totalPages && exitCheck == true {
+            /* Make the signal for players to find exit appear */
             exitSign.hidden = false
             blinking(exitSign)
             
+            /* Make exit appear */
             exit = exitReference.exit
             exit.position = CGPoint(x: randomExitX, y: randomExitY)
             exit.moveToParent(self)
