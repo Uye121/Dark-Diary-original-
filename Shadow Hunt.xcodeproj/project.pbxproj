@@ -54,6 +54,7 @@
 		078F8C2E1D514458009AE751 /* beep.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2D1D514458009AE751 /* beep.caf */; };
 		078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */; };
 		078F8C321D51651D009AE751 /* GameScene(LevelExtension).swift in Sources */ = {isa = PBXBuildFile; fileRef = 078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */; };
+		078FDE971D5D31FB0017EAC0 /* Exit.sks in Resources */ = {isa = PBXBuildFile; fileRef = 078FDE961D5D31FB0017EAC0 /* Exit.sks */; };
 		079DD09A1D5AD50E005A932C /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073528F31D53EB6200121FB9 /* GameManager.swift */; };
 		079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */ = {isa = PBXBuildFile; fileRef = 079EF34E1D500FD000BD438B /* LevelSelect.sks */; };
 		079EF3511D50126E00BD438B /* LevelSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079EF3501D50126E00BD438B /* LevelSelect.swift */; };
@@ -140,6 +141,7 @@
 		078F8C2D1D514458009AE751 /* beep.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep.caf; sourceTree = "<group>"; };
 		078F8C2F1D515A18009AE751 /* ExplodingNoise.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ExplodingNoise.caf; sourceTree = "<group>"; };
 		078F8C311D51651D009AE751 /* GameScene(LevelExtension).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameScene(LevelExtension).swift"; sourceTree = "<group>"; };
+		078FDE961D5D31FB0017EAC0 /* Exit.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Exit.sks; sourceTree = "<group>"; };
 		079EF34E1D500FD000BD438B /* LevelSelect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelSelect.sks; sourceTree = "<group>"; };
 		079EF3501D50126E00BD438B /* LevelSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelect.swift; sourceTree = "<group>"; };
 		079FA70B1D343FD60066C088 /* Light.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Light.sks; path = ../Light.sks; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				077270011D4BC82A00E7BAA9 /* Bomb.sks */,
+				078FDE961D5D31FB0017EAC0 /* Exit.sks */,
 				078C285F1D550598003F4869 /* Killer.sks */,
 				079FA70B1D343FD60066C088 /* Light.sks */,
 				0782BE3F1D359813002E895E /* Page.sks */,
@@ -486,6 +489,7 @@
 				075587EB1D49801400931220 /* RandomBox.sks in Resources */,
 				077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */,
 				078F8C231D511042009AE751 /* CollectEffect.sks in Resources */,
+				078FDE971D5D31FB0017EAC0 /* Exit.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

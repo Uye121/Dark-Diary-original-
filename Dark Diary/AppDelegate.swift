@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mixpanel.track("App launched")
         
         GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
-        GameManager.sharedInstance.currentlevel = NSUserDefaults.standardUserDefaults().integerForKey("saveCurrentLevel") as? Int ?? GameManager.sharedInstance.currentlevel
+        GameManager.sharedInstance.currentlevel = NSUserDefaults.standardUserDefaults().integerForKey("saveCurrentLevel") ?? GameManager.sharedInstance.currentlevel
         // Initialize the Chartboost library
         Chartboost.startWithAppId("57ab765904b0164e5029c9ec", appSignature: "ad9693c2951d289f66f2269d7642febacf1a70fe", delegate: nil)
         return true
@@ -37,13 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         //GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
         NSUserDefaults.standardUserDefaults().setValue(GameManager.sharedInstance.unlockedLevel, forKey: "saveUnlockedLevel")
+        NSUserDefaults.standardUserDefaults().setValue(GameManager.sharedInstance.currentlevel, forKey: "saveCurrentLevel")
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
         GameManager.sharedInstance.unlockedLevel = NSUserDefaults.standardUserDefaults().objectForKey("saveUnlockedLevel") as? [Bool] ?? [false]
-        GameManager.sharedInstance.currentlevel = NSUserDefaults.standardUserDefaults().integerForKey("saveCurrentLevel") as? Int ?? GameManager.sharedInstance.currentlevel
+        GameManager.sharedInstance.currentlevel = NSUserDefaults.standardUserDefaults().integerForKey("saveCurrentLevel") ?? GameManager.sharedInstance.currentlevel
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     

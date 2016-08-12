@@ -153,7 +153,7 @@ extension GameScene {
     func comingSoon() {
         let resourcePath = NSBundle.mainBundle().pathForResource("ComingSoon", ofType: "sks")
         let comingSoon = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
-        var homeButton = childNodeWithName("//homeButton") as! MSButtonNode
+        let homeButton = childNodeWithName("//homeButton") as! MSButtonNode
         levelNode.addChild(comingSoon)
         
         homeButton.selectedHandler = {

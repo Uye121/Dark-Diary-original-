@@ -30,6 +30,7 @@ class GameScene: SKScene {
     var totalPages = 0
     var timeLeft = 46
     var bombTime = 20
+    var exitCheck: Bool = true
     var randomPosition: CGPoint!
     var distanceTraveledX: CGFloat!
     var distanceTraveledY: CGFloat!
@@ -51,6 +52,7 @@ class GameScene: SKScene {
     var bombTimer: SKLabelNode!
     var bombArray: [SKSpriteNode] = []
     var killer: SKSpriteNode!
+    var exit: SKSpriteNode!
     var levelNode: SKNode!
     var lightCamera: SKCameraNode!
     var goal: SKLabelNode!
@@ -68,12 +70,16 @@ class GameScene: SKScene {
     var bombTimeAction: SKAction!
     let defaults = NSUserDefaults.standardUserDefaults()
     var doneMoving = true
-    let circle = SKShapeNode(circleOfRadius:100)
+    let circle = SKShapeNode(circleOfRadius:200)
     var help: SKReferenceNode!
+    var exitSign: SKLabelNode!
+    var randomExitX: Int!
+    var randomExitY: Int!
     
     enum Levels { case Default }
     
     /* Manages changing to different level */
+    
     func levelsStates() {
         while load {
             switch GameManager.sharedInstance.currentlevel % 5 {
@@ -97,12 +103,11 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-
+        
         state = .Playing
         if GameManager.sharedInstance.currentlevel == 0 {
             GameManager.sharedInstance.currentlevel = 1
         }
-
         
         levelNode = childNodeWithName("//levelNode")
         goal = childNodeWithName("//goal") as! SKLabelNode
@@ -122,6 +127,7 @@ class GameScene: SKScene {
         pauseBackground = childNodeWithName("//pauseBackground") as! SKSpriteNode
         explode = childNodeWithName("//explode") as! SKSpriteNode
         help = childNodeWithName("//help") as! SKReferenceNode
+        exitSign = childNodeWithName("//exitSign") as! SKLabelNode
         
         help.runAction(SKAction.hide())
         
@@ -134,6 +140,9 @@ class GameScene: SKScene {
         light1.moveToParent(self)
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         levelsStates()
+        exitSign.hidden = true
+        randomExitX = Int(arc4random_uniform(UInt32(levelWidth)))
+        randomExitY = Int(arc4random_uniform(UInt32(levelHeight)))
         
         /* Ensure correct aspect mode */
         scene!.scaleMode = .AspectFit
@@ -271,6 +280,9 @@ class GameScene: SKScene {
     
     override func update(currentTime: CFTimeInterval) {
         
+        let resourcePathExit = NSBundle.mainBundle().pathForResource("Exit", ofType: "sks")
+        let exitReference = exitReferenceNode (URL: NSURL (fileURLWithPath: resourcePathExit!))
+        
         if GameManager.sharedInstance.currentlevel == 0 {
             GameManager.sharedInstance.currentlevel = 1
         }
@@ -298,11 +310,13 @@ class GameScene: SKScene {
             self.pauseBackground.zPosition = 5
             self.nextLevelButton.zPosition = 10
             
-
+            
         }
         
         /* Have the light follow the orb */
         lighting.position = light1.position
+        exitSign.position.x = lighting.position.x - 0.061
+        exitSign.position.y = lighting.position.y + 34.692
         
         if killer != nil {
             moveKillerRandomly(killer)
@@ -325,8 +339,9 @@ class GameScene: SKScene {
                 pages.removeAtIndex(i)
                 addChild(flame!)
                 collectedNotes += 1
+            } else {
+                i += 1
             }
-            i += 1
         }
         
         for checkBoxes in randomBoxes {
@@ -363,8 +378,9 @@ class GameScene: SKScene {
                 }
                 checkBoxes.removeFromParent()
                 randomBoxes.removeAtIndex(j)
+            } else {
+                j += 1
             }
-            j += 1
         }
         
         for checkBomb in bombArray {
@@ -383,8 +399,9 @@ class GameScene: SKScene {
                 bombArray.removeAtIndex(k)
                 bombTimer.removeAllActions()
                 self.timeLeft -= 5
+            } else {
+                k += 1
             }
-            k += 1
         }
         
         if killer != nil {
@@ -396,10 +413,20 @@ class GameScene: SKScene {
         /* Update the goal collected pages/total pages needed everytime a page is collected */
         goal.text = String("\(collectedNotes)/\(totalPages)")
         
-        if collectedNotes == totalPages {
-            // Show interstitial at location HomeScreen. See Chartboost.h for available location options.
-            Chartboost.showInterstitial(CBLocationHomeScreen)
-            state = .Victory
+        if collectedNotes == totalPages && exitCheck == true {
+            exitSign.hidden = false
+            blinking(exitSign)
+            
+            exit = exitReference.exit
+            exit.position = CGPoint(x: randomExitX, y: randomExitY)
+            exit.moveToParent(self)
+            
+            if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), exit.calculateAccumulatedFrame()) {
+                // Show interstitial ats location HomeScreen. See Chartboost.h for available location options.
+                exitCheck = false
+                Chartboost.showInterstitial(CBLocationHomeScreen)
+                state = .Victory
+            }
         }
         
         /* Half of the game scene's width and height */
@@ -572,6 +599,14 @@ class GameScene: SKScene {
             lighting.ambientColor = UIColor.blackColor()
             return false
         }
+    }
+    
+    func blinking(label: SKLabelNode) {
+        let fadeIn = SKAction.fadeInWithDuration(0.5)
+        let fadeOut = SKAction.fadeOutWithDuration(0.5)
+        let blinkSequence = SKAction.sequence([fadeIn, fadeOut])
+        let repeatForever = SKAction.repeatActionForever(blinkSequence)
+        label.runAction(repeatForever)
     }
 }
 

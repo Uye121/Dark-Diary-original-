@@ -55,3 +55,11 @@ class KillerReferenceNode: SKReferenceNode {
         killer = childNodeWithName("//killer") as! SKSpriteNode
     }
 }
+
+class exitReferenceNode: SKReferenceNode {
+    var exit: SKSpriteNode!
+    
+    override func didLoadReferenceNode(node: SKNode?) {
+        exit = childNodeWithName("//exit") as! SKSpriteNode
+    }
+}
