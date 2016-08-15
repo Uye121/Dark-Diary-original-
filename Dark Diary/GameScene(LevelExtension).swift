@@ -28,7 +28,7 @@ extension GameScene {
         
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
-        exit.position = CGPoint(x:718.5, y:391.546)
+//        exit.position = CGPoint(x:718.5, y:391.546)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {

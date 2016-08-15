@@ -424,7 +424,7 @@ class GameScene: SKScene {
             if collectedNotes == totalPages && exitCheck == true {
                 /* Make the signal for players to find exit appear */
                 exitSign.hidden = false
-//                blinking(exitSign) Not working
+                blinking(exitSign)
                 
                 /* Make exit appear */
                 exit = exitReference.exit
@@ -438,7 +438,6 @@ class GameScene: SKScene {
                     exit.position = CGPoint(x:107.258, y:189.524)
                 }
                 exit.moveToParent(self)
-                //                levelBackground.addChild(exit)
                 
                 if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), exit.calculateAccumulatedFrame()) {
                     // Show interstitial ats location HomeScreen. See Chartboost.h for available location options.
