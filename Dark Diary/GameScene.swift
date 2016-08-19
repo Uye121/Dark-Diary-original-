@@ -295,16 +295,6 @@ class GameScene: SKScene {
         let resourcePathExit = NSBundle.mainBundle().pathForResource("Exit", ofType: "sks")
         let exitReference = exitReferenceNode (URL: NSURL (fileURLWithPath: resourcePathExit!))
         
-        //        if GameManager.sharedInstance.currentlevel != 6 {
-        //            if levelBackground.lightingBitMask == 1 && fire1 != nil && fire2 != nil {
-        //                fire1!.hidden = true
-        //                fire2!.hidden = false
-        //            } else if levelBackground.lightingBitMask == 2 && fire1 != nil && fire2 != nil {
-        //                fire1!.hidden = false
-        //                fire2!.hidden = true
-        //            }
-        //        }
-        
         if GameManager.sharedInstance.currentlevel == 0 {
             GameManager.sharedInstance.currentlevel = 1
         }
@@ -605,7 +595,7 @@ class GameScene: SKScene {
             self.distanceTraveledX = abs(killer.position.x - self.randomPosition.x)
             self.distanceTraveledY = abs(killer.position.y - self.randomPosition.y)
             self.distanceTraveled = (sqrt(Double(pow(self.distanceTraveledX, 2)) + Double(pow(self.distanceTraveledY, 2))))
-            let move = SKAction.moveTo(self.randomPosition, duration: self.distanceTraveled/160)
+            let move = SKAction.moveTo(self.randomPosition, duration: self.distanceTraveled/170)
             killer.runAction(move)
         })
         
@@ -615,7 +605,7 @@ class GameScene: SKScene {
             distanceX = abs(killer.position.x - self.light1.position.x)
             distanceY = abs(killer.position.y - self.light1.position.y)
             let displacement = (sqrt(Double(pow(self.distanceX, 2)) + Double(pow(self.distanceY, 2))))
-            killer.runAction(SKAction.moveTo(light1.position, duration: displacement/200), completion: {
+            killer.runAction(SKAction.moveTo(light1.position, duration: displacement/160), completion: {
                 if self.detect(self.killer, self.circle) == false {
                     self.randomPosition = nil
                 }
