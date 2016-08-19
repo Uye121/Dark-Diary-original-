@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070617A01D65883300138F8D /* Level5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0706179F1D65883300138F8D /* Level5.sks */; };
 		073F5E921D492AF400C0FC9E /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 073F5E911D492AF400C0FC9E /* Level1.sks */; };
 		075587EB1D49801400931220 /* RandomBox.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075587EA1D49801400931220 /* RandomBox.sks */; };
 		075746341D525736004881F1 /* Thunderclap.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075746331D525736004881F1 /* Thunderclap.caf */; };
 		0757463A1D526369004881F1 /* Raining.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075746391D526369004881F1 /* Raining.caf */; };
 		0757463E1D52A37E004881F1 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0757463D1D52A37E004881F1 /* SwiftyUserDefaults.swift */; };
+		075E93871D6672A200F14C80 /* Fire1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075E93861D6672A200F14C80 /* Fire1.sks */; };
+		075E93891D6672C500F14C80 /* Fire2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 075E93881D6672C500F14C80 /* Fire2.sks */; };
 		076EA4AD1D58173100A43444 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076EA4AC1D58173100A43444 /* Chartboost.framework */; };
 		077270001D4BC25000E7BAA9 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07726FFF1D4BC25000E7BAA9 /* Level3.sks */; };
 		077270021D4BC82A00E7BAA9 /* Bomb.sks in Resources */ = {isa = PBXBuildFile; fileRef = 077270011D4BC82A00E7BAA9 /* Bomb.sks */; };
@@ -86,12 +89,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0706179F1D65883300138F8D /* Level5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level5.sks; sourceTree = "<group>"; };
 		073528F31D53EB6200121FB9 /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		073F5E911D492AF400C0FC9E /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		075587EA1D49801400931220 /* RandomBox.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = RandomBox.sks; path = ../RandomBox.sks; sourceTree = "<group>"; };
 		075746331D525736004881F1 /* Thunderclap.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thunderclap.caf; sourceTree = "<group>"; };
 		075746391D526369004881F1 /* Raining.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Raining.caf; sourceTree = "<group>"; };
 		0757463D1D52A37E004881F1 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
+		075E93861D6672A200F14C80 /* Fire1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire1.sks; sourceTree = "<group>"; };
+		075E93881D6672C500F14C80 /* Fire2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire2.sks; sourceTree = "<group>"; };
 		076EA4AC1D58173100A43444 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		07726FFF1D4BC25000E7BAA9 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
 		077270011D4BC82A00E7BAA9 /* Bomb.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bomb.sks; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 				077270031D4C0AFD00E7BAA9 /* Level2.sks */,
 				07726FFF1D4BC25000E7BAA9 /* Level3.sks */,
 				07CFC07B1D595311000CC4E2 /* Level4.sks */,
+				0706179F1D65883300138F8D /* Level5.sks */,
 				07B200ED1D5BD2C8003B66EA /* ComingSoon.sks */,
 			);
 			name = Levels;
@@ -208,6 +215,8 @@
 		075417681D35A324008B283C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				075E93861D6672A200F14C80 /* Fire1.sks */,
+				075E93881D6672C500F14C80 /* Fire2.sks */,
 				077270011D4BC82A00E7BAA9 /* Bomb.sks */,
 				078FDE961D5D31FB0017EAC0 /* Exit.sks */,
 				078C285F1D550598003F4869 /* Killer.sks */,
@@ -478,7 +487,9 @@
 				075746341D525736004881F1 /* Thunderclap.caf in Resources */,
 				078F8C2E1D514458009AE751 /* beep.caf in Resources */,
 				078928381D3409B900B9B21B /* LaunchScreen.storyboard in Resources */,
+				075E93891D6672C500F14C80 /* Fire2.sks in Resources */,
 				078928351D3409B900B9B21B /* Assets.xcassets in Resources */,
+				075E93871D6672A200F14C80 /* Fire1.sks in Resources */,
 				078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */,
 				073F5E921D492AF400C0FC9E /* Level1.sks in Resources */,
 				079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */,
@@ -486,6 +497,7 @@
 				078928331D3409B900B9B21B /* Main.storyboard in Resources */,
 				07B200EE1D5BD2C8003B66EA /* ComingSoon.sks in Resources */,
 				0757463A1D526369004881F1 /* Raining.caf in Resources */,
+				070617A01D65883300138F8D /* Level5.sks in Resources */,
 				075587EB1D49801400931220 /* RandomBox.sks in Resources */,
 				077F3EE71D3960DA00597FE7 /* Line-50.png in Resources */,
 				078F8C231D511042009AE751 /* CollectEffect.sks in Resources */,

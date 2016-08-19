@@ -46,6 +46,7 @@ class GameScene: SKScene {
     var helpButton: MSButtonNode!
     var page1: SKSpriteNode!
     var pages:[SKSpriteNode] = []
+    var phantomPages: [SKSpriteNode] = []
     var randomBox: SKSpriteNode!
     var randomBoxes: [SKSpriteNode] = []
     var bomb: SKSpriteNode!
@@ -53,10 +54,13 @@ class GameScene: SKScene {
     var bombArray: [SKSpriteNode] = []
     var killer: SKSpriteNode!
     var exit: SKSpriteNode!
+    var fire1: SKSpriteNode!
+    var fire2: SKSpriteNode!
     var levelNode: SKNode!
     var lightCamera: SKCameraNode!
     var goal: SKLabelNode!
     var lighting: SKLightNode!
+    var lighting2: SKLightNode!
     var time: SKLabelNode!
     var gameOverLabel: SKLabelNode!
     var victoryLabel: SKLabelNode!
@@ -81,7 +85,7 @@ class GameScene: SKScene {
     
     func levelsStates() {
         while load {
-            switch GameManager.sharedInstance.currentlevel % 6 {
+            switch GameManager.sharedInstance.currentlevel % 7 {
             case 1:
                 level1()
                 load = false
@@ -95,6 +99,9 @@ class GameScene: SKScene {
                 level4()
                 load = false
             case 5:
+                level5()
+                load = false
+            case 6:
                 comingSoon()
                 load = false
             default:
@@ -130,9 +137,9 @@ class GameScene: SKScene {
         help = childNodeWithName("//help") as! SKReferenceNode
         exitSign = childNodeWithName("//exitSign") as! SKLabelNode
         
-        help.runAction(SKAction.hide())
+        help.hidden = true
         
-        if GameManager.sharedInstance.currentlevel != 5 {
+        if GameManager.sharedInstance.currentlevel != 6 {
             /* scene and background constants */
             screenWidth = size.width
             screenHeight = size.height
@@ -146,7 +153,7 @@ class GameScene: SKScene {
         levelsStates()
         exitSign.hidden = true
         
-        if GameManager.sharedInstance.currentlevel != 5 {
+        if GameManager.sharedInstance.currentlevel != 6 {
             /* Ensure correct aspect mode */
             scene!.scaleMode = .AspectFit
             goal.text = String("\(collectedNotes)/\(totalPages)")
@@ -264,6 +271,7 @@ class GameScene: SKScene {
             self.state = .Pause
             
             let returnButton = self.childNodeWithName("//returnButton") as! MSButtonNode
+            
             returnButton.selectedHandler = {
                 self.help.hidden = true
                 self.state = .Playing
@@ -286,6 +294,16 @@ class GameScene: SKScene {
         
         let resourcePathExit = NSBundle.mainBundle().pathForResource("Exit", ofType: "sks")
         let exitReference = exitReferenceNode (URL: NSURL (fileURLWithPath: resourcePathExit!))
+        
+        //        if GameManager.sharedInstance.currentlevel != 6 {
+        //            if levelBackground.lightingBitMask == 1 && fire1 != nil && fire2 != nil {
+        //                fire1!.hidden = true
+        //                fire2!.hidden = false
+        //            } else if levelBackground.lightingBitMask == 2 && fire1 != nil && fire2 != nil {
+        //                fire1!.hidden = false
+        //                fire2!.hidden = true
+        //            }
+        //        }
         
         if GameManager.sharedInstance.currentlevel == 0 {
             GameManager.sharedInstance.currentlevel = 1
@@ -317,12 +335,9 @@ class GameScene: SKScene {
             
         }
         
-        if GameManager.sharedInstance.currentlevel != 5 {
+        if GameManager.sharedInstance.currentlevel != 6 {
             /* Have the light follow the orb */
             lighting.position = light1.position
-        }
-        
-        if GameManager.sharedInstance.currentlevel != 5 {
             exitSign.position.x = lighting.position.x - 0.061
             exitSign.position.y = lighting.position.y + 34.692
             
@@ -352,63 +367,67 @@ class GameScene: SKScene {
                 }
             }
             
-            for checkBoxes in randomBoxes {
-                /* Detect light and box "collision */
-                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
-                    let rand = CGFloat.random(min: 0, max: 1.0)
-                    /* Change the color of time's font to red, white, or green */
-                    let colorizeRed = SKAction.runBlock({
-                        self.time.fontColor = SKColor.redColor()
-                    })
-                    let colorizeWhite = SKAction.runBlock({
-                        self.time.fontColor = SKColor.whiteColor()
-                    })
-                    let colorizeGreen = SKAction.runBlock({
-                        self.time.fontColor = SKColor.greenColor()
-                    })
-                    let waitToChangeColor = SKAction.waitForDuration(2.0)
-                    let colorizeRedSequence = SKAction.sequence([colorizeRed, waitToChangeColor, colorizeWhite])
-                    let colorizeGreenSequence = SKAction.sequence([colorizeGreen, waitToChangeColor, colorizeWhite])
-                    
-                    /* Random box gives random outcomes */
-                    if rand < 0.45 {
-                        timeLeft -= 5
-                        time.runAction(colorizeRedSequence)
-                    } else if rand < 0.5 {
-                        lighting.falloff = 0.8
-                    } else if rand < 0.55 {
-                        timeLeft = timeLeft/2
-                        time.runAction(colorizeRedSequence)
-                    } else {
-                        timeLeft += 3
-                        time.runAction(colorizeGreenSequence)
+            if randomBox != nil {
+                for checkBoxes in randomBoxes {
+                    /* Detect light and box "collision */
+                    if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkBoxes.calculateAccumulatedFrame()) {
+                        let rand = CGFloat.random(min: 0, max: 1.0)
+                        /* Change the color of time's font to red, white, or green */
+                        let colorizeRed = SKAction.runBlock({
+                            self.time.fontColor = SKColor.redColor()
+                        })
+                        let colorizeWhite = SKAction.runBlock({
+                            self.time.fontColor = SKColor.whiteColor()
+                        })
+                        let colorizeGreen = SKAction.runBlock({
+                            self.time.fontColor = SKColor.greenColor()
+                        })
+                        let waitToChangeColor = SKAction.waitForDuration(2.0)
+                        let colorizeRedSequence = SKAction.sequence([colorizeRed, waitToChangeColor, colorizeWhite])
+                        let colorizeGreenSequence = SKAction.sequence([colorizeGreen, waitToChangeColor, colorizeWhite])
                         
+                        /* Random box gives random outcomes */
+                        if rand < 0.45 {
+                            timeLeft -= 5
+                            time.runAction(colorizeRedSequence)
+                        } else if rand < 0.5 {
+                            lighting.falloff = 0.8
+                        } else if rand < 0.55 {
+                            timeLeft = timeLeft/2
+                            time.runAction(colorizeRedSequence)
+                        } else {
+                            timeLeft += 3
+                            time.runAction(colorizeGreenSequence)
+                            
+                        }
+                        checkBoxes.removeFromParent()
+                        randomBoxes.removeAtIndex(j)
+                    } else {
+                        j += 1
                     }
-                    checkBoxes.removeFromParent()
-                    randomBoxes.removeAtIndex(j)
-                } else {
-                    j += 1
                 }
             }
             
-            for checkBomb in bombArray {
-                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
-                    diffuseMessage.zPosition = 5
-                    let fadeIn = SKAction.runBlock {
-                        self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1.0))
+            if bomb != nil {
+                for checkBomb in bombArray {
+                    if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), bomb.calculateAccumulatedFrame()) && bombTime > 0 {
+                        diffuseMessage.zPosition = 5
+                        let fadeIn = SKAction.runBlock {
+                            self.diffuseMessage.runAction(SKAction.fadeInWithDuration(1.0))
+                        }
+                        let wait = SKAction.waitForDuration(1)
+                        let fadeOut = SKAction.runBlock {
+                            self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1.0))
+                        }
+                        let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
+                        diffuseMessage.runAction(sequence)
+                        checkBomb.removeFromParent()
+                        bombArray.removeAtIndex(k)
+                        bombTimer.removeAllActions()
+                        self.timeLeft -= 5
+                    } else {
+                        k += 1
                     }
-                    let wait = SKAction.waitForDuration(1)
-                    let fadeOut = SKAction.runBlock {
-                        self.diffuseMessage.runAction(SKAction.fadeOutWithDuration(1.0))
-                    }
-                    let sequence = SKAction.sequence([fadeIn, wait, fadeOut])
-                    diffuseMessage.runAction(sequence)
-                    checkBomb.removeFromParent()
-                    bombArray.removeAtIndex(k)
-                    bombTimer.removeAllActions()
-                    self.timeLeft -= 5
-                } else {
-                    k += 1
                 }
             }
             
@@ -424,7 +443,6 @@ class GameScene: SKScene {
             if collectedNotes == totalPages && exitCheck == true {
                 /* Make the signal for players to find exit appear */
                 exitSign.hidden = false
-                blinking(exitSign)
                 
                 /* Make exit appear */
                 exit = exitReference.exit
@@ -445,6 +463,19 @@ class GameScene: SKScene {
                     Chartboost.showInterstitial(CBLocationHomeScreen)
                     state = .Victory
                 }
+            }
+            blinking(exitSign)
+            
+            // Changes the fire
+            if fire2 != nil && fire1 != nil {
+                if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), fire2.calculateAccumulatedFrame()) {
+                    levelBackground.lightingBitMask = 2
+                } else if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), fire1.calculateAccumulatedFrame()) {
+                    levelBackground.lightingBitMask = 1
+                }
+            }
+            if lighting2 != nil {
+                fireExchange()
             }
             
             /* Half of the game scene's width and height */
@@ -475,6 +506,9 @@ class GameScene: SKScene {
         
         /* add page into the array of pages */
         pages.append(page1)
+        if GameManager.sharedInstance.currentlevel == 5 {
+            phantomPages.append(page1)
+        }
     }
     
     func createRandomBox() {
@@ -617,6 +651,35 @@ class GameScene: SKScene {
         } else {
             lighting.ambientColor = UIColor.blackColor()
             return false
+        }
+    }
+    
+    func spawnFire() {
+        let resourcePathFire1 = NSBundle.mainBundle().pathForResource("Fire1", ofType: "sks")
+        let fire1Reference = Fire1ReferenceNode (URL: NSURL (fileURLWithPath: resourcePathFire1!))
+        fire1 = fire1Reference.fire1
+        fire1.moveToParent(self)
+        let resourcePathKiller = NSBundle.mainBundle().pathForResource("Fire2", ofType: "sks")
+        let fire2Reference = Fire2ReferenceNode (URL: NSURL (fileURLWithPath: resourcePathKiller!))
+        fire2 = fire2Reference.fire2
+        fire2.moveToParent(self)
+    }
+    
+    func fireExchange() {
+        if levelBackground.lightingBitMask == 1 {
+            fire1.hidden = true
+            fire2.hidden = false
+            lighting.position = light1.position
+            if GameManager.sharedInstance.currentlevel == 5 {
+                lighting2.position = CGPoint(x: 342.5, y: 619.91)
+            }
+        } else if levelBackground.lightingBitMask == 2 {
+            fire1.hidden = false
+            fire2.hidden = true
+            lighting2.position = light1.position
+            if GameManager.sharedInstance.currentlevel == 5 {
+                lighting.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+            }
         }
     }
     

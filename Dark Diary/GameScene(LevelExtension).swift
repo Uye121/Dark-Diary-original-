@@ -28,7 +28,7 @@ extension GameScene {
         
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
-//        exit.position = CGPoint(x:718.5, y:391.546)
+        //        exit.position = CGPoint(x:718.5, y:391.546)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -60,7 +60,7 @@ extension GameScene {
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
-//        exit.position = CGPoint(x:622.22, y:435.624)
+        //        exit.position = CGPoint(x:622.22, y:435.624)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -100,7 +100,7 @@ extension GameScene {
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
-//        exit.position = CGPoint(x:570.27, y:434.772)
+        //        exit.position = CGPoint(x:570.27, y:434.772)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -143,7 +143,7 @@ extension GameScene {
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
-//        exit.position = CGPoint(x:107.258, y:189.524)
+        //        exit.position = CGPoint(x:107.258, y:189.524)
         
         /* Create pages and boxes */
         while numberOfPages < totalPages {
@@ -158,6 +158,41 @@ extension GameScene {
         /* Calls function where the bomb counts down and leads to game over */
         destruction()
         spawnKiller()
+        reflect.runAction(SKAction.fadeOutWithDuration(2))
+    }
+    
+    func level5() {
+        let resourcePath = NSBundle.mainBundle().pathForResource("Level5", ofType: "sks")
+        let level5 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+//        let lampFire2 = SKEmitterNode(fileNamed: "lampFire2")
+        levelNode.addChild(level5)
+        lighting = self.childNodeWithName("//lighting") as! SKLightNode
+        lighting2 = self.childNodeWithName("//lighting2") as! SKLightNode
+        levelBackground = childNodeWithName("//level5Background") as! SKSpriteNode
+        reflect = childNodeWithName("//reflect") as! SKLabelNode
+        
+        levelWidth = levelBackground.size.width
+        levelHeight = levelBackground.size.height
+        
+        totalPages = 7
+        numberOfPages = 0
+        timeLeft = 56
+        
+        light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+        lightCamera.position = light1.position
+        
+        /* Create pages and boxes */
+        while numberOfPages < totalPages {
+            createPage()
+            numberOfPages += 1
+            spawnOutside()
+        }
+        
+        /* Calls function where the bomb counts down and leads to game over */
+//        spawnKiller()
+        spawnFire()
+        fire2!.position = CGPoint(x: 342.5, y: 619.91)
+        fire1!.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         reflect.runAction(SKAction.fadeOutWithDuration(2))
     }
     

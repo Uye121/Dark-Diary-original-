@@ -63,3 +63,24 @@ class exitReferenceNode: SKReferenceNode {
         exit = childNodeWithName("//exit") as! SKSpriteNode
     }
 }
+
+class Fire1ReferenceNode: SKReferenceNode {
+    var fire1: SKSpriteNode!
+    
+    override func didLoadReferenceNode(node: SKNode?) {
+        fire1 = childNodeWithName("//fire1") as! SKSpriteNode
+    }
+}
+
+class Fire2ReferenceNode: SKReferenceNode {
+    var fire2: SKSpriteNode!
+    
+    override func didLoadReferenceNode(node: SKNode?) {
+        fire2 = childNodeWithName("//fire2") as! SKSpriteNode
+    }
+}
+
+
+
+
+
