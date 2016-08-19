@@ -66,6 +66,7 @@
 		079FA7161D3465780066C088 /* light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FA7151D3465780066C088 /* light.swift */; };
 		07B200EE1D5BD2C8003B66EA /* ComingSoon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07B200ED1D5BD2C8003B66EA /* ComingSoon.sks */; };
 		07CFC07C1D595311000CC4E2 /* Level4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07CFC07B1D595311000CC4E2 /* Level4.sks */; };
+		07DF8F241D674EBB00569B17 /* PhantomPage.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07DF8F231D674EBB00569B17 /* PhantomPage.sks */; };
 		6184010F81BFCFBF52CE8383 /* Pods_Shadow_Hunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1281E9965373002554B4098 /* Pods_Shadow_Hunt.framework */; };
 		7240972AFD7F9A06EC535872 /* Pods_Shadow_HuntTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7A41529E0C478F3EBAFB47 /* Pods_Shadow_HuntTests.framework */; };
 		F333F22689394568D0D0A76F /* Pods_Shadow_HuntUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CD41B5B6490C2E333E3ED7 /* Pods_Shadow_HuntUITests.framework */; };
@@ -155,6 +156,7 @@
 		079FA7151D3465780066C088 /* light.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = light.swift; path = ../light.swift; sourceTree = "<group>"; };
 		07B200ED1D5BD2C8003B66EA /* ComingSoon.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ComingSoon.sks; sourceTree = "<group>"; };
 		07CFC07B1D595311000CC4E2 /* Level4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level4.sks; path = ../Level4.sks; sourceTree = "<group>"; };
+		07DF8F231D674EBB00569B17 /* PhantomPage.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhantomPage.sks; sourceTree = "<group>"; };
 		17CD41B5B6490C2E333E3ED7 /* Pods_Shadow_HuntUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shadow_HuntUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		244165EC32339C2521D0EF8D /* Pods-Shadow Hunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shadow Hunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shadow Hunt/Pods-Shadow Hunt.debug.xcconfig"; sourceTree = "<group>"; };
 		4C7A41529E0C478F3EBAFB47 /* Pods_Shadow_HuntTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shadow_HuntTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +224,7 @@
 				078C285F1D550598003F4869 /* Killer.sks */,
 				079FA70B1D343FD60066C088 /* Light.sks */,
 				0782BE3F1D359813002E895E /* Page.sks */,
+				07DF8F231D674EBB00569B17 /* PhantomPage.sks */,
 				075587EA1D49801400931220 /* RandomBox.sks */,
 			);
 			name = Assets;
@@ -491,6 +494,7 @@
 				078928351D3409B900B9B21B /* Assets.xcassets in Resources */,
 				075E93871D6672A200F14C80 /* Fire1.sks in Resources */,
 				078F8C301D515A18009AE751 /* ExplodingNoise.caf in Resources */,
+				07DF8F241D674EBB00569B17 /* PhantomPage.sks in Resources */,
 				073F5E921D492AF400C0FC9E /* Level1.sks in Resources */,
 				079EF34F1D500FD000BD438B /* LevelSelect.sks in Resources */,
 				0773ABB41D3838C400868206 /* MainMenu.sks in Resources */,

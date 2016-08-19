@@ -174,9 +174,9 @@ extension GameScene {
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height
         
-        totalPages = 7
+        totalPages = 13
         numberOfPages = 0
-        timeLeft = 56
+        timeLeft = 61
         
         light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         lightCamera.position = light1.position
@@ -185,11 +185,12 @@ extension GameScene {
         while numberOfPages < totalPages {
             createPage()
             numberOfPages += 1
-            spawnOutside()
+            createPhantomPage()
+            numberOfPages += 1
         }
         
         /* Calls function where the bomb counts down and leads to game over */
-//        spawnKiller()
+        spawnKiller()
         spawnFire()
         fire2!.position = CGPoint(x: 342.5, y: 619.91)
         fire1!.position = CGPoint(x: screenWidth/2, y: screenHeight/2)

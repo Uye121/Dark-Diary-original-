@@ -32,6 +32,18 @@ class PageReferenceNode: SKReferenceNode {
     }
 }
 
+class PhantomPageReferenceNode: SKReferenceNode {
+    
+    /* Page node connection */
+    var phantomPage: SKSpriteNode!
+    
+    override func didLoadReferenceNode(node: SKNode?) {
+        
+        /* Set reference to node */
+        phantomPage = childNodeWithName("//phantomPage") as! SKSpriteNode
+    }
+}
+
 class BoxReferenceNode: SKReferenceNode {
     var randomBox: SKSpriteNode!
     

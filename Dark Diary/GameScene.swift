@@ -45,8 +45,8 @@ class GameScene: SKScene {
     var levelSelector: MSButtonNode!
     var helpButton: MSButtonNode!
     var page1: SKSpriteNode!
+    var phantomPage: SKSpriteNode!
     var pages:[SKSpriteNode] = []
-    var phantomPages: [SKSpriteNode] = []
     var randomBox: SKSpriteNode!
     var randomBoxes: [SKSpriteNode] = []
     var bomb: SKSpriteNode!
@@ -156,7 +156,7 @@ class GameScene: SKScene {
         if GameManager.sharedInstance.currentlevel != 6 {
             /* Ensure correct aspect mode */
             scene!.scaleMode = .AspectFit
-            goal.text = String("\(collectedNotes)/\(totalPages)")
+            goal.text = String("\(collectedNotes)/\(pages.count + collectedNotes)")
             explode.zPosition = -10
             
             /* Timer */
@@ -349,19 +349,53 @@ class GameScene: SKScene {
             var j = 0
             var k = 0
             
+            /* Make phantomPages appear only when the other fire is active */
+            if phantomPage != nil {
+                if levelBackground.lightingBitMask == 1 {
+                    for checkPage in pages {
+                        if checkPage.name == "page" {
+                            checkPage.hidden = false
+                        } else if checkPage.name == "phantomPage" {
+                            checkPage.hidden = true
+                        }
+                    }
+                } else if levelBackground.lightingBitMask == 2 {
+                    for checkPage in pages {
+                        if checkPage.name == "page" {
+                            checkPage.hidden = true
+                        } else if checkPage.name == "phantomPage" {
+                            checkPage.hidden = false
+                        }
+                    }
+                }
+            }
+            
             for checkPage in pages {
                 /* Detect light and page "collision" */
                 if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), checkPage.calculateAccumulatedFrame()) {
-                    /* Code connect: flame effects */
-                    let flame = SKEmitterNode(fileNamed: "CollectEffect")
-                    /* Limits how many flame particle is emitted */
-                    flame?.numParticlesToEmit = 35
-                    /* Add flame to the page that intersect with the light */
-                    flame!.position = pages[i].position
-                    checkPage.removeFromParent()
-                    pages.removeAtIndex(i)
-                    addChild(flame!)
-                    collectedNotes += 1
+                    if checkPage.name == "page" && levelBackground.lightingBitMask == 1{
+                        /* Code connect: flame effects */
+                        let flame = SKEmitterNode(fileNamed: "CollectEffect")
+                        /* Limits how many flame particle is emitted */
+                        flame?.numParticlesToEmit = 35
+                        /* Add flame to the page that intersect with the light */
+                        flame!.position = pages[i].position
+                        checkPage.removeFromParent()
+                        pages.removeAtIndex(i)
+                        addChild(flame!)
+                        collectedNotes += 1
+                    } else if checkPage.name == "phantomPage" && levelBackground.lightingBitMask == 2 {
+                        /* Code connect: flame effects */
+                        let flame = SKEmitterNode(fileNamed: "CollectEffect")
+                        /* Limits how many flame particle is emitted */
+                        flame?.numParticlesToEmit = 35
+                        /* Add flame to the page that intersect with the light */
+                        flame!.position = pages[i].position
+                        checkPage.removeFromParent()
+                        pages.removeAtIndex(i)
+                        addChild(flame!)
+                        collectedNotes += 1
+                    }
                 } else {
                     i += 1
                 }
@@ -438,9 +472,9 @@ class GameScene: SKScene {
             }
             
             /* Update the goal collected pages/total pages needed everytime a page is collected */
-            goal.text = String("\(collectedNotes)/\(totalPages)")
+            goal.text = String("\(collectedNotes)/\(pages.count + collectedNotes)")
             
-            if collectedNotes == totalPages && exitCheck == true {
+            if collectedNotes == pages.count + collectedNotes && exitCheck == true {
                 /* Make the signal for players to find exit appear */
                 exitSign.hidden = false
                 
@@ -506,9 +540,23 @@ class GameScene: SKScene {
         
         /* add page into the array of pages */
         pages.append(page1)
-        if GameManager.sharedInstance.currentlevel == 5 {
-            phantomPages.append(page1)
-        }
+    }
+    
+    func createPhantomPage() {
+        /* Randomly generate the pages' position across the whole map */
+        randomX = Int(arc4random_uniform(UInt32(levelWidth - 10)) + 5)
+        randomY = Int(arc4random_uniform(UInt32(levelHeight - 10)) + 5)
+        /* Add reference of the page to the scene */
+        let resourcePathPhantomPage = NSBundle.mainBundle().pathForResource("PhantomPage", ofType: "sks")
+        let phantomPageReference = PhantomPageReferenceNode (URL: NSURL (fileURLWithPath: resourcePathPhantomPage!))
+        
+        /* move the whole page file into the gamescene */
+        phantomPage = phantomPageReference.phantomPage
+        phantomPage.moveToParent(self)
+        phantomPage.position = CGPoint(x: randomX, y: randomY)
+        
+        /* add page into the array of pages */
+        pages.append(phantomPage)
     }
     
     func createRandomBox() {
