@@ -79,6 +79,9 @@ class GameScene: SKScene {
     var exitSign: SKLabelNode!
     var reflect: SKLabelNode!
     
+    // Thoughts connections
+    var reflect2: SKLabelNode!
+    
     enum Levels { case Default }
     
     /* Manages changing to different level */
@@ -152,6 +155,11 @@ class GameScene: SKScene {
         
         levelsStates()
         exitSign.hidden = true
+        ///// Thoughts code connection
+        if GameManager.sharedInstance.currentlevel == 5{
+            reflect2 = childNodeWithName("//reflect2") as! SKLabelNode
+            reflect2.hidden = true
+        }
         
         if GameManager.sharedInstance.currentlevel != 6 {
             /* Ensure correct aspect mode */
@@ -470,6 +478,7 @@ class GameScene: SKScene {
                 
                 /* Make exit appear */
                 exit = exitReference.exit
+                exit.moveToParent(levelNode)
                 if GameManager.sharedInstance.currentlevel == 1 {
                     exit.position = CGPoint(x:718.5, y:391.546)
                 } else if GameManager.sharedInstance.currentlevel == 2 {
@@ -479,7 +488,8 @@ class GameScene: SKScene {
                 } else if GameManager.sharedInstance.currentlevel == 4 {
                     exit.position = CGPoint(x:107.258, y:189.524)
                 }
-                exit.moveToParent(self)
+                exit.zPosition = 1
+                
                 
                 if CGRectIntersectsRect(light1.calculateAccumulatedFrame(), exit.calculateAccumulatedFrame()) {
                     // Show interstitial ats location HomeScreen. See Chartboost.h for available location options.
@@ -511,6 +521,16 @@ class GameScene: SKScene {
             lightCamera.position.x.clamp(cameraViewPortWidth, levelWidth - cameraViewPortWidth)
             lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
             
+            ////// Self-thoughts //////
+            if GameManager.sharedInstance.currentlevel == 5 && reflect2 != nil {
+                if collectedNotes == 10 {
+                    reflect2.moveToParent(camera!)
+                    reflect2.position = CGPoint(x: 4.328, y: 40)
+                    reflect2.hidden = false
+                    reflect2.runAction(SKAction.fadeInWithDuration(1))
+                    reflect2.runAction(SKAction.fadeOutWithDuration(1))
+                }
+            }
         }
     }
     

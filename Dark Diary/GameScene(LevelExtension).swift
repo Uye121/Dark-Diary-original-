@@ -190,7 +190,7 @@ extension GameScene {
         }
         
         /* Calls function where the bomb counts down and leads to game over */
-        spawnKiller()
+//        spawnKiller()
         spawnFire()
         fire2!.position = CGPoint(x: 342.5, y: 619.91)
         fire1!.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
