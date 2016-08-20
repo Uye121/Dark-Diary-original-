@@ -88,7 +88,7 @@ class GameScene: SKScene {
     
     func levelsStates() {
         while load {
-            switch GameManager.sharedInstance.currentlevel % 7 {
+            switch GameManager.sharedInstance.currentlevel % 8 {
             case 1:
                 level1()
                 load = false
@@ -105,6 +105,9 @@ class GameScene: SKScene {
                 level5()
                 load = false
             case 6:
+                level6()
+                load = false
+            case 7:
                 comingSoon()
                 load = false
             default:
@@ -142,7 +145,7 @@ class GameScene: SKScene {
         
         help.hidden = true
         
-        if GameManager.sharedInstance.currentlevel != 6 {
+        if GameManager.sharedInstance.currentlevel != 7 {
             /* scene and background constants */
             screenWidth = size.width
             screenHeight = size.height
@@ -156,12 +159,12 @@ class GameScene: SKScene {
         levelsStates()
         exitSign.hidden = true
         ///// Thoughts code connection
-        if GameManager.sharedInstance.currentlevel == 5{
+        if GameManager.sharedInstance.currentlevel >= 5 && reflect2 != nil {
             reflect2 = childNodeWithName("//reflect2") as! SKLabelNode
             reflect2.hidden = true
         }
         
-        if GameManager.sharedInstance.currentlevel != 6 {
+        if GameManager.sharedInstance.currentlevel != 7 {
             /* Ensure correct aspect mode */
             scene!.scaleMode = .AspectFit
             goal.text = String("\(collectedNotes)/\(pages.count + collectedNotes)")
@@ -333,7 +336,7 @@ class GameScene: SKScene {
             
         }
         
-        if GameManager.sharedInstance.currentlevel != 6 {
+        if GameManager.sharedInstance.currentlevel != 7 {
             /* Have the light follow the orb */
             lighting.position = light1.position
             exitSign.position.x = lighting.position.x - 0.061
@@ -522,7 +525,7 @@ class GameScene: SKScene {
             lightCamera.position.y.clamp(cameraViewPortHeight, levelHeight - cameraViewPortHeight)
             
             ////// Self-thoughts //////
-            if GameManager.sharedInstance.currentlevel == 5 && reflect2 != nil {
+            if GameManager.sharedInstance.currentlevel >= 5 && reflect2 != nil {
                 if collectedNotes == 10 {
                     reflect2.moveToParent(camera!)
                     reflect2.position = CGPoint(x: 4.328, y: 40)

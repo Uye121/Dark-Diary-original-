@@ -190,11 +190,53 @@ extension GameScene {
         }
         
         /* Calls function where the bomb counts down and leads to game over */
-//        spawnKiller()
+        spawnKiller()
         spawnFire()
         fire2!.position = CGPoint(x: 342.5, y: 619.91)
         fire1!.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
         reflect.runAction(SKAction.fadeOutWithDuration(2))
+    }
+    
+    func level6() {
+        let resourcePath = NSBundle.mainBundle().pathForResource("Level6", ofType: "sks")
+        let level6 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
+        levelNode.addChild(level6)
+        lighting = self.childNodeWithName("//lighting") as! SKLightNode
+        lighting2 = self.childNodeWithName("//lighting2") as! SKLightNode
+        levelBackground = childNodeWithName("//level6Background") as! SKSpriteNode
+        bombTimer = childNodeWithName("//bombTimer") as! SKLabelNode
+//        reflect = childNodeWithName("//reflect") as! SKLabelNode
+        
+        levelWidth = levelBackground.size.width
+        levelHeight = levelBackground.size.height
+        
+        createBomb()
+        bombTimer.moveToParent(bomb)
+        bombTimer.position.x = 1.971
+        bombTimer.position.y = -1.593
+        
+        totalPages = 10
+        numberOfPages = 0
+        timeLeft = 46
+        
+        light1.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
+        lightCamera.position = light1.position
+        
+        /* Create pages and boxes */
+        while numberOfPages < totalPages {
+            createPage()
+            numberOfPages += 1
+            createPhantomPage()
+            numberOfPages += 1
+        }
+        
+        /* Calls function where the bomb counts down and leads to game over */
+        //        spawnKiller()
+        spawnFire()
+        destruction()
+        spawnKiller()
+        fire2!.position = CGPoint(x: 442.5, y: 319.91)
+        fire1!.position = CGPoint(x: screenWidth/2, y: screenHeight/2)
     }
     
     func comingSoon() {

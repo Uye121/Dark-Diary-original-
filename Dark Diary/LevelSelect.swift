@@ -17,6 +17,7 @@ class LevelSelect: SKScene {
     var level3Selector: MSButtonNode!
     var level4Selector: MSButtonNode!
     var level5Selector: MSButtonNode!
+    var level6Selector: MSButtonNode!
     var returnButton: MSButtonNode!
     var nextButton: MSButtonNode!
     var locked: SKLabelNode!
@@ -32,6 +33,7 @@ class LevelSelect: SKScene {
         level3Selector = childNodeWithName("//level3Selector") as! MSButtonNode
         level4Selector = childNodeWithName("//level4Selector") as! MSButtonNode
         level5Selector = childNodeWithName("//level5Selector") as! MSButtonNode
+        level6Selector = childNodeWithName("//level6Selector") as! MSButtonNode
         returnButton = childNodeWithName("//returnButton") as! MSButtonNode
         nextButton = childNodeWithName("//nextButton") as! MSButtonNode
         locked = childNodeWithName("//locked") as! SKLabelNode
@@ -119,6 +121,25 @@ class LevelSelect: SKScene {
         
         level5Selector.selectedHandler = {
             GameManager.sharedInstance.currentlevel = 5
+            
+            if GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] == true {
+                let skView = self.view as SKView!
+                
+                let scene = GameScene(fileNamed: "GameScene")! as GameScene
+                
+                scene.scaleMode = .AspectFit
+                
+                skView.presentScene(scene)
+            } else {
+                self.locked.hidden = false
+                self.locked.runAction(SKAction.fadeInWithDuration(0.5), completion:{
+                    self.locked.runAction(SKAction.fadeOutWithDuration(0.5))
+                })
+            }
+        }
+        
+        level6Selector.selectedHandler = {
+            GameManager.sharedInstance.currentlevel = 6
             
             if GameManager.sharedInstance.unlockedLevel[GameManager.sharedInstance.currentlevel] == true {
                 let skView = self.view as SKView!

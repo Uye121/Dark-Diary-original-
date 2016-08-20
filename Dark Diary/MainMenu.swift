@@ -27,9 +27,9 @@ class MainMenu: SKScene {
         
         /* Setup your scene here */
         
-        if GameManager.sharedInstance.unlockedLevel.count != 0{
-            for _ in 1...5 {
-                if GameManager.sharedInstance.unlockedLevel.count <= 5 {
+        if GameManager.sharedInstance.unlockedLevel.count != 0 {
+            for _ in 1...6 {
+                if GameManager.sharedInstance.unlockedLevel.count <= 6 {
                     GameManager.sharedInstance.unlockedLevel.append(false)
                 }
             }
