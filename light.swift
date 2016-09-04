@@ -12,6 +12,10 @@ import SpriteKit
 class Light: SKSpriteNode {
     var touchLocation: CGPoint!
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        GameManager.sharedInstance.guide = true
+    }
+    
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         //detector = childNodeWithName("//detector") as! Light!
         for touch in touches {

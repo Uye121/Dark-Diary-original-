@@ -40,7 +40,7 @@ extension GameScene {
             createRandomBox()
             numberOfBoxes += 1
         }
-        reflect.runAction(SKAction.fadeOutWithDuration(2))
+        
     }
     
     func level2() {
@@ -164,7 +164,7 @@ extension GameScene {
     func level5() {
         let resourcePath = NSBundle.mainBundle().pathForResource("Level5", ofType: "sks")
         let level5 = SKReferenceNode (URL: NSURL (fileURLWithPath: resourcePath!))
-//        let lampFire2 = SKEmitterNode(fileNamed: "lampFire2")
+        //        let lampFire2 = SKEmitterNode(fileNamed: "lampFire2")
         levelNode.addChild(level5)
         lighting = self.childNodeWithName("//lighting") as! SKLightNode
         lighting2 = self.childNodeWithName("//lighting2") as! SKLightNode
@@ -205,7 +205,7 @@ extension GameScene {
         lighting2 = self.childNodeWithName("//lighting2") as! SKLightNode
         levelBackground = childNodeWithName("//level6Background") as! SKSpriteNode
         bombTimer = childNodeWithName("//bombTimer") as! SKLabelNode
-//        reflect = childNodeWithName("//reflect") as! SKLabelNode
+        //        reflect = childNodeWithName("//reflect") as! SKLabelNode
         
         levelWidth = levelBackground.size.width
         levelHeight = levelBackground.size.height

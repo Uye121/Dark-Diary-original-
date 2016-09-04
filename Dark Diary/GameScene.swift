@@ -535,6 +535,10 @@ class GameScene: SKScene {
                 }
             }
         }
+        
+        if GameManager.sharedInstance.guide == true && reflect != nil && GameManager.sharedInstance.currentlevel == 1 {
+            reflect.runAction(SKAction.fadeOutWithDuration(2))
+        }
     }
     
     func createPage() {
